@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: calc(100% - 60px);
+    height: calc(100% - 70px);
     float: left;
 }
 
@@ -99,7 +99,32 @@
                 color: black;
             }
 
-            .form-connection-input {
+            .form-register-input:focus {
+                margin: 30px 5% 8px 5%;
+            }
+
+            .form-error {
+                color: red;
+                font-size: .8em;
+                position: absolute;
+                background-color: hsla(357, 76%, 72%, .4);
+                cursor: text;
+                pointer-events: none;
+                opacity: 0;
+            }
+
+            .form-error::after {
+                content: 'X';
+                position: absolute;
+                right: 5px;
+                top: 0;
+                height: 100%;
+                line-height: 30px;
+                font-size: 14.4px;
+                font-weight: bold;
+            }
+
+            [class*=form-connection-input] {
                 --primary_color: var(--exia-red2);
                 --secondary_color: var(--exia-red1);
                 width: calc(50% - 10px);

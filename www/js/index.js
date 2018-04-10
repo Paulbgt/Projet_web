@@ -1,9 +1,12 @@
 var wrapper = document.querySelector('.authentication');
 var btnRegister = document.querySelector('.form-btnRegister');
 var btnConnection = document.querySelector('.form-btnConnection');
+var formError = document.querySelectorAll('.form-error');
 var formConnection = document.querySelector('.form-connection');
 var formRegister = document.querySelector('.form-register');
 var formOnRegister = true;
+var btnRegisterValidate = document.querySelector('.form-register-validate');
+var btnConnectionValidate = document.querySelector('.form-connection-validate');
 
 
 function switchForm(element) {
@@ -21,6 +24,17 @@ function switchForm(element) {
     }, 800);
 }
 
+function placeError() {
+    for (var i = 0; i<formError.length; i++) {
+        formError[i].style.width = '0px';
+        var parentInput = document.getElementById(formError[i].getAttribute('for'));
+        formError[i].style.top = parentInput.offsetTop + 'px';
+        formError[i].style.left = parentInput.offsetLeft + 'px';
+        formError[i].style.width = parentInput.offsetWidth - 1 + 'px';
+        formError[i].style.height = parentInput.offsetHeight + 'px';
+//        formError[i].style.opacity = 1;
+    }
+}
 
 
 btnRegister.addEventListener('click', function() {
@@ -45,4 +59,13 @@ btnConnection.addEventListener('click', function() {
         formRegister.style.display = "none";
         formOnRegister = false;
     }
+});
+
+
+btnRegisterValidate.addEventListener('click', function(e) {
+    placeError();
+});
+
+btnConnectionValidate.addEventListener('click', function(e) {
+    placeError();
 });

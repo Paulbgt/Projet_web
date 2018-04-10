@@ -25,5 +25,8 @@
     <span class="header-log-span">Statut :</span>
     <span class="header-log-status">Etudiant</span>
     <span class="header-log-name">Aurélien KLEIN</span>
-    <a><img class="header-logout" src="img/logout.svg" alt="Déconnexion"></a>
+    <a>
+        <img class="header-logout" src="img/logout2.svg" alt="Déconnexion">
+        <img class="header-logout" src="img/logout1.svg" alt="Déconnexion">
+    </a>
 </div>

@@ -26,17 +26,25 @@
 
                 <div class="form-register">
                     <form action="">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName">
+                        <label class="form-error" for="lastName"></label>
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName">
+                        <label class="form-error" for="firstName"></label>
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister">
+                        <label class="form-error" for="passwordRegister"></label>
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister">
+                        <label class="form-error" for="mailRegister"></label>
+                        
                         <input type="submit" value="S'inscrire" class="AKL-btnModern form-register-validate">
                     </form>
                 </div>
                 <div class="form-connection">
                     <form action="">
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail">
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe">
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="passwordConnection">
+                        <label class="form-error" for="passwordConnection"></label>
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="mailConnection">
+                        <label class="form-error" for="mailConnection"></label>
+                        
                         <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate">
                     </form>
                 </div>

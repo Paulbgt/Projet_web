@@ -29,7 +29,8 @@ a {
 .header {
     z-index: 10;
     background-color: var(--exia-red1);
-    height: 60px;
+    height: 70px;
+    height: 70px;
     width: 100%;
     padding: 0;
     position: relative;
@@ -47,7 +48,7 @@ a {
     .header span {
         margin: 0;
         height: 100%;
-        line-height: 60px;
+        line-height: 70px;
         color: white;
     }
 
@@ -86,7 +87,7 @@ a {
 
     .nav-blc {
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 0;
         width: 200px;
         background-color: var(--exia-red2);
@@ -119,7 +120,7 @@ a {
         background-color: white;
         width: 50px;
         height: 50px;
-        margin-top: 5px;
+        margin: 10px 0 0 10px;
         border-radius: 100%;
         position: relative;
         float: left;
@@ -149,7 +150,7 @@ a {
     [class*=header-log-span] {
         width: 100px;
         height: 50% !important;
-        line-height: 40px !important;
+        line-height: 45px !important;
         text-align: center;
         position: absolute;
         right: 20%;
@@ -159,7 +160,7 @@ a {
     [class*=header-log-status] {
         width: 100px;
         height: 50% !important;
-        line-height: 20px !important;
+        line-height: 25px !important;
         text-align: center;
         position: absolute;
         right: 20%;
@@ -171,9 +172,71 @@ a {
         right: 8%;
     }
 
-.header-logout {
-    float: right;
-    width: 30px;
+    .header-logout {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        padding-right: 3%;
+        transition: all 225ms;
+    }
+
+    .header-logout:nth-child(2):hover {
+        padding-right: 3.5%;
+    }
+
+
+
+
+
+/* //////////////// Footer //////////////// */
+
+.footer {
+    background-color: grey;
+    height: 50px;
+    color: hsl(0, 0%, 80%);
+}
+
+.footer-akl a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-ul {
+    margin: 10px 0 0 0;
+    padding: 0;
+    width: 75%;
+    height: 20px;
+}
+
+.footer-ul-li {
+    list-style: none;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.footer-ul-li::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 0;
     height: 100%;
-    padding-right: 3%;
+    width: 3px;
+    background-color: hsl(0, 0%, 80%);
+}
+
+.footer-ul-li:nth-last-child(1)::after {
+    display: none;
+}
+
+.footer-twitter {
+    position: absolute;
+    right: 20px;
+    bottom: 25px;
+    width: 40px;
+    height: 40px;
 }
