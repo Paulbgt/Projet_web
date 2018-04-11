@@ -1,6 +1,6 @@
 <div class="AKL-ctn--c1-s0 header">
     <?php
-        if(isset($_SESSION['statut'])){
+        if(isset($_SESSION['statute'])){
     ?>
     <div class="nav-btn">
         <svg id="nav-btn-svg" width="40" height="30">
@@ -29,12 +29,12 @@
     <span class="header-title">Site du BDE</span>
     
     <?php
-        if(isset($_SESSION['statut'])){
+        if(isset($_SESSION['statute'])){
     ?>
     <span class="header-log-span">Statut :</span>
     <span class="header-log-status">
         <?php  
-            switch($_SESSION['statut']) {
+            switch($_SESSION['statute']) {
                 case '1' : echo("Étudiant"); break;
                 case '2' : echo("BDE"); break;
                 case '3' : echo("Salarié"); break;
@@ -44,8 +44,8 @@
     </span>
     <span class="header-log-name">
         <?php 
-            echo($_SESSION['nom'] . " ");
-            echo($_SESSION['prenom']);
+            echo($_SESSION['last_name'] . " ");
+            echo($_SESSION['first_name']);
         ?>
     </span>
     <a href="php/logout.php">
@@ -63,7 +63,7 @@
     <span class="headerPhone-spanExia">Exia.Cesi Arras</span>
 
     <?php
-        if(isset($_SESSION['statut'])){
+        if(isset($_SESSION['statute'])){
     ?>
     <div class="navPhone-btn">
         <svg id="navPhone-btn-svg" width="40" height="30">
@@ -82,14 +82,14 @@
         <hr>
         <span class="headerPhone-log-name">
         <?php 
-            echo($_SESSION['nom'] . " ");
-            echo($_SESSION['prenom']);
+            echo($_SESSION['last_name'] . " ");
+            echo($_SESSION['first_name']);
 
         ?>
         </span>
         <span class="headerPhone-log-span">Statut : 
         <?php 
-            switch($_SESSION['statut']) {
+            switch($_SESSION['statute']) {
                 case '0' :  echo("Invité"); break;
                 case '1' :  echo("Étudiant"); break;
                 case '2' :  echo("BDE"); break;

@@ -27,11 +27,11 @@
 
                 <div class="form-register">
                     <form action="php/inscription.php" method="POST">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName" type="text" name="nom">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName" type="text" name="last_name">
                         <label class="form-error" for="lastName"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName" type="text" name="prenom">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName" type="text" name="first_name">
                         <label class="form-error" for="firstName"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister" type="password" name="mdp">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister" type="password" name="pwd">
                         <label class="form-error" for="passwordRegister"></label>
                         <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister" type="email" name="mail">
                         <label class="form-error" for="mailRegister"></label>
@@ -44,7 +44,7 @@
                         <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="mailConnection" type="email" name="lmail">
                         <label class="form-error" for="mailConnection"></label>
                     
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="passwordConnection" type="password" name="lmdp">
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="passwordConnection" type="password" name="lpwd">
                         <label class="form-error" for="passwordConnection"></label>
                         
                         <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate" id="submitConnection">
@@ -59,6 +59,14 @@
 
 
 	<?php include '_footer.php' ?>
+
+    <?php 
+        if(!empty($_GET['error'])){
+            switch($_GET['error']){
+                case 'mail' : ?> <script> alert("le mail est déjà utilisé"); </script> <?php ; break;
+            }
+        }
+    ?>
 
 <script src="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>

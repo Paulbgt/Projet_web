@@ -3,7 +3,7 @@
     <span class="footer-akl">Site développé avec <a href="https://aklibrary.fr">AKLibrary</a></span>
     <img class="footer-twitter" src="img/twitter.png" alt="twitter">
     <?php
-        if(isset($_SESSION['statut'])){
+        if(isset($_SESSION['statute'])){
     ?>
     <ul class="footer-ul">
         <li class="footer-ul-li"><a>Boite à idée</a></li>

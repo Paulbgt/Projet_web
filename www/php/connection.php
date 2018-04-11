@@ -1,17 +1,17 @@
 <?php session_start();  
 
 //conexion à la base de données
-$bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
+$db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
 
 
 //on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire
 
-$lmail = $_POST['lmail'];
-$lmdp = $_POST['lmdp'];
+$mail = $_POST['lmail'];
+$pwd = $_POST['lpwd'];
 
-if (!empty($lmail) && !empty($lmdp)) {
+if (!empty($lmail) && !empty($lpwd)) {
 
-	$q = $bdd->prepare("SELECT * FROM utilisateur WHERE mail = :mail");
+	$q = $db->prepare("SELECT * FROM account WHERE mail = :mail");
 	$q->execute(['mail' => $lmail]
 	);
 
@@ -20,13 +20,13 @@ if (!empty($lmail) && !empty($lmdp)) {
 	if ($result == true) {
 
 
-		$pass = $result['mdp'];
-		if (password_verify($lmdp, $pass)) {
+		$pass = $result['pwd'];
+		if (password_verify($lpwd, $pass)) {
 
 			$_SESSION['mail'] = $result['mail'];
-			$_SESSION['prenom'] = $result['prenom'];
-			$_SESSION['nom'] = $result['nom'];
-			$_SESSION['statut'] = $result['statut'];
+			$_SESSION['first_name'] = $result['first_name'];
+			$_SESSION['last_name'] = $result['last_name'];
+			$_SESSION['statute'] = $result['statute'];
 
 			header('Location: /Projet_Web/www/index.php');
 			exit();
@@ -38,7 +38,7 @@ if (!empty($lmail) && !empty($lmdp)) {
 
 		}
 		else{
-			echo "le mot de passe pas bon";
+			echo "le mot de passe est incorrecte";
 			
 			exit();
 		}
@@ -47,7 +47,7 @@ if (!empty($lmail) && !empty($lmdp)) {
 	}
 	else{
 		//le mail inscrit dans l'onglet connexion n'existe pas dans la base de données.
-		echo "le mail " . $lmail . " existe pas";
+		echo "le mail " . $mail . " n'existe pas";
 	}
 
 
