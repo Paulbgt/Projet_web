@@ -13,7 +13,7 @@ CREATE TABLE account(
         first_name Char (255) NOT NULL ,
         mail       Varchar (255) NOT NULL ,
         pwd        Varchar (255) NOT NULL ,
-        statute    Int NOT NULL ,
+        statute    Int DEFAULT 1,
         PRIMARY KEY (id )
 )ENGINE=InnoDB;
 
