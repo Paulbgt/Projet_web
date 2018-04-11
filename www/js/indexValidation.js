@@ -43,9 +43,11 @@ function checkText(element, e){
 
 //Check the password field and prevent the form from being sent
 function checkPassword(element, e){
-	var regex = /^[a-zA-Z0-9.\\\!\^\$\(\)\+\*\}\{\[\]\?\/\|\_-]/;
+	var regex1 = /[a-zA-Z0-9.\\\!\^\$\(\)\+\*\}\{\[\]\?\/\|\_-]/;
+	var regex2 = /[A-Z{1,}]/
+	var regex3 = /[0-9{1,}]/
 
-	if(regex.test(element.value) == false && !element.value.length < 30){
+	if(regex1.test(element.value) == false && regex2.test(element.value) == false && regex3.test(element.value) == false !element.value.length < 30){
 		e.preventDefault();
 		displayError(element);
 	}
