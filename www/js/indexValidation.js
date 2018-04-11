@@ -28,7 +28,7 @@ function checkText(element, e){
 }
 
 function checkPassword(element, e){
-	var regex = /^[a-zA-Z0-9.\\\!\^\$\(\)\_-]/;
+	var regex = /^[a-zA-Z0-9.\\\!\^\$\(\)\+\*\}\{\[\]\?\/\|\_-]/;
 
 	if(regex.test(element.value) == false && !element.value.length < 30){
 		e.preventDefault();

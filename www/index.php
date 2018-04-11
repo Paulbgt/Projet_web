@@ -26,16 +26,16 @@
 
                 <div class="form-register">
                     <form action="">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName" type="text">
                         <label class="form-error" for="lastName"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName" type="text">
                         <label class="form-error" for="firstName"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister" type="password">
                         <label class="form-error" for="passwordRegister"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister" type="email">
                         <label class="form-error" for="mailRegister"></label>
                         
-                        <input type="submit" value="S'inscrire" class="AKL-btnModern form-register-validate">
+                        <input type="submit" value="S'inscrire" class="AKL-btnModern form-register-validate" id="submitRegister">
                     </form>
                 </div>
                 <div class="form-connection">
@@ -45,7 +45,7 @@
                         <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="mailConnection">
                         <label class="form-error" for="mailConnection"></label>
                         
-                        <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate">
+                        <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate" id="submitConnection">
                     </form>
                 </div>
             </div>
