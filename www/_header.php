@@ -11,7 +11,7 @@
     </div>
     <div class="nav-blc">
         <ul class="nav-blc-ul">
-            <li class="nav-blc-ul-li"><a>Boite à idée</a></li>
+            <li class="nav-blc-ul-li"><a href="ideaBox">Boite à idée</a></li>
             <li class="nav-blc-ul-li"><a>Evénements du mois</a></li>
             <li class="nav-blc-ul-li"><a>Evénements passés</a></li>
             <li class="nav-blc-ul-li"><a>Boutique</a></li>

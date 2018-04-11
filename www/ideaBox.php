@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,14 +23,29 @@
         <div class="AKL-ctn--c3_4 suggestion">
             <span class="suggestion-title">Proposer une idée</span>
             
-            <form action="suggest_event_add.php" method="POST">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <form action="php/suggest_event_add.php" method="POST">
                 <div class="AKL-ctn--c2-s1 suggestion-img">
                     <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
                     <input type="file" id="fileImg" class="AKL-btnFile" hidden>
                 </div>
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
                     <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
-                    <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
+                    <input type="date" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
                     <input type="text" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
                     <input type="text" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
                     <input type="text" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price">
@@ -40,6 +56,25 @@
             
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="AKL-ctn--c2-s1 idea">
         <div class="AKL-ctn--c2-s1 idea-img1" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2-s1 idea-infos">
