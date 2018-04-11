@@ -1,4 +1,4 @@
-<?php  
+<?php session_start();  
 
 //conexion à la base de données
 $bdd = new PDO('mysql:host=localhost;dbname=projetweb;charset=utf8', 'root', '');
@@ -19,19 +19,14 @@ if (!empty($lmail) && !empty($lmdp)) {
 	if ($result == true) {
 
 
-
-
-
-
 		$pass = $result['mdp'];
 		if (password_verify($lmdp, $pass)) {
 
-			$_SESSION['mail'] = $result['mail'];
-
-			header('Location: php/redirection.php');
+			$_SESSION['mail'] = $_POST['lmail'];
+			
+			header('Location: /Projet_Web/www/index.php');
 			exit();
 
-		
 
 
 			//$_SESSION['mail'] = $result['mail'];

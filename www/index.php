@@ -40,9 +40,10 @@
                     </form>
                 </div>
                 <div class="form-connection">
+                	<form action="php/connection.php" method="POST">
                         <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="mailConnection" type="email" name="lmail">
                         <label class="form-error" for="mailConnection"></label>
-                    <form action="php/connection.php" method="POST">
+                    
                         <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="passwordConnection" type="password" name="lmdp">
                         <label class="form-error" for="passwordConnection"></label>
                         

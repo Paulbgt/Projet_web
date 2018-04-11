@@ -23,8 +23,15 @@
     
     <span class="header-log-span">Statut :</span>
     <span class="header-log-status">Etudiant</span>
-    <span class="header-log-name">Aurélien KLEIN</span>
-    <a>
+    <span class="header-log-name">
+        <?php 
+        if(isset($_SESSION['mail'])){
+            echo($_SESSION['mail']); 
+        }
+
+        ?>
+    </span>
+    <a href="php/logout.php">
         <img class="header-logout" src="img/logout2.svg" alt="Déconnexion">
         <img class="header-logout" src="img/logout1.svg" alt="Déconnexion">
     </a>
