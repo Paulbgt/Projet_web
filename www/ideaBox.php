@@ -22,19 +22,19 @@
         <div class="AKL-ctn--c3_4 suggestion">
             <span class="suggestion-title">Proposer une idée</span>
             
-            <form action="">
+            <form action="suggest_event_add.php" method="POST">
                 <div class="AKL-ctn--c2-s1 suggestion-img">
                     <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
                     <input type="file" id="fileImg" class="AKL-btnFile" hidden>
                 </div>
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
-                    <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
-                    <input type="text" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
+                    <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
+                    <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
                     <input type="text" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
                     <input type="text" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
                     <input type="text" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price">
-                    <textarea placeholder="Description" name="" id="" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
-                    <input type="submit" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit"/>
+                    <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
+                    <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit"/>
                 </div>
             </form>
             
