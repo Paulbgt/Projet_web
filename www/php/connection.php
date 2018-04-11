@@ -11,8 +11,9 @@ $lmdp = $_POST['lmdp'];
 
 if (!empty($lmail) && !empty($lmdp)) {
 
-	$q = $bdd->prepare("SELECT mail, mdp FROM utilisateur WHERE mail = :mail");
-	$q->execute(['mail' => $lmail]);
+	$q = $bdd->prepare("SELECT * FROM utilisateur WHERE mail = :mail");
+	$q->execute(['mail' => $lmail]
+	);
 
 	$result = $q->fetch();
 
@@ -22,8 +23,11 @@ if (!empty($lmail) && !empty($lmdp)) {
 		$pass = $result['mdp'];
 		if (password_verify($lmdp, $pass)) {
 
-			$_SESSION['mail'] = $_POST['lmail'];
-			
+			$_SESSION['mail'] = $result['mail'];
+			$_SESSION['prenom'] = $result['prenom'];
+			$_SESSION['nom'] = $result['nom'];
+			$_SESSION['statut'] = $result['statut'];
+
 			header('Location: /Projet_Web/www/index.php');
 			exit();
 
