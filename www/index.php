@@ -61,5 +61,6 @@
 <script src="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/index.min.js"></script>
+<script src="js/indexValidation.js"></script>
 </body>
 </html>
