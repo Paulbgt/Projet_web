@@ -27,6 +27,7 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['first_name'] = $result['first_name'];
 			$_SESSION['last_name'] = $result['last_name'];
 			$_SESSION['statute'] = $result['statute'];
+			$_SESSION['id'] = $result['id'];
 
 			echo($_SESSION['mail']);
 			echo($_SESSION['first_name']);
