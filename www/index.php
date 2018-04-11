@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,25 +26,25 @@
                 <div class="form-btnConnection">Connexion</div>
 
                 <div class="form-register">
-                    <form action="">
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName" type="text">
+                    <form action="php/inscription.php" method="POST">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Nom" id="lastName" type="text" name="nom">
                         <label class="form-error" for="lastName"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName" type="text">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Prenom" id="firstName" type="text" name="prenom">
                         <label class="form-error" for="firstName"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister" type="password">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="Mot de passe" id="passwordRegister" type="password" name="mdp">
                         <label class="form-error" for="passwordRegister"></label>
-                        <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister" type="email">
+                        <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister" type="email" name="mail">
                         <label class="form-error" for="mailRegister"></label>
                         
                         <input type="submit" value="S'inscrire" class="AKL-btnModern form-register-validate" id="submitRegister">
                     </form>
                 </div>
                 <div class="form-connection">
-                    <form action="">
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="passwordConnection" type="password">
-                        <label class="form-error" for="passwordConnection"></label>
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="mailConnection" type="email">
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="mailConnection" type="email" name="lmail">
                         <label class="form-error" for="mailConnection"></label>
+                    <form action="php/connection.php" method="POST">
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="passwordConnection" type="password" name="lmdp">
+                        <label class="form-error" for="passwordConnection"></label>
                         
                         <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate" id="submitConnection">
                     </form>
