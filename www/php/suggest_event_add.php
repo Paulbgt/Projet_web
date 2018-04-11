@@ -1,3 +1,5 @@
+<?php session_start();  ?>
+
 <?php  
 try{
 //conexion à la base de données
