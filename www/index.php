@@ -16,7 +16,7 @@
 
     <div class="wrapper">
        
-        <div class="authentication">
+        <div class="authentification">
             <img class="exiaPart-grey1" src="img/exia-logo-grey1.png" alt="Logo exia partie gris 1">
             <img class="exiaPart-grey2" src="img/exia-logo-grey2.png" alt="Logo exia partie gris 2">
             <img class="exiaPart-red" src="img/exia-logo-red.png" alt="Logo exia partie rouge">

@@ -7,7 +7,7 @@
     float: left;
 }
 
-.authentication {
+.authentification {
     width: 500px;
     height: 400px;
     position: relative;
@@ -48,13 +48,14 @@
     }
 
     .form {
-        width: 420px;
+        width: 84%; /*420px*/
         height: 300px;
         position: relative;
         box-shadow: 0 0 5px black;
         z-index: 2;
         background-color: white;
-        border-radius: 20px;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
         overflow: hidden;
         transition: all 225ms, opacity 100ms;
     }
@@ -142,3 +143,11 @@
                 width: 130px;
                 margin: 30px calc(50% - 65px);
             }
+
+
+@media screen and (max-width: 767px) {
+    .authentification {
+        margin-right: -20px;
+        margin-left: -20px;
+    }
+}

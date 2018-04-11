@@ -1,4 +1,4 @@
-var wrapper = document.querySelector('.authentication');
+var wrapper = document.querySelector('.authentification');
 var btnRegister = document.querySelector('.form-btnRegister');
 var btnConnection = document.querySelector('.form-btnConnection');
 var formError = document.querySelectorAll('.form-error');
@@ -12,8 +12,13 @@ var btnConnectionValidate = document.querySelector('.form-connection-validate');
 function switchForm(element) {
     wrapper.children[3].style.transition = "all 225ms, opacity 100ms";
     wrapper.children[3].style.opacity = "0";
-    wrapper.style.width = "130px"; //130 ou 210 pour croiser ou faire le logo
-    wrapper.style.height = "130px"; //130 ou 220 pour croiser ou faire le logo
+    if (window.innerWidth < 767) {
+        wrapper.style.width = "210px"; //130 ou 210 pour croiser ou faire le logo
+        wrapper.style.height = "220px"; //130 ou 220 pour croiser ou faire le logo
+    } else {
+        wrapper.style.width = "130px"; //130 ou 210 pour croiser ou faire le logo
+        wrapper.style.height = "130px"; //130 ou 220 pour croiser ou faire le logo
+    }
     
     setTimeout(function() {
         wrapper.children[3].style.transition = "all 225ms, opacity 800ms";
