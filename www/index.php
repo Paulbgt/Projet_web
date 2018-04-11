@@ -40,9 +40,9 @@
                 </div>
                 <div class="form-connection">
                     <form action="">
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="passwordConnection">
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="passwordConnection" type="password">
                         <label class="form-error" for="passwordConnection"></label>
-                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="mailConnection">
+                        <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="mailConnection" type="email">
                         <label class="form-error" for="mailConnection"></label>
                         
                         <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate" id="submitConnection">
@@ -61,6 +61,6 @@
 <script src="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/index.min.js"></script>
-<script src="js/indexValidation.min.js"></script>
+<script src="js/indexValidation.js"></script>
 </body>
 </html>

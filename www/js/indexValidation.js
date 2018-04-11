@@ -1,11 +1,8 @@
 var validationRegister = document.getElementById('submitRegister');
 var validationConnection = document.getElementById('submitConnection');
 var inputRegister = document.querySelectorAll('[class*=form-register-input]');
+var inputConnection = document.querySelectorAll('[class*=form-connection-input]');
 var formError = document.querySelectorAll('.form-error');
-var lastName = document.getElementById('lastName');
-var firstName = document.getElementById('firstName');
-var passwordRegister = document.getElementById('passwordRegister');
-var mailRegister = document.getElementById('mailRegister');
 
 validationRegister.addEventListener('click', function(e) {
     for (var i = 0; i<formError.length; i++) {
@@ -16,6 +13,18 @@ validationRegister.addEventListener('click', function(e) {
 		case 'text' : checkText(inputRegister[i], e); break;
 		case 'password' : checkPassword(inputRegister[i], e); break;
 		case 'email' : checkMail(inputRegister[i], e); break;
+		}
+	}
+});
+
+validationConnection.addEventListener('click', function(e) {
+    for (var i = 0; i<formError.length; i++) {
+        formError[i].style.opacity = 0;
+    }
+	for(var i = 0 ; i<inputConnection.length ; i++ ){
+		switch(inputConnection[i].type) {
+		case 'password' : checkPassword(inputConnection[i], e); break;
+		case 'email' : checkMail(inputConnection[i], e); break;
 		}
 	}
 });
