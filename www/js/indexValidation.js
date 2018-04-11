@@ -4,6 +4,7 @@ var inputRegister = document.querySelectorAll('[class*=form-register-input]');
 var inputConnection = document.querySelectorAll('[class*=form-connection-input]');
 var formError = document.querySelectorAll('.form-error');
 
+//Verify if the field is correct when we click on the register button and check the type of field
 validationRegister.addEventListener('click', function(e) {
     for (var i = 0; i<formError.length; i++) {
         formError[i].style.opacity = 0;
@@ -17,6 +18,7 @@ validationRegister.addEventListener('click', function(e) {
 	}
 });
 
+//Verify if the field is correct when we click on the connection button and check the type of field
 validationConnection.addEventListener('click', function(e) {
     for (var i = 0; i<formError.length; i++) {
         formError[i].style.opacity = 0;
@@ -29,6 +31,7 @@ validationConnection.addEventListener('click', function(e) {
 	}
 });
 
+//Check the text field and prevent the form from being sent
 function checkText(element, e){
 	var regex = /^[a-zA-Z][a-z]+([-'\s][a-zA-Z])?/;
 
@@ -38,6 +41,7 @@ function checkText(element, e){
 	}
 }
 
+//Check the password field and prevent the form from being sent
 function checkPassword(element, e){
 	var regex = /^[a-zA-Z0-9.\\\!\^\$\(\)\+\*\}\{\[\]\?\/\|\_-]/;
 
@@ -47,6 +51,7 @@ function checkPassword(element, e){
 	}
 }
 
+//Check the mail field and prevent the form from being sent
 function checkMail(element, e){
 	var regex = /^[a-zA-Z0-9._-]+@(via){0,1}cesi\.fr/;
 
@@ -56,6 +61,7 @@ function checkMail(element, e){
 	}
 }
 
+//Display an error in the incorrect field
 function displayError(element){
     document.querySelector('[for=' + element.id + ']').style.opacity = 1;
 }
