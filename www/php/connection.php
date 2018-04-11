@@ -6,8 +6,8 @@ $db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', ''
 
 //on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire
 
-$mail = $_POST['lmail'];
-$pwd = $_POST['lpwd'];
+$lmail = $_POST['lmail'];
+$lpwd = $_POST['lpwd'];
 
 if (!empty($lmail) && !empty($lpwd)) {
 
@@ -28,12 +28,14 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['last_name'] = $result['last_name'];
 			$_SESSION['statute'] = $result['statute'];
 
+			echo($_SESSION['mail']);
+			echo($_SESSION['first_name']);
+			echo($_SESSION['last_name']);
+			echo($_SESSION['statute']);
+
 			header('Location: /Projet_Web/www/index.php');
+
 			exit();
-
-
-
-			//$_SESSION['mail'] = $result['mail'];
 
 
 		}
@@ -47,7 +49,7 @@ if (!empty($lmail) && !empty($lpwd)) {
 	}
 	else{
 		//le mail inscrit dans l'onglet connexion n'existe pas dans la base de données.
-		echo "le mail " . $mail . " n'existe pas";
+		echo "le mail " . $lmail . " n'existe pas";
 	}
 
 

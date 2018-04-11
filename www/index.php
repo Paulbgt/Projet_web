@@ -63,7 +63,8 @@
     <?php 
         if(!empty($_GET['error'])){
             switch($_GET['error']){
-                case 'mail' : ?> <script> alert("le mail est déjà utilisé"); </script> <?php ; break;
+                case 'mail' : ?> <script> alert("le mail est déjà utilisé"); </script> <?php ;
+                 break;
             }
         }
     ?>
