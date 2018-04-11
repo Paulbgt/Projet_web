@@ -40,7 +40,7 @@
 
             <form action="php/suggest_event_add.php" method="POST">
                 <div class="AKL-ctn--c2-s1 suggestion-img">
-                    <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
+                    <label for="fileImg" class="AKL-btnModern-Shine">Choisir une image</label>
                     <input type="file" id="fileImg" class="AKL-btnFile" hidden>
                 </div>
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
@@ -50,7 +50,7 @@
                     <input type="text" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
                     <input type="text" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price">
                     <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
-                    <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit"/>
+                    <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat suggestion-infos-submit"/>
                 </div>
             </form>
             

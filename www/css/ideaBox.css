@@ -32,12 +32,22 @@
         text-align: center;
         width: 100%;
         float: left;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
     }
 
     .suggestion-img{
         margin-top: 20px;
-        height: calc(100% - 70px);
+        height: 262px;
+/*        height: calc(100% - 70px);*/
         background-color: black;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
         .suggestion-infos input {
