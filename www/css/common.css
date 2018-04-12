@@ -19,6 +19,7 @@ li a {
 
 a {
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -109,6 +110,10 @@ a {
 
                 .nav-blc-ul-li:hover {
                     border-left: 4px solid white;padding-left: 6px;
+                }
+
+                .nav-blc-ul-li a {
+                    color: white;
                 }
 
     .header-logo {
