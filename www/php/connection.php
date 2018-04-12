@@ -3,11 +3,11 @@
 //conexion à la base de données
 $db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
 
+include 'function.php';
 
-//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise contre l'injection SQL
-
-$lmail = mysql_real_escape_string($_POST['lmail']);
-$lpwd = mysql_real_escape_string($_POST['lpwd']);
+//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise les variables
+$lmail = secure($_POST['lmail']);
+$lpwd = secure($_POST['lpwd']);
 
 if (!empty($lmail) && !empty($lpwd)) {
 
