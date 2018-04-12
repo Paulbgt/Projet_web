@@ -4,11 +4,9 @@ var inputDescription = document.querySelectorAll('[class*=suggestion-infos-descr
 var formError = document.querySelectorAll('.form-error');
 
 validationIdea.addEventListener('click', function(e) {
-
-        formError[i].style.opacity = 0;
-		checkText(inputTitle[i], e);
-		checkText(inputDescription[i], e);
-	}
+    formError[i].style.opacity = 0;
+    checkText(inputTitle[i], e);
+    checkText(inputDescription[i], e);
 });
 
 function checkText(element, e){
