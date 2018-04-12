@@ -3,6 +3,7 @@ var navButtonPhone = document.querySelector('.navPhone-btn');
 var navBloc = document.querySelector('.nav-blc');
 var navBlocPhone = document.querySelector('.navPhone-blc');
 var showMenu = false;
+var right = true;
 
 
 navButton.addEventListener('click', function() {
@@ -10,7 +11,7 @@ navButton.addEventListener('click', function() {
         this.children[0].style.transform = "rotate(33deg)";
         this.children[1].style.transform = "scale(0)";
         this.children[2].style.transform = "rotate(-33deg)";
-        this.parentElement.style.backgroundColor = "var(--exia-red2)";
+        right ? this.parentElement.style.backgroundColor = "var(--exia-red2)" : null;
 //        navBloc.style.transform = "scale(1)";
         navBloc.style.height = "160px";
         navBloc.children[0].style.display = "block";
