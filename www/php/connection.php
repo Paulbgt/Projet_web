@@ -4,10 +4,10 @@
 $db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
 
 
-//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire
+//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise contre l'injection SQL
 
-$lmail = $_POST['lmail'];
-$lpwd = $_POST['lpwd'];
+$lmail = mysql_real_escape_string($_POST['lmail']);
+$lpwd = mysql_real_escape_string($_POST['lpwd']);
 
 if (!empty($lmail) && !empty($lpwd)) {
 
@@ -28,11 +28,6 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['last_name'] = $result['last_name'];
 			$_SESSION['statute'] = $result['statute'];
 			$_SESSION['id'] = $result['id'];
-
-			echo($_SESSION['mail']);
-			echo($_SESSION['first_name']);
-			echo($_SESSION['last_name']);
-			echo($_SESSION['statute']);
 
 			header('Location: /Projet_Web/www/index.php');
 

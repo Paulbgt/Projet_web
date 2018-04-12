@@ -2,11 +2,11 @@
 //conexion à la base de données
 $db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
 
-//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire
-$last_name = $_POST['last_name'];
-$first_name = $_POST['first_name'];
-$mail = $_POST['mail'];
-$pwd = $_POST['pwd'];
+//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise pour éviter l'injection SQL
+$last_name = mysql_real_escape_string($_POST['last_name']);
+$first_name = mysql_real_escape_string($_POST['first_name']);
+$mail = mysql_real_escape_string($_POST['mail']);
+$pwd = mysql_real_escape_string($_POST['pwd']);
 
 //on vérifie que le champs ne sont pas vide avant de remplir la base de données
 if (!empty($last_name) && !empty($first_name) && !empty($mail) && !empty($pwd)) {
