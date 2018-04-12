@@ -46,12 +46,14 @@
                 </div>
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
                     <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
-                    <input type="date" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
-                    <input type="text" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
-                    <input type="text" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
-                    <input type="text" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price">
+                    <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
+                    <input type="text" name="place" id="place" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
+                    <input type="text" name="club" id="club" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
+                    <input type="text" name="price" id="price" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price"> 
                     <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
+              
                     <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit"/>
+                      
                 </div>
             </form>
             

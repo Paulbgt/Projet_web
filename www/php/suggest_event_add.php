@@ -14,27 +14,31 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 }
 
 
-
-
-
-
-
 //on définit les variables avec ce que l'utilisateurs a rempli dans le formulaire
 $title = $_POST['title'];
 $description = $_POST['description'];
 $event_date = $_POST['event_date'];
 $id_account = $_SESSION['id'];
+$place = $_POST['place'];
+$club = $_POST['club'];
+$price = $_POST['price'];
 
 //on vérifie que le champs ne sont pas vide avant de remplir la base de données
-if (!empty($title) && !empty($description) && !empty($event_date) && !empty($id_account)) {
+if (!empty($title) && !empty($description)) {
 
 //si tous les champs sont remplis alors on inscrit les données dans la BDD 
-$add = $bdd->prepare("INSERT INTO happening(title, description, event_date, id_account) VALUES(:title, :description, :event_date) WHERE id_account = $id_account");
+$add = $bdd->prepare("INSERT INTO happening(title, description, event_date, place, club, price, id_account) VALUES(:title, :description, :event_date, :place, :club, :price, :id_account)");
 $add->execute([
     'title' => $title,
     'description' => $description,
     'event_date' => $event_date,
+    'id_account'=> $id_account,
+    'place' => $place,
+    'club' => $club,
+    'price' => $price
 ]);
+
+$add->closeCursor();
 
 //permet de savoir si il y a des erreurs dans notre requête
 $add->errorInfo();
