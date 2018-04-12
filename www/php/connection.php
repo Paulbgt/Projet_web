@@ -3,11 +3,11 @@
 //conexion à la base de données
 $db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
 
+include 'function.php';
 
-//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire
-
-$lmail = $_POST['lmail'];
-$lpwd = $_POST['lpwd'];
+//on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise les variables
+$lmail = secure($_POST['lmail']);
+$lpwd = secure($_POST['lpwd']);
 
 if (!empty($lmail) && !empty($lpwd)) {
 
@@ -28,11 +28,6 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['last_name'] = $result['last_name'];
 			$_SESSION['statute'] = $result['statute'];
 			$_SESSION['id'] = $result['id'];
-
-			echo($_SESSION['mail']);
-			echo($_SESSION['first_name']);
-			echo($_SESSION['last_name']);
-			echo($_SESSION['statute']);
 
 			header('Location: /Projet_Web/www/index.php');
 
