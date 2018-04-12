@@ -1,7 +1,8 @@
 var inputImg = document.getElementById('fileImg');
 var btnLike = document.querySelectorAll('.idea-infos-like');
 var suggestionBox = document.querySelector('.suggestion');
-var suggestionBtn = document.getElementById('displaySuggestion');
+var suggestionBtnOpen = document.getElementById('displaySuggestion');
+var suggestionBtnClose = document.querySelector('.suggestion-title');
 
 
 // Event listener used to display the image selected on the designated area
@@ -27,9 +28,13 @@ for (var i = 0; i<btnLike.length; i++) {
 }
 
 // Event listener used to display the suggestion form
-suggestionBtn.addEventListener('click', function() {
+suggestionBtnOpen.addEventListener('click', function() {
     suggestionBox.style.display = "block";
     this.style.display = "none";
+});
+suggestionBtnClose.addEventListener('click', function() {
+    suggestionBtnOpen.style.display = "block";
+    suggestionBox.style.display = "none";
 });
 
 

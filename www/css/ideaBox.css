@@ -27,6 +27,7 @@
         --primary_color: var(--exia-grey2);
         --secondary_color: var(--exia-grey1);
         display: none;
+        margin: 10px;
     }
 
     .suggestion-title {
@@ -36,6 +37,14 @@
         color: white;
         font-weight: bold;
         font-size: 1.1em;
+    }
+
+    .suggestion-title::before {
+        content: '';
+        background-image: url(../img/sort-up.svg);
+        background-size: 20px 20px;
+        width: 20px;
+        height: 20px;
     }
 
     .suggestion-img{
