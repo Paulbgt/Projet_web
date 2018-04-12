@@ -1,15 +1,25 @@
 var inputImg = document.getElementById('fileImg');
+var inputImgModal = document.getElementById('fileImgModal');
 var btnLike = document.querySelectorAll('.idea-infos-like');
 var suggestionBox = document.querySelector('.suggestion');
+var suggestionBlc = document.querySelector('.blcSuggestion');
 var suggestionBtnOpen = document.getElementById('displaySuggestion');
 var suggestionBtnClose = document.querySelector('.suggestion-title');
-
+var suggestionAdmin = document.querySelectorAll('[class*=idea-admin]');
+var backgroundModal = document.querySelector('.backgroundModal');
+var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
 
 // Event listener used to display the image selected on the designated area
 inputImg.addEventListener('change', function(e) {
-    var path = URL.createObjectURL(this.files[0]);
-    this.parentElement.style.backgroundImage = 'url(' + path + ')';
-    document.querySelector('[for*=fileImg]').style.marginBottom = '-290px';
+    var files = this.files[0];
+    var imgType = files.name.split('.');
+    imgType = imgType[imgType.length - 1].toLowerCase();
+    
+    if (allowedTypes.indexOf(imgType) != -1) {
+        var path = URL.createObjectURL(this.files[0]);
+        this.parentElement.style.backgroundImage = 'url(' + path + ')';
+        document.querySelector('[for=fileImg]').style.marginBottom = '-290px';
+    }
 });
 
 // Event listener used to swap the likes image and to update the display of number of likes
@@ -28,13 +38,69 @@ for (var i = 0; i<btnLike.length; i++) {
 }
 
 // Event listener used to display the suggestion form
+var ho, h;
 suggestionBtnOpen.addEventListener('click', function() {
+    suggestionBlc.style.height = "auto";
+    ho = suggestionBlc.offsetHeight;
     suggestionBox.style.display = "block";
     this.style.display = "none";
+    h = suggestionBlc.offsetHeight;    
+    suggestionBlc.style.height = ho + 'px';
+    setTimeout(function(){
+        suggestionBlc.style.height = h + "px";
+    }, 1);
 });
 suggestionBtnClose.addEventListener('click', function() {
-    suggestionBtnOpen.style.display = "block";
+    suggestionBtnOpen.style.display = "flex";
     suggestionBox.style.display = "none";
+    suggestionBlc.style.height = ho + 'px';
+});
+
+
+// Display modal to administrate the suggestion
+for (var i = 0; i<suggestionAdmin.length; i++) {
+    suggestionAdmin[i].addEventListener('click', function() {
+        backgroundModal.style.display = "flex";
+//        document.querySelector('.wrapper').style.filter = "grayscale(100%) blur(3px)";
+        document.querySelector('.wrapper').style.filter = "blur(5px)";
+        var id = this.classList[1].replace('idea-admin', '');
+        document.querySelector('.modal-infos-id').value = this.id;
+        document.querySelector('.modal-img').style.backgroundImage = document.getElementById('idea-img' + id).style.backgroundImage;
+        document.querySelector('.modal-infos-title').value = document.getElementById('idea-infos-title' + id).innerHTML;
+        document.querySelector('.modal-infos-place').value = document.getElementById('idea-infos-place' + id).innerHTML;
+        document.querySelector('.modal-infos-price').value = document.getElementById('idea-infos-price' + id).innerHTML;
+        document.querySelector('.modal-infos-date').value = document.getElementById('idea-infos-date' + id).innerHTML;
+        document.querySelector('.modal-infos-club').value = document.getElementById('idea-infos-club' + id).innerHTML;
+        document.querySelector('.modal-infos-description').value = document.getElementById('idea-infos-description' + id).innerHTML;
+    });
+}
+
+inputImgModal.addEventListener('change', function(e) {
+    var files = this.files[0];
+    var imgType = files.name.split('.');
+    imgType = imgType[imgType.length - 1].toLowerCase();
+    
+    if (allowedTypes.indexOf(imgType) != -1) {
+        var path = URL.createObjectURL(this.files[0]);
+        this.parentElement.style.backgroundImage = 'url(' + path + ')';
+    }
+});
+
+
+
+function closeModal() {
+    backgroundModal.style.display = "none";
+    document.querySelector('.wrapper').style.filter = "none";
+}
+
+document.querySelector('.modal-close').addEventListener('click', function() {
+    closeModal();
+});
+
+backgroundModal.addEventListener('click', function(e) {
+    if (e.clientX < this.children[0].offsetLeft || e.clientX > this.children[0].offsetLeft + this.children[0].offsetWidth || e.clientY < this.children[0].offsetTop || e.clientY > this.children[0].offsetTop + this.children[0].offsetHeight) {
+        closeModal();
+    }
 });
 
 
