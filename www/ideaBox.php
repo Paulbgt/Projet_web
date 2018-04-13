@@ -5,7 +5,7 @@
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <link rel="icon" type="image/png" href="img/exia-logo.png"/>
-	<title>BDE Connexion</title>
+	<title>BDE - Boite à idée</title>
     <meta name="description" content="Site web du BDE de l'Exia.Cesi d'Arras."/>
     <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
     <link rel="stylesheet" href="css/common.min.css">

@@ -8,6 +8,25 @@ var suggestionBtnClose = document.querySelector('.suggestion-title');
 var suggestionAdmin = document.querySelectorAll('[class*=idea-admin]');
 var backgroundModal = document.querySelector('.backgroundModal');
 var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
+var formError = document.querySelectorAll('.form-error');
+var btnRegisterValidate = document.querySelector('.suggestion-idea-submit');
+
+
+function placeError() {
+    for (var i = 0; i<formError.length; i++) {
+        formError[i].style.width = '0px';
+        var parentInput = document.getElementById(formError[i].getAttribute('for'));
+        formError[i].style.top = parentInput.offsetTop + 'px';
+        formError[i].style.left = parentInput.offsetLeft + 'px';
+        formError[i].style.width = parentInput.offsetWidth - 1 + 'px';
+        formError[i].style.height = parentInput.offsetHeight + 'px';
+    }
+}
+
+
+btnRegisterValidate.addEventListener('click', function(e) {
+    placeError();
+});
 
 // Event listener used to display the image selected on the designated area
 inputImg.addEventListener('change', function(e) {

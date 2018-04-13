@@ -1,16 +1,21 @@
+<?php session_start();  ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" href="" type="icon/png">
-    <title></title>
+    <title>BDE - Evénement du mois</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/eventMonth.min.css">
 </head>
 <body>
     <div class="wrapper">
+
+	<?php include '_header.php' ?>
         
 <!--        .AKL-ctn--c1.banner+.AKL-ctn--c1.event*4>#event-img$.AKL-ctn--c2-s1.event-img+.AKL-ctn--c2-s1.event-infos>span#event-infos-title$.event-infos-title+span#event-infos-date$.event-infos-date+span#event-infos-place$.event-infos-place+span#event-infos-club$.event-infos-club+span#event-infos-price$.event-infos-price+textarea#event-infos-description$.event-infos-description+input#subcribe$.AKL-btnClassic-Flat-ocean.event-infos-subscire-->
        
@@ -66,8 +71,12 @@
        </div>
         
         
-        </div>
+    <?php include '_footer.php' ?>
+
+        
+    </div>
     <script src="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.js"></script>
-    <script src=""></script>
+    <script src="js/common.min.js"></script>
+    <script src="js/eventMonth.min.js"></script>
 </body>
 </html>
