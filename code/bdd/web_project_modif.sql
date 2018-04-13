@@ -140,9 +140,7 @@ DROP TABLE IF EXISTS `love`;
 CREATE TABLE IF NOT EXISTS `love` (
   `id_account` int(11) NOT NULL,
   `id_happening` int(11) NOT NULL,
-  PRIMARY KEY (`id_account`,`id_happening`),
-  KEY `FK_love_id_account` (`id_account`),
-  KEY `FK_love_id_happening` (`id_happening`),
+  PRIMARY KEY (`id_account`,`id_happening`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
