@@ -9,7 +9,7 @@ var suggestionAdmin = document.querySelectorAll('[class*=idea-admin]');
 var backgroundModal = document.querySelector('.backgroundModal');
 var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
 var formError = document.querySelectorAll('.form-error');
-var btnRegisterValidate = document.querySelector('.suggestion-idea-submit');
+var btnRegisterValidate = document.querySelector('.suggestion-infos-submit');
 
 
 function placeError() {

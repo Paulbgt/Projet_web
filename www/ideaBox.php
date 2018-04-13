@@ -121,19 +121,6 @@ Cdlmt.</textarea>
         <div class="AKL-ctn--c1 idea-admin3" id=""><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
     </div>
     <div class="AKL-ctn--c2-t1 idea">
-        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img4" style="background-image: url(photos/buffalo.jpg)"></div>
-        <div class="AKL-ctn--c2_3-t1 idea-infos">
-            <a class="idea-infos-like" value="0" style="background-image: url(img/like_grey.svg)"></a>
-            <span id="idea-infos-title4" class="idea-infos-title">Buffalo Grill</span>
-            <span id="idea-infos-place4" class="idea-infos-place">Buffalo Grill Arras</span>
-            <span id="idea-infos-club4" class="idea-infos-club"></span>
-            <span id="idea-infos-date4" class="idea-infos-date">14 avril</span>
-            <span id="idea-infos-price4" class="idea-infos-price"> 10 à 30€</span>
-            <textarea name="" id="idea-infos-description4" cols="30" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, officia beatae autem quam! Nisi, doloribus. Rerum porro, assumenda vero architecto fugiat repellendus ratione obcaecati. Voluptatum asperiores modi facilis nam nostrum.</textarea>
-        </div>
-        <div class="AKL-ctn--c1 idea-admin4" id=""><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
-    </div>
-    <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img5" style="background-image: url(photos/nyancat.png)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
             <a class="idea-infos-like" value="0" style="background-image: url(img/like_grey.svg)"></a>
@@ -145,6 +132,19 @@ Cdlmt.</textarea>
             <textarea name="" id="idea-infos-description5" cols="30" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In hic, perferendis quod vel, ad accusamus eaque ut facilis, sunt nulla ab. Odit, magni magnam iste deleniti alias quos minus maiores.</textarea>
         </div>
         <div class="AKL-ctn--c1 idea-admin5" id=""><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
+    </div>
+    <div class="AKL-ctn--c2-t1 idea">
+        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img4" style="background-image: url(photos/buffalo.jpg)"></div>
+        <div class="AKL-ctn--c2_3-t1 idea-infos">
+            <a class="idea-infos-like" value="0" style="background-image: url(img/like_grey.svg)"></a>
+            <span id="idea-infos-title4" class="idea-infos-title">Buffalo Grill</span>
+            <span id="idea-infos-place4" class="idea-infos-place">Buffalo Grill Arras</span>
+            <span id="idea-infos-club4" class="idea-infos-club"></span>
+            <span id="idea-infos-date4" class="idea-infos-date">14 avril</span>
+            <span id="idea-infos-price4" class="idea-infos-price"> 10 à 30€</span>
+            <textarea name="" id="idea-infos-description4" cols="30" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, officia beatae autem quam! Nisi, doloribus. Rerum porro, assumenda vero architecto fugiat repellendus ratione obcaecati. Voluptatum asperiores modi facilis nam nostrum.</textarea>
+        </div>
+        <div class="AKL-ctn--c1 idea-admin4" id=""><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
     </div>
     <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img6" style="background-image: url(photos/barbecue.jpg)"></div>
@@ -166,7 +166,7 @@ Cdlmt.</textarea>
             <span id="idea-infos-title7" class="idea-infos-title">Les anecdotes de tonton Romain</span>
             <span id="idea-infos-place7" class="idea-infos-place">Cesi</span>
             <span id="idea-infos-club7" class="idea-infos-club"></span>
-            <span id="idea-infos-date7" class="idea-infos-date">Dans 10 ans</span>
+            <span id="idea-infos-date7" class="idea-infos-date">Dans 3 ans</span>
             <span id="idea-infos-price7" class="idea-infos-price">Inestimable</span>
             <textarea name="" id="idea-infos-description7" cols="30" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat necessitatibus rerum explicabo quibusdam consectetur. Sint similique placeat omnis officia incidunt itaque fugit, accusantium, provident minima eius autem, quidem eum optio.</textarea>
         </div>
@@ -179,7 +179,7 @@ Cdlmt.</textarea>
             <span id="idea-infos-title8" class="idea-infos-title">Les secrets révelés d'un sniper</span>
             <span id="idea-infos-place8" class="idea-infos-place">Cesi</span>
             <span id="idea-infos-club8" class="idea-infos-club"></span>
-            <span id="idea-infos-date8" class="idea-infos-date">Dans 10 ans</span>
+            <span id="idea-infos-date8" class="idea-infos-date">Dans 3 ans</span>
             <span id="idea-infos-price8" class="idea-infos-price">De l'or en barre</span>
             <textarea name="" id="idea-infos-description8" cols="30" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus omnis ex mollitia odio labore totam, nam consectetur ipsam excepturi molestiae tenetur odit tempora, laboriosam a voluptatem eos provident cumque debitis.</textarea>
         </div>
@@ -191,39 +191,41 @@ Cdlmt.</textarea>
 
 <div class="backgroundModal">
     <div class="AKL-ctn--c3_4-s1 modal -dark">
-        <span class="modal-title">Editer l'événement</span>
-        <div class="modal-close">X</div>
-        <div class="AKL-ctn--c2-s1 modal-img">
-            <label for="fileImgModal" class="AKL-btnClassic-Flat-ocean">Changer d'image</label>
-            <input type="file" id="fileImgModal" class="AKL-btnFile" hidden>
-        </div>
-        <div class="AKL-ctn--c2-s1 modal-infos">
-            <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined modal-infos-title">
-            <input type="text" placeholder="Lieu" class="AKL-inputUnderlined modal-infos-place">
-            <input type="text" placeholder="Club" class="AKL-inputUnderlined modal-infos-club">
-            <input type="text" placeholder="Date" class="AKL-inputUnderlined modal-infos-date">
-            <input type="text" placeholder="Prix" class="AKL-inputUnderlined modal-infos-price">
-            <textarea placeholder="Description" cols="30" rows="4" class="AKL-textareaUnderlined-locked modal-infos-description"></textarea>
-            <input type="number" class="modal-infos-id" readonly hidden>
-            <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder"/>
-        </div>
-        <div class="AKL-ctn--c3 radio-blc">
-            <label for="check-eventDone" class="AKL-radio--cross"></label>
-            <input id="check-eventDone" name="check-category" type="radio" hidden>
-            <label class="check-label">Evénements terminés</label>
-        </div>
-        
-        <div class="AKL-ctn--c3 radio-blc">
-            <label for="check-eventMonth" class="AKL-radio--cross"></label>
-            <input id="check-eventMonth" name="check-category" type="radio" hidden>
-            <label class="check-label">Evénements du mois</label>
-        </div>
-        
-        <div class="AKL-ctn--c3 radio-blc">
-            <label for="check-eventIdea" class="AKL-radio--cross"></label>
-            <input id="check-eventIdea" name="check-category" type="radio" hidden checked>
-            <label class="check-label">Boite à idée</label>
-        </div>
+        <form action="php/validate_event_bdd.php" method="POST">
+            <span class="modal-title">Editer l'événement</span>
+            <div class="modal-close">X</div>
+            <div class="AKL-ctn--c2-s1 modal-img">
+                <label for="fileImgModal" class="AKL-btnClassic-Flat-ocean">Changer d'image</label>
+                <input type="file" id="fileImgModal" class="AKL-btnFile" hidden>
+            </div>
+            <div class="AKL-ctn--c2-s1 modal-infos">
+                <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined modal-infos-title" id="mtitle" name="mtitle">
+                <input type="text" placeholder="Lieu" class="AKL-inputUnderlined modal-infos-place" id="mplace" name="mplace">
+                <input type="text" placeholder="Club" class="AKL-inputUnderlined modal-infos-club" id="mclub" name="mclub">
+                <input type="text" placeholder="Date" class="AKL-inputUnderlined modal-infos-date" id="mdate" name="mdate">
+                <input type="text" placeholder="Prix" class="AKL-inputUnderlined modal-infos-price" id="mprice" name="mprice">
+                <textarea placeholder="Description" cols="30" rows="4" class="AKL-textareaUnderlined-locked modal-infos-description" id="mdescription" name="mdescription"></textarea>
+                <input type="number" class="modal-infos-id" id="numEvent" name="numEvent" readonly hidden>
+                <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder"/>
+            </div>
+            <div class="AKL-ctn--c3 radio-blc">
+                <label for="check-eventDone" class="AKL-radio--cross"></label>
+                <input id="check-eventDone" name="check-category" type="radio" hidden>
+                <label class="check-label">Evénements terminés</label>
+            </div>
+
+            <div class="AKL-ctn--c3 radio-blc">
+                <label for="check-eventMonth" class="AKL-radio--cross"></label>
+                <input id="check-eventMonth" name="check-category" type="radio" hidden>
+                <label class="check-label">Evénements du mois</label>
+            </div>
+
+            <div class="AKL-ctn--c3 radio-blc">
+                <label for="check-eventIdea" class="AKL-radio--cross"></label>
+                <input id="check-eventIdea" name="check-category" type="radio" hidden checked>
+                <label class="check-label">Boite à idée</label>
+            </div>
+        </form>
     </div>
 </div>
 

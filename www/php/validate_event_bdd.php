@@ -38,7 +38,7 @@ $v->execute([
 
 ]);
 
-header('Location: validate_event.php')
+header('Location: ideaBox.php')
 
 
 ?>
