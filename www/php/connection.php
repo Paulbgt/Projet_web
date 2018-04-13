@@ -4,8 +4,8 @@
 $db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
 
 //on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise les variables
-$lmail = $_POST['lmail'];
-$lpwd = $_POST['lpwd'];
+$lmail = htmlspecialchars($_POST['lmail']);
+$lpwd = htmlspecialchars($_POST['lpwd']);
 
 if (!empty($lmail) && !empty($lpwd)) {
 
