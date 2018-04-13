@@ -138,10 +138,11 @@ INSERT INTO `happening` (`id`, `title`, `description`, `event_date`, `place`, `c
 
 DROP TABLE IF EXISTS `love`;
 CREATE TABLE IF NOT EXISTS `love` (
-  `id` int(11) NOT NULL,
+  `id_account` int(11) NOT NULL,
   `id_happening` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`id_happening`),
-  KEY `FK_love_id_happening` (`id_happening`)
+  PRIMARY KEY (`id_account`,`id_happening`),
+  KEY `FK_love_id_account` (`id_account`),
+  KEY `FK_love_id_happening` (`id_happening`),
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -243,7 +244,7 @@ ALTER TABLE `happening`
 -- Contraintes pour la table `love`
 --
 ALTER TABLE `love`
-  ADD CONSTRAINT `FK_love_id` FOREIGN KEY (`id`) REFERENCES `account` (`id`),
+  ADD CONSTRAINT `FK_love_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`),
   ADD CONSTRAINT `FK_love_id_happening` FOREIGN KEY (`id_happening`) REFERENCES `happening` (`id`);
 
 --
