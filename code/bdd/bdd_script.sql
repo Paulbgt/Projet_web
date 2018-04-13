@@ -26,9 +26,12 @@ CREATE TABLE happening(
         id            int (11) Auto_increment  NOT NULL ,
         title         Varchar (255) NOT NULL ,
         description   Text NOT NULL ,
-        finished      Boolean ,
+        event_date    Varchar (255) ,
+        place         Varchar (255) ,
+        club          Varchar (255) ,
+        price         Varchar (255) ,
         validate      Boolean NOT NULL ,
-        event_date    Date ,
+        finished      Int ,
         publish_dated TimeStamp NOT NULL ,
         id_account    Int NOT NULL ,
         PRIMARY KEY (id )
@@ -167,5 +170,5 @@ ALTER TABLE post_comment ADD CONSTRAINT FK_post_comment_id FOREIGN KEY (id) REFE
 ALTER TABLE post_comment ADD CONSTRAINT FK_post_comment_id_commentary FOREIGN KEY (id_commentary) REFERENCES commentary(id);
 ALTER TABLE register ADD CONSTRAINT FK_register_id FOREIGN KEY (id) REFERENCES account(id);
 ALTER TABLE register ADD CONSTRAINT FK_register_id_happening FOREIGN KEY (id_happening) REFERENCES happening(id);
-ALTER TABLE order_composite ADD CONSTRAINT FK_orders_composite_id FOREIGN KEY (id) REFERENCES orders(id);
+ALTER TABLE order_composite ADD CONSTRAINT FK_order_composite_id FOREIGN KEY (id) REFERENCES orders(id);
 ALTER TABLE order_composite ADD CONSTRAINT FK_order_composite_id_produce FOREIGN KEY (id_produce) REFERENCES produce(id);
