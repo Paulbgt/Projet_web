@@ -119,11 +119,11 @@ CREATE TABLE category(
 #------------------------------------------------------------
 
 CREATE TABLE love(
-        id           Int NOT NULL ,
+        id           int (11) Auto_increment  NOT NULL ,
+        id_account   Int NOT NULL ,
         id_happening Int NOT NULL ,
-        PRIMARY KEY (id ,id_happening )
+        PRIMARY KEY (id_account ,id_happening )
 )ENGINE=InnoDB;
-
 
 #------------------------------------------------------------
 # Table: post_comment
@@ -164,7 +164,7 @@ ALTER TABLE produce_picture ADD CONSTRAINT FK_produce_picture_id_produce FOREIGN
 ALTER TABLE produce ADD CONSTRAINT FK_produce_id_category FOREIGN KEY (id_category) REFERENCES category(id);
 ALTER TABLE event_picture ADD CONSTRAINT FK_event_picture_id_happening FOREIGN KEY (id_happening) REFERENCES happening(id);
 ALTER TABLE orders ADD CONSTRAINT FK_orders_id_account FOREIGN KEY (id_account) REFERENCES account(id);
-ALTER TABLE love ADD CONSTRAINT FK_love_id FOREIGN KEY (id) REFERENCES account(id);
+ALTER TABLE love ADD CONSTRAINT FK_love_id FOREIGN KEY (id_account) REFERENCES account(id);
 ALTER TABLE love ADD CONSTRAINT FK_love_id_happening FOREIGN KEY (id_happening) REFERENCES happening(id);
 ALTER TABLE post_comment ADD CONSTRAINT FK_post_comment_id FOREIGN KEY (id) REFERENCES account(id);
 ALTER TABLE post_comment ADD CONSTRAINT FK_post_comment_id_commentary FOREIGN KEY (id_commentary) REFERENCES commentary(id);
