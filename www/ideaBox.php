@@ -70,6 +70,48 @@
 
 
 
+<?php  
+try{
+//conexion à la base de données
+$bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
+
+} catch(PDOException $e){
+
+    die($e->getMessage());
+
+}
+
+//requête qui permet de récupérer les données dans la BDD
+$display = $bdd->prepare("SELECT * FROM happening WHERE Validate = 1");
+$display->execute();
+
+//afficher chaque entrée une à une
+while ($response = $display->fetch()) {
+?>
+
+
+
+    <div class="AKL-ctn--c2-t1 idea">
+        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img1" style="background-image: url(photos/popcorn.jpg)"></div>
+        <div class="AKL-ctn--c2_3-t1 idea-infos">
+            <a class="idea-infos-like" value="20" style="background-image: url(img/like_grey.svg)"></a>
+            <span id="idea-infos-title1" class="idea-infos-title"><?= $response['title'] ?></span>
+            <span id="idea-infos-place1" class="idea-infos-place"><?= $response['place'] ?></span>
+            <span id="idea-infos-club1" class="idea-infos-club"><?= $response['club'] ?></span>
+            <span id="idea-infos-date1" class="idea-infos-date"><?= $response['event_date'] ?></span>
+            <span id="idea-infos-price1" class="idea-infos-price"><?= $response['price'] ?></span>
+            <textarea name="" id="idea-infos-description1" cols="32" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly><?= $response['description'] ?></textarea>
+        </div>
+    </div>
+
+
+
+
+<?php 
+}
+$display->closeCursor();
+
+?>
 
 
 
@@ -79,6 +121,12 @@
 
 
 
+
+
+
+
+
+<!--
 
     <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img1" style="background-image: url(photos/popcorn.jpg)"></div>
@@ -186,49 +234,50 @@ Cdlmt.</textarea>
         <div class="AKL-ctn--c1 idea-admin8" id=""><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
     </div>
 </div>
+-->
 
 
 
-<div class="backgroundModal">
-    <div class="AKL-ctn--c3_4-s1 modal -dark">
-        <form action="php/validate_event_bdd.php" method="POST">
-            <span class="modal-title">Editer l'événement</span>
-            <div class="modal-close">X</div>
-            <div class="AKL-ctn--c2-s1 modal-img">
-                <label for="fileImgModal" class="AKL-btnClassic-Flat-ocean">Changer d'image</label>
-                <input type="file" id="fileImgModal" class="AKL-btnFile" hidden>
-            </div>
-            <div class="AKL-ctn--c2-s1 modal-infos">
-                <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined modal-infos-title" id="mtitle" name="mtitle">
-                <input type="text" placeholder="Lieu" class="AKL-inputUnderlined modal-infos-place" id="mplace" name="mplace">
-                <input type="text" placeholder="Club" class="AKL-inputUnderlined modal-infos-club" id="mclub" name="mclub">
-                <input type="text" placeholder="Date" class="AKL-inputUnderlined modal-infos-date" id="mdate" name="mdate">
-                <input type="text" placeholder="Prix" class="AKL-inputUnderlined modal-infos-price" id="mprice" name="mprice">
-                <textarea placeholder="Description" cols="30" rows="4" class="AKL-textareaUnderlined-locked modal-infos-description" id="mdescription" name="mdescription"></textarea>
-                <input type="number" class="modal-infos-id" id="numEvent" name="numEvent" readonly hidden>
-                <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder"/>
-            </div>
-            <div class="AKL-ctn--c3 radio-blc">
-                <label for="check-eventDone" class="AKL-radio--cross"></label>
-                <input id="check-eventDone" name="check-category" type="radio" hidden>
-                <label class="check-label">Evénements terminés</label>
-            </div>
+    <div class="backgroundModal">
+        <div class="AKL-ctn--c3_4-s1 modal -dark">
+            <form action="php/validate_event_bdd.php" method="POST">
+                <span class="modal-title">Editer l'événement</span>
+                <div class="modal-close">X</div>
+                <div class="AKL-ctn--c2-s1 modal-img">
+                    <label for="fileImgModal" class="AKL-btnClassic-Flat-ocean">Changer d'image</label>
+                    <input type="file" id="fileImgModal" class="AKL-btnFile" hidden>
+                </div>
+                <div class="AKL-ctn--c2-s1 modal-infos">
+                    <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined modal-infos-title" id="mtitle" name="mtitle">
+                    <input type="text" placeholder="Lieu" class="AKL-inputUnderlined modal-infos-place" id="mplace" name="mplace">
+                    <input type="text" placeholder="Club" class="AKL-inputUnderlined modal-infos-club" id="mclub" name="mclub">
+                    <input type="text" placeholder="Date" class="AKL-inputUnderlined modal-infos-date" id="mdate" name="mdate">
+                    <input type="text" placeholder="Prix" class="AKL-inputUnderlined modal-infos-price" id="mprice" name="mprice">
+                    <textarea placeholder="Description" cols="30" rows="4" class="AKL-textareaUnderlined-locked modal-infos-description" id="mdescription" name="mdescription"></textarea>
+                    <input type="number" class="modal-infos-id" id="numEvent" name="numEvent" readonly hidden>
+                    <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder"/>
+                </div>
+                <div class="AKL-ctn--c3 radio-blc">
+                    <label for="check-eventDone" class="AKL-radio--cross"></label>
+                    <input id="check-eventDone" name="check-category" type="radio" hidden>
+                    <label class="check-label">Evénements terminés</label>
+                </div>
 
-            <div class="AKL-ctn--c3 radio-blc">
-                <label for="check-eventMonth" class="AKL-radio--cross"></label>
-                <input id="check-eventMonth" name="check-category" type="radio" hidden>
-                <label class="check-label">Evénements du mois</label>
-            </div>
+                <div class="AKL-ctn--c3 radio-blc">
+                    <label for="check-eventMonth" class="AKL-radio--cross"></label>
+                    <input id="check-eventMonth" name="check-category" type="radio" hidden>
+                    <label class="check-label">Evénements du mois</label>
+                </div>
 
-            <div class="AKL-ctn--c3 radio-blc">
-                <label for="check-eventIdea" class="AKL-radio--cross"></label>
-                <input id="check-eventIdea" name="check-category" type="radio" hidden checked>
-                <label class="check-label">Boite à idée</label>
-            </div>
-        </form>
+                <div class="AKL-ctn--c3 radio-blc">
+                    <label for="check-eventIdea" class="AKL-radio--cross"></label>
+                    <input id="check-eventIdea" name="check-category" type="radio" hidden checked>
+                    <label class="check-label">Boite à idée</label>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
 
 	<?php include '_footer.php' ?>
 
