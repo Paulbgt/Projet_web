@@ -34,9 +34,9 @@
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
                     <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
                     <label class="form-error" for="title"></label>
-                    <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
                     <input type="text" name="place" id="place" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
                     <input type="text" name="club" id="club" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
+                    <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
                     <input type="text" name="price" id="price" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price"> 
                     <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
                     <label class="form-error" for="description"></label>
@@ -63,9 +63,9 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 }
 
 //requête qui permet de récupérer les données dans la BDD
-$display = $bdd->prepare("SELECT * FROM happening WHERE Validate = 1");
+$display = $bdd->prepare("SELECT * FROM happening WHERE Validate = 0");
 $display->execute();
-
+$i = 1;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
 ?>
@@ -73,24 +73,24 @@ while ($response = $display->fetch()) {
 
 
     <div class="AKL-ctn--c2-t1 idea">
-        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img1" style="background-image: url(photos/popcorn.jpg)"></div>
+        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
             <a class="idea-infos-like" value="20" style="background-image: url(img/like_grey.svg)"></a>
-            <span id="idea-infos-title1" class="idea-infos-title"><?= $response['title'] ?></span>
-            <span id="idea-infos-place1" class="idea-infos-place"><?= $response['place'] ?></span>
-            <span id="idea-infos-club1" class="idea-infos-club"><?= $response['club'] ?></span>
-            <span id="idea-infos-date1" class="idea-infos-date"><?= $response['event_date'] ?></span>
-            <span id="idea-infos-price1" class="idea-infos-price"><?= $response['price'] ?></span>
-            <textarea name="" id="idea-infos-description1" cols="32" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly><?= $response['description'] ?></textarea>
+            <span id="idea-infos-title<?= $i ?>" class="idea-infos-title"><?= $response['title'] ?></span>
+            <span id="idea-infos-place<?= $i ?>" class="idea-infos-place"><?= $response['place'] ?></span>
+            <span id="idea-infos-club<?= $i ?>" class="idea-infos-club"><?= $response['club'] ?></span>
+            <span id="idea-infos-date<?= $i ?>" class="idea-infos-date"><?= $response['event_date'] ?></span>
+            <span id="idea-infos-price<?= $i ?>" class="idea-infos-price"><?= $response['price'] ?></span>
+            <textarea name="" id="idea-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly><?= $response['description'] ?></textarea>
         </div>
-        <div class="AKL-ctn--c1 idea-admin1" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
+        <div class="AKL-ctn--c1 idea-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
     </div>
 
 
 
 
 <?php 
-}
+$i++; }
 $display->closeCursor();
 
 ?>
@@ -213,6 +213,7 @@ Cdlmt.</textarea>
 </div>
 -->
 
+</div>
 
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
@@ -254,7 +255,6 @@ Cdlmt.</textarea>
         </div>
     </div>
     
-</div>
 
 	<?php include '_footer.php' ?>
 

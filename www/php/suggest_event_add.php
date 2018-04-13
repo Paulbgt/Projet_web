@@ -43,10 +43,11 @@ $add->closeCursor();
 //permet de savoir si il y a des erreurs dans notre requête
 $add->errorInfo();
 
-var_dump($id_account);
-
-//message si l'insertion s'est bien passée
-echo "insertion dans la base de données";
+//var_dump($id_account);
+//
+////message si l'insertion s'est bien passée
+//echo "insertion dans la base de données";
+    header('Location: ../ideaBox.php');
 
 }else{
 

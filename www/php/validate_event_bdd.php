@@ -24,7 +24,7 @@ $mprice = $_POST['mprice'];
 
 
 
-$v = $bdd->prepare('UPDATE happening SET title=:mtitle, description=:mdescription, event_date=:mdate, place=:mplace, club=:mclub, price=:mprice, Validate = 1 WHERE id=:num LIMIT 1');
+$v = $bdd->prepare('UPDATE happening SET title=:mtitle, description=:mdescription, event_date=:mdate, place=:mplace, club=:mclub, price=:mprice, Validate = 0 WHERE id=:num LIMIT 1');
 
 $v->execute([
 
@@ -38,7 +38,7 @@ $v->execute([
 
 ]);
 
-header('Location: ideaBox.php')
+header('Location: ../ideaBox.php')
 
 
 ?>
