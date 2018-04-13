@@ -26,19 +26,6 @@
             
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             <form action="php/suggest_event_add.php" method="POST">
                 <div class="AKL-ctn--c2-s1 suggestion-img">
                     <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
@@ -61,12 +48,6 @@
             
         </div>
     </div>
-
-
-
-
-
-
 
 
 
@@ -102,6 +83,7 @@ while ($response = $display->fetch()) {
             <span id="idea-infos-price1" class="idea-infos-price"><?= $response['price'] ?></span>
             <textarea name="" id="idea-infos-description1" cols="32" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly><?= $response['description'] ?></textarea>
         </div>
+        <div class="AKL-ctn--c1 idea-admin1" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
     </div>
 
 
@@ -122,12 +104,7 @@ $display->closeCursor();
 
 
 
-
-
-
-
 <!--
-
     <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img1" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
@@ -237,7 +214,6 @@ Cdlmt.</textarea>
 -->
 
 
-
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <form action="php/validate_event_bdd.php" method="POST">
@@ -277,6 +253,7 @@ Cdlmt.</textarea>
             </form>
         </div>
     </div>
+    
 </div>
 
 	<?php include '_footer.php' ?>
