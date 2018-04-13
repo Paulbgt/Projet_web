@@ -119,7 +119,6 @@ CREATE TABLE category(
 #------------------------------------------------------------
 
 CREATE TABLE love(
-        id           int (11) Auto_increment  NOT NULL ,
         id_account   Int NOT NULL ,
         id_happening Int NOT NULL ,
         PRIMARY KEY (id_account ,id_happening )
