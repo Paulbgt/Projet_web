@@ -26,19 +26,6 @@
             
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             <form action="php/suggest_event_add.php" method="POST">
                 <div class="AKL-ctn--c2-s1 suggestion-img">
                     <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
@@ -61,12 +48,6 @@
             
         </div>
     </div>
-
-
-
-
-
-
 
 
 
@@ -114,32 +95,6 @@ $display->closeCursor();
 ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img1" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
@@ -152,10 +107,6 @@ $display->closeCursor();
             <textarea name="" id="idea-infos-description1" cols="32" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly>Exia-miam organise une vente de pop-corn qui ne nous a quasiment rien coûté mais qui va nous permettre de bien nous remplir les bourses.
 Cdlmt.</textarea>
         </div>
-
-
-
-
 
 
 	<?php include '_footer.php' ?>
