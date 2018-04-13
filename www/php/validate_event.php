@@ -65,6 +65,11 @@ while ($response = $validate->fetch())
 
 </p>
 
+
+<a href="delete_event.php?numEvent=<?= $response['id'] ?>"> Supprimer l'événement</a>
+
+<br><br>
+
 <a href="validate.php?numEvent=<?= $response['id'] ?>"> Accepter l'événement</a>
 
 

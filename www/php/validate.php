@@ -35,7 +35,11 @@ $response = $valid->fetch();
 <body>
 <h1>Avez vous des modifications avant d'accepter l'événement ?</h1>
 
-<form action="validate_event_bdd.php" method="POST"></form>
+<form action="validate_event_bdd.php" method="POST">
+
+<p>
+	<input type="hidden" name="numEvent" id="numEvent" value="<?= $response['id']; ?>">
+</p>
 
 <p>
 	<label for="mtitle">Titre : </label>
@@ -71,6 +75,6 @@ $response = $valid->fetch();
 	<input type="submit" name="Validate" value="Valider">
 </p>
 
-
+</form>
 </body>
 </html>
