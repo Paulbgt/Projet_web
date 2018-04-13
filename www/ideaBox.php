@@ -43,14 +43,21 @@
                 <div class="AKL-ctn--c2-s1 suggestion-img">
                     <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
                     <input type="file" id="fileImg" class="AKL-btnFile" hidden>
+                    <label class="form-error" for="fileImg"></label>
                 </div>
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
                     <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
+                    <label class="form-error" for="title"></label>
                     <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
+                    <label class="form-error" for="event_date"></label>
                     <input type="text" name="place" id="place" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
+                    <label class="form-error" for="place"></label>
                     <input type="text" name="club" id="club" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
+                    <label class="form-error" for="club"></label>
                     <input type="text" name="price" id="price" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price"> 
+                    <label class="form-error" for="price"></label>
                     <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
+                    <label class="form-error" for="description"></label>
               
                     <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit" id="submitIdea"/>
                       
