@@ -75,7 +75,7 @@ while ($response = $display->fetch()) {
     <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
-            <a class="idea-infos-like" value="20" style="background-image: url(img/like_grey.svg)"></a>
+            <a class="idea-infos-like" value="0" style="background-image: url(img/like_grey.svg)"></a>
             <span id="idea-infos-title<?= $i ?>" class="idea-infos-title"><?= $response['title'] ?></span>
             <span id="idea-infos-place<?= $i ?>" class="idea-infos-place"><?= $response['place'] ?></span>
             <span id="idea-infos-club<?= $i ?>" class="idea-infos-club"><?= $response['club'] ?></span>
@@ -83,7 +83,9 @@ while ($response = $display->fetch()) {
             <span id="idea-infos-price<?= $i ?>" class="idea-infos-price"><?= $response['price'] ?></span>
             <textarea name="" id="idea-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked idea-infos-description" readonly><?= $response['description'] ?></textarea>
         </div>
+        <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
         <div class="AKL-ctn--c1 idea-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
+        <?php } ?>
     </div>
 
 
@@ -215,6 +217,7 @@ Cdlmt.</textarea>
 
 </div>
 
+    <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <form action="php/validate_event_bdd.php" method="POST">
@@ -236,25 +239,25 @@ Cdlmt.</textarea>
                 </div>
                 <div class="AKL-ctn--c3 radio-blc">
                     <label for="check-eventDone" class="AKL-radio--cross"></label>
-                    <input id="check-eventDone" name="check-category" type="radio" hidden>
+                    <input id="check-eventDone" value="2" name="checkCategory" type="radio" hidden>
                     <label class="check-label">Evénements terminés</label>
                 </div>
 
                 <div class="AKL-ctn--c3 radio-blc">
                     <label for="check-eventMonth" class="AKL-radio--cross"></label>
-                    <input id="check-eventMonth" name="check-category" type="radio" hidden>
+                    <input id="check-eventMonth" value="1" name="checkCategory" type="radio" hidden>
                     <label class="check-label">Evénements du mois</label>
                 </div>
 
                 <div class="AKL-ctn--c3 radio-blc">
                     <label for="check-eventIdea" class="AKL-radio--cross"></label>
-                    <input id="check-eventIdea" name="check-category" type="radio" hidden checked>
+                    <input id="check-eventIdea" value="0" name="checkCategory" type="radio" hidden checked>
                     <label class="check-label">Boite à idée</label>
                 </div>
             </form>
         </div>
     </div>
-    
+    <?php } ?>
 
 	<?php include '_footer.php' ?>
 

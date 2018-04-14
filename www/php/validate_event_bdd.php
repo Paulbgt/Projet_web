@@ -18,13 +18,14 @@ $mdate = $_POST['mdate'];
 $mplace = $_POST['mplace'];
 $mclub = $_POST['mclub'];
 $mprice = $_POST['mprice'];
+$checkCategory = $_POST['checkCategory'];
 
 
 
 
 
 
-$v = $bdd->prepare('UPDATE happening SET title=:mtitle, description=:mdescription, event_date=:mdate, place=:mplace, club=:mclub, price=:mprice, Validate = 0 WHERE id=:num LIMIT 1');
+$v = $bdd->prepare('UPDATE happening SET title=:mtitle, description=:mdescription, event_date=:mdate, place=:mplace, club=:mclub, price=:mprice, Validate=:checkCategory WHERE id=:num LIMIT 1');
 
 $v->execute([
 
@@ -34,7 +35,8 @@ $v->execute([
 ':mdate' => $mdate,
 ':mplace' => $mplace,
 ':mclub' => $mclub,
-':mprice' => $mprice
+':mprice' => $mprice,
+':checkCategory' => $checkCategory
 
 ]);
 
