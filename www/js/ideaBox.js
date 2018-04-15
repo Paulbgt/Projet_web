@@ -7,6 +7,7 @@ var suggestionBtnClose = document.querySelector('.suggestion-title');
 var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
 var formError = document.querySelectorAll('.form-error');
 var btnRegisterValidate = document.querySelector('.suggestion-infos-submit');
+var btnDelete = document.querySelector('.modal-infos-delete');
 
 
 function placeError() {
@@ -45,10 +46,12 @@ for (var i = 0; i<btnLike.length; i++) {
             this.style.backgroundImage = "url(img/like_blue.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) + 1);
             this.style.animation = "like 225ms";
+            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'like_id');
         } else {
             this.style.backgroundImage = "url(img/like_grey.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
             this.style.animation = "unlike 225ms";
+            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'unlike_id');
         }
     });
 }
@@ -123,6 +126,11 @@ if (document.getElementById('fileImgModal')) {
         if (e.clientX < this.children[0].offsetLeft || e.clientX > this.children[0].offsetLeft + this.children[0].offsetWidth || e.clientY < this.children[0].offsetTop || e.clientY > this.children[0].offsetTop + this.children[0].offsetHeight) {
             closeModal();
         }
+    });
+
+    btnDelete.addEventListener('click', function(e) {
+        closeModal();
+        document.getElementById('idea' + document.querySelector('.modal-infos-id-delete').value).remove();
     });
 }
 

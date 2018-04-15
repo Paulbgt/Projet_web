@@ -204,6 +204,64 @@
 
 
 
+/* ////////////////// Table ////////////////// */
+
+.event-infos-subsCount-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    z-index: 10;
+    background-color: var(--exia-grey2);
+    color: black;
+    border-radius: 20px;
+    cursor: auto;
+    display: none;
+    box-shadow: 0 0 5px black;
+    min-width: 330px;
+}
+
+    .event-infos-subsCount:hover .event-infos-subsCount-list {
+        display: block;
+    }
+
+.event-infos-subsCount-list span {
+    float: left;
+    margin: 10px;
+    line-height: 36px;
+}
+.event-infos-subsCount-list button {
+    --primary_color: var(--exia-red1);
+    font-weight: bold;
+    float: left;
+    outline: none;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    max-height: 214px;
+    overflow-y: scroll;
+    display: block;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+th {
+    background-color: var(--exia-red1);
+    color: white;
+}
+
+
 
 
 /* /////////////////////////////// Modal /////////////////////////////// */

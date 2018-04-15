@@ -22,8 +22,10 @@ if (!empty($event_id)) {
         ':event_id' => $event_id
     ]);
 
-//    header('Location: javascript://history.go(-1)'); Work to go back to previos page BUT it doesn't reload it so changes doesn't appear
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+//    Work to go back to previous page WITH reloading it, so changes appear
+//    header('Location: ' . $_SERVER['HTTP_REFERER']);
+//    Work to go back to previous page WHITOUT reloading it, so changes doesn't appear
+    header('Location: javascript://history.go(-1)'); 
 
     }else{
     //message si l'insertion dans la base de données ne s'effectue pas

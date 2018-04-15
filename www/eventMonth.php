@@ -36,6 +36,7 @@ try{
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 1");
 $display->execute();
 $i = 1;
+$subscribed = false;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
     
@@ -45,13 +46,41 @@ while ($response = $display->fetch()) {
         ':mid' => $response['id']
     ]);
     $count = $subs->rowCount(); // var to know the number of persons registered on each event
-    $row = $subs->fetch(PDO::FETCH_ASSOC); //Fetch to know if the user registered for each event
+    $event = $subs->fetchAll(PDO::FETCH_ASSOC); //Fetch to know if the user registered for each event
+    for ($u=0; $u < $count; $u++) {
+        if ($event[$u]['mail'] == $_SESSION['mail']) {
+            $subscribed = true;
+        }
+    }
 ?>
     
-    <div class="AKL-ctn--c1 event">
+    <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
+        <form id="registrationForm<?= $i ?>" action="php/registration.php" method="POST"></form>
         <div class="AKL-ctn--c3-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-s1 event-infos">
-            <a id="subsCount<?= $i ?>" class="event-infos-subsCount" value="<?= $count ?>" style="background-image: url(img/subscribe_<?= $row['mail'] == $_SESSION['mail'] ? 'full' : 'empty' ?>.svg)"></a>
+            <a id="subsCount<?= $i ?>" class="event-infos-subsCount" value="<?= $count ?>" style="background-image: url(img/subscribe_<?= $subscribed ? 'full' : 'empty' ?>.svg)">
+                <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+                <div class="event-infos-subsCount-list">
+                    <span>Télécharger la liste :</span>
+                    <button class="AKL-btnClassic-FlatBorder-hell dlToPdf<?= $i ?>">PDF</button>
+                    <button class="AKL-btnClassic-FlatBorder-hell dlToCsv<?= $i ?>">CSV</button>
+                    <table>
+                        <tr>
+                            <th>Prenom</th>
+                            <th>Nom</th>
+                            <th>Mail</th>
+                        </tr>
+                        <?php for ($row=0; $row < $count; $row++) { ?>
+                        <tr>
+                            <td><?= $event[$row]['first_name'] ?></td>
+                            <td><?= $event[$row]['last_name'] ?></td>
+                            <td><?= $event[$row]['mail'] ?></td>
+                        </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+                <?php } ?>
+            </a>
             <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
             <span id="event-infos-place<?= $i ?>" class="event-infos-place"><?= $response['place'] ?></span>
             <span id="event-infos-club<?= $i ?>" class="event-infos-club"><?= $response['club'] ?></span>
@@ -60,7 +89,8 @@ while ($response = $display->fetch()) {
             <textarea id="event-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked event-infos-description" readonly><?= $response['description'] ?></textarea>
             
             <div class="event-infos-btn">
-                <input type="submit" id="subscribe<?= $i ?>" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="<?= $row['mail'] == $_SESSION['mail'] ? "Se désinscrire" : "S'inscrire" ?>">
+                <input name="subs_event_id" value="<?= $response['id'] ?>" form="registrationForm<?= $i ?>" readonly hidden>
+                <input type="submit" name="subscribe" id="subscribe<?= $i ?>" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="<?= $subscribed ? "Se désinscrire" : "S'inscrire" ?>" form="registrationForm<?= $i ?>">
                 <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
                 <div class="AKL-ctn--c1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
                 <?php } ?>
@@ -69,7 +99,9 @@ while ($response = $display->fetch()) {
     </div>
 
        
-<?php $i++; }
+<?php
+$i++;
+$subscribed = false; }
 $display->closeCursor();
 ?>
         

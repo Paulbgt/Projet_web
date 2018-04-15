@@ -1,21 +1,7 @@
 var btnSubsCount = document.querySelectorAll('.event-infos-subsCount');
 var btnSubscribe= document.querySelectorAll('.event-infos-subscribe');
 
-// Event listener used to swap the subscribe image and to update the display of number of subscribe
-for (var i = 0; i<btnSubsCount.length; i++) {
-    btnSubsCount[i].addEventListener('click', function() {
-        if (this.style.backgroundImage.search('empty') > 0) {
-            this.style.backgroundImage = "url(img/subscribe_full.svg)";
-            this.setAttribute('value', parseInt(this.getAttribute('value')) + 1);
-            document.getElementById("subscribe" + this.id.replace('subsCount', '')).value = "Se désinscrire";
-        } else {
-            this.style.backgroundImage = "url(img/subscribe_empty.svg)";
-            this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
-            document.getElementById("subscribe" + this.id.replace('subsCount', '')).value = "S'inscrire";
-        }
-    });
-}
-
+// Event listener used to swap the subscribe image and to update the display of number of subscribers
 for (var i = 0; i<btnSubscribe.length; i++) {
     btnSubscribe[i].addEventListener('click', function() {
         var icone = document.getElementById("subsCount" + this.id.replace('subscribe', ''));
@@ -32,14 +18,13 @@ for (var i = 0; i<btnSubscribe.length; i++) {
 }
 
 
-
-
-
+/* ///////////// Modal //////////// */
 
 if (document.getElementById('fileImgModal')) {
     var inputImgModal = document.getElementById('fileImgModal');
     var eventAdmin = document.querySelectorAll('[class*=event-admin]');
     var backgroundModal = document.querySelector('.backgroundModal');
+    var btnDelete = document.querySelector('.modal-infos-delete');
 
 
     // Display modal to administrate the suggestion
@@ -88,4 +73,55 @@ if (document.getElementById('fileImgModal')) {
             closeModal();
         }
     });
+
+    btnDelete.addEventListener('click', function(e) {
+        closeModal();
+        document.getElementById('event' + document.querySelector('.modal-infos-id-delete').value).remove();
+    });
+}
+
+
+
+/* /////////////////// HTML to CSV /////////////////// */
+
+var btnTables = document.querySelectorAll('[class*=dlToCsv]');
+for (var t = 0; t<btnTables.length; t++) {
+    btnTables[t].addEventListener('click', function() {
+        var id = this.classList[1].replace('dlToCsv', '');
+        var filename = document.getElementById('event-infos-title' + id).innerHTML;
+        htmlToCsv(filename, this.parentElement);
+    });
+}
+
+
+
+
+function htmlToCsv(filename, element) {
+    filename += ' liste.csv';
+    var csv = [];
+    var rows = element.querySelectorAll("table tr");
+    
+    for (var i = 0; i<rows.length; i++){
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+        
+        for (var j = 0; j<cols.length; j++) {
+            row.push(cols[j].innerHTML);
+        }
+        csv.push(row.join(";"));
+    }
+    downloadCSV(csv.join("\n"), filename);
+}
+
+
+function downloadCSV(csv, filename) {
+    var csvFile = new Blob([csv], {type: "text/csv"});
+    var downloadLink;
+    
+    downloadLink = document.createElement("a");
+    downloadLink.download = filename;
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
 }

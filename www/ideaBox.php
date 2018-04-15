@@ -67,6 +67,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 0");
 $display->execute();
 $i = 1;
+$liked = false;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
     
@@ -76,16 +77,24 @@ while ($response = $display->fetch()) {
     $subs->execute([
         ':mid' => $response['id']
     ]);
-    $count = $subs->rowCount(); // var to know the number of likes on each suggestion
-    $row = $subs->fetch(PDO::FETCH_ASSOC); //Fetch to know if the user liked for each suggestion
+    $count = $subs->rowCount(); // var to know the number of likes on each idea
+    $event = $subs->fetchAll(PDO::FETCH_ASSOC); //Fetch to know if the user liked for each idea
+    for ($u=0; $u < $count; $u++) {
+        if ($event[$u]['mail'] == $_SESSION['mail']) {
+            $liked = true;
+        }
+    }
 ?>
 
 
-
-    <div class="AKL-ctn--c2-t1 idea">
+    <div id="idea<?= $response['id'] ?>" class="AKL-ctn--c2-t1 idea">
+        <form id="likeForm<?= $i ?>" action="php/like.php" method="POST"></form>
         <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
-            <a class="idea-infos-like" value="<?= $count ?>" style="background-image: url(img/like_<?= $row['mail'] == $_SESSION['mail'] ? 'blue' : 'grey' ?>.svg)"></a>
+           
+            <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $response['id'] ?>" form="likeForm<?= $i ?>" readonly hidden>
+            <button type="submit" class="idea-infos-like" value="<?= $count ?>" style="background-image: url(img/like_<?= $liked ? 'blue' : 'grey' ?>.svg)" form="likeForm<?= $i ?>"></button>
+            
             <span id="idea-infos-title<?= $i ?>" class="idea-infos-title"><?= $response['title'] ?></span>
             <span id="idea-infos-place<?= $i ?>" class="idea-infos-place"><?= $response['place'] ?></span>
             <span id="idea-infos-club<?= $i ?>" class="idea-infos-club"><?= $response['club'] ?></span>
@@ -102,7 +111,8 @@ while ($response = $display->fetch()) {
 
 
 <?php 
-$i++; }
+$i++;
+$liked = false; }
 $display->closeCursor();
 
 ?>

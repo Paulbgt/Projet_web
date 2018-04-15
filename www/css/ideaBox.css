@@ -140,6 +140,7 @@
     --primary_color: var(--exia-grey2);
     --secondary_color: var(--exia-grey1);
     color: white;
+    --font_color: white;
 }
 
 .idea:nth-child(4n+4), .idea:nth-child(4n+1) {
@@ -147,6 +148,7 @@
     --primary_color: var(--exia-red2);
     --secondary_color: var(--exia-red1);
     color: black;
+    --font_color: black;
 }
 
     [class*=idea-img] {
@@ -174,6 +176,10 @@
             border-radius: 100%;
             transition: all 225ms;
             transform-origin: bottom left;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
         }
 
         .idea-infos-like::after {
@@ -183,6 +189,9 @@
             left: 0;
             width: 40px;
             text-align: center;
+            color: var(--font_color);
+            font-family: 'Open sans', 'Arial', sans-serif;
+            font-size: 1.2em;
         }
 
         .idea-infos-title {
