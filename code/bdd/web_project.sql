@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 15 Avril 2018 à 03:47
+-- Généré le :  Dim 15 Avril 2018 à 22:09
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -60,7 +60,12 @@ INSERT INTO `account` (`id`, `last_name`, `first_name`, `mail`, `pwd`, `statute`
 (4, 'aa', 'aa', 'aa@viacesi.fr', '$2y$12$6JlWhevFluCQM8wHX5wfnuQ0TPYIhsstYWjKBlkZHYgaS5I8bjRyu', 1),
 (5, 'bb', 'bb', 'bb@viacesi.fr', '$2y$12$16dSmz6MiM0.qBRj3RmyXeYc.184Oym428qJnh.4vmFaBsOgvrhs.', 1),
 (6, 'cc', 'cc', 'cc@viacesi.fr', '$2y$12$p.GCJ/gILSi3G.IITrdk4e59YNBXUPLiHEA8WBrS/S8Ditp9ZRWOO', 1),
-(7, 'dd', 'dd', 'dd@viacesi.fr', '$2y$12$K06Z/xXmfGZ0NB397ube5ecGPRLa./RmV3T0BbNLdTppECCGGq9Ny', 1);
+(7, 'dd', 'dd', 'dd@viacesi.fr', '$2y$12$K06Z/xXmfGZ0NB397ube5ecGPRLa./RmV3T0BbNLdTppECCGGq9Ny', 1),
+(8, 'ee', 'ee', 'ee@viacesi.fr', '$2y$12$2sV6TaOvwaEKpV4f/PbAPOO5LnDmVhNT8Z7hrTyZw73zqcUbvvC96', 1),
+(9, 'ff', 'ff', 'ff@viacesi.fr', '$2y$12$JiErNaY62thJf/K5dMxoEObA77CF4gEuF7yOpi/6EbCHKcCtH0JH.', 1),
+(10, 'gg', 'gg', 'gg@viacesi.fr', '$2y$12$IvNj142rZ9z3kT/0gcxnouMdd2DfOy7obKu8ggxQrRgp8kBAO1rwS', 1),
+(11, 'hh', 'hh', 'hh@viacesi.fr', '$2y$12$lz0vl5bPZGBPnEBmOA4zr.mVuBvwUDERbjW4iWd7m3AvkKwlqkGR.', 1),
+(12, 'abcdef', 'abcdef', 'abcdefghijklmnopqrstuvwxyz@viacesi.fr', '$2y$12$VNYq6fOMgdXMM4T8NqrnReALEd897zNPBPdvhEP4HIgPU.eRq8bR2', 1);
 
 -- --------------------------------------------------------
 
@@ -111,14 +116,13 @@ CREATE TABLE `event` (
 
 INSERT INTO `event` (`id`, `title`, `description`, `event_date`, `place`, `club`, `price`, `eventStatus`, `published`, `id_account`) VALUES
 (1, 'Test 1', 'Test 1', '12/03/18', 'hjv', 'miam', '789', 0, '2018-04-14 18:29:44', 3),
-(2, 'Test 2', 'Test 2', '', '', '', '500', 0, '2018-04-14 18:29:53', 3),
-(3, 'Test 3', 'Test 3', '', '', '', '', 0, '2018-04-15 03:34:14', 2),
 (5, 'Test 5', 'Test 5', '', '', '', '', 1, '2018-04-15 03:28:54', 2),
 (7, 'Test 7', 'Test 7', '7/7/77', '', '', '', 1, '2018-04-14 18:53:29', 3),
 (8, 'Test 8', 'Test 8', '', '', '', '', 1, '2018-04-14 18:30:21', 3),
 (9, 'Test 9', 'Test 9', '', '', '', '', 1, '2018-04-14 18:30:27', 3),
-(10, 'Test 10', 'Test 10', '', '', '', '', 1, '2018-04-14 18:52:04', 3),
-(12, 'Test 12', 'Test 12', '', '', '', '', 1, '2018-04-14 18:52:15', 3);
+(24, 'Test 5', 'Test 5', '', '', '', '', 1, '2018-04-15 15:49:39', 2),
+(29, 'qsgd', 'dfdbdfb', '', '', '', '', 0, '2018-04-15 16:46:39', 2),
+(30, 'sdvsgvr', 'gsgvdfbd', '', '', '', '', 0, '2018-04-15 16:46:49', 2);
 
 -- --------------------------------------------------------
 
@@ -150,8 +154,9 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`id_account`, `id_event`) VALUES
 (1, 1),
+(2, 1),
 (5, 1),
-(2, 2);
+(2, 30);
 
 -- --------------------------------------------------------
 
@@ -221,14 +226,40 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`id_account`, `id_event`) VALUES
+(1, 5),
+(2, 5),
+(3, 5),
+(4, 5),
+(5, 5),
+(6, 5),
+(7, 5),
+(8, 5),
+(9, 5),
+(10, 5),
+(11, 5),
+(12, 5),
+(2, 7),
 (4, 7),
 (5, 7),
 (6, 7),
-(2, 8),
 (4, 8),
-(6, 9),
-(5, 10),
-(7, 10);
+(6, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `selling`
+--
+
+CREATE TABLE `selling` (
+  `id` int(11) NOT NULL,
+  `indent` char(25) NOT NULL,
+  `dated_sale` timestamp NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `statute` char(25) NOT NULL,
+  `id_produce` int(11) NOT NULL,
+  `id_account` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Index pour les tables exportées
@@ -311,6 +342,14 @@ ALTER TABLE `register`
   ADD KEY `FK_register_id_happening` (`id_event`);
 
 --
+-- Index pour la table `selling`
+--
+ALTER TABLE `selling`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_selling_id_produce` (`id_produce`),
+  ADD KEY `FK_selling_id_account` (`id_account`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -318,7 +357,7 @@ ALTER TABLE `register`
 -- AUTO_INCREMENT pour la table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `category`
 --
@@ -333,7 +372,7 @@ ALTER TABLE `commentary`
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT pour la table `event_picture`
 --
@@ -353,6 +392,11 @@ ALTER TABLE `produce`
 -- AUTO_INCREMENT pour la table `produce_picture`
 --
 ALTER TABLE `produce_picture`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `selling`
+--
+ALTER TABLE `selling`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
@@ -415,6 +459,13 @@ ALTER TABLE `produce_picture`
 ALTER TABLE `register`
   ADD CONSTRAINT `FK_register_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_register_id_event` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `selling`
+--
+ALTER TABLE `selling`
+  ADD CONSTRAINT `FK_selling_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`),
+  ADD CONSTRAINT `FK_selling_id_produce` FOREIGN KEY (`id_produce`) REFERENCES `produce` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
