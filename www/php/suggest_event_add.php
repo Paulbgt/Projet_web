@@ -27,7 +27,7 @@ $price = $_POST['price'];
 if (!empty($title) && !empty($description)) {
 
 //si tous les champs sont remplis alors on inscrit les données dans la BDD 
-$add = $bdd->prepare("INSERT INTO happening(title, description, event_date, place, club, price, id_account) VALUES(:title, :description, :event_date, :place, :club, :price, :id_account)");
+$add = $bdd->prepare("INSERT INTO event(title, description, event_date, place, club, price, id_account) VALUES(:title, :description, :event_date, :place, :club, :price, :id_account)");
 $add->execute([
     'title' => $title,
     'description' => $description,
@@ -47,7 +47,7 @@ $add->errorInfo();
 //
 ////message si l'insertion s'est bien passée
 //echo "insertion dans la base de données";
-    header('Location: ../ideaBox.php');
+    header('Location: ../ideaBox');
 
 }else{
 

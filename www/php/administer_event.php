@@ -11,37 +11,34 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 
 }
 
-$numEvent = $_POST['numEvent'];
+$mid = $_POST['mid'];
 $mtitle = $_POST['mtitle'];
 $mdescription = $_POST['mdescription'];
 $mdate = $_POST['mdate'];
 $mplace = $_POST['mplace'];
 $mclub = $_POST['mclub'];
 $mprice = $_POST['mprice'];
-$checkCategory = $_POST['checkCategory'];
+$meventStatus = $_POST['meventStatus'];
 
 
 
 
-
-
-$v = $bdd->prepare('UPDATE happening SET title=:mtitle, description=:mdescription, event_date=:mdate, place=:mplace, club=:mclub, price=:mprice, Validate=:checkCategory WHERE id=:num LIMIT 1');
+$v = $bdd->prepare('UPDATE event SET title=:mtitle, description=:mdescription, event_date=:mdate, place=:mplace, club=:mclub, price=:mprice, eventStatus=:meventStatus WHERE id=:mid LIMIT 1');
 
 $v->execute([
 
-':num' => $numEvent,
+':mid' => $mid,
 ':mtitle' => $mtitle,
 ':mdescription' => $mdescription,
 ':mdate' => $mdate,
 ':mplace' => $mplace,
 ':mclub' => $mclub,
 ':mprice' => $mprice,
-':checkCategory' => $checkCategory
+':meventStatus' => $meventStatus
 
 ]);
 
-header('Location: ../ideaBox.php')
-
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>
 

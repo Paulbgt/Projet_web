@@ -27,7 +27,7 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['statute'] = $result['statute'];
 			$_SESSION['id'] = $result['id'];
 
-			header('Location: /Projet_Web/www/index.php');
+			header('Location: ../ideaBox');
 
 			exit();
 

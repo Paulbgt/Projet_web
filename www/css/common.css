@@ -145,6 +145,7 @@ a {
         position: absolute;
         left: calc(50% - 90px);
         font-size: 30px;
+        text-align: center;
     }
 
     [class*=header-log-span] {

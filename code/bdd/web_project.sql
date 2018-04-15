@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 13 avr. 2018 à 15:59
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Client :  127.0.0.1
+-- Généré le :  Dim 15 Avril 2018 à 03:47
+-- Version du serveur :  5.7.14
+-- Version de PHP :  7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,7 +24,6 @@ DELIMITER $$
 --
 -- Procédures
 --
-DROP PROCEDURE IF EXISTS `new_idea`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `new_idea` (IN `_title` VARCHAR(25), IN `_description` VARCHAR(255), IN `_publish_dated` DATE, IN `_mail` VARCHAR(255))  BEGIN
 SET autocommit = 0 ;
 START TRANSACTION;
@@ -43,28 +40,27 @@ DELIMITER ;
 -- Structure de la table `account`
 --
 
-DROP TABLE IF EXISTS `account`;
-CREATE TABLE IF NOT EXISTS `account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL,
   `last_name` char(255) NOT NULL,
   `first_name` char(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `pwd` varchar(255) NOT NULL,
-  `statute` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `statute` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `account`
+-- Contenu de la table `account`
 --
 
 INSERT INTO `account` (`id`, `last_name`, `first_name`, `mail`, `pwd`, `statute`) VALUES
-(1, 'aa', 'aa', 'a@viacesi.fr', '$2y$12$J00ePHdTcGjg0r6i/7T6Y.81U.O/d75FeGXQwooIN27hist.Rcc.i', 1),
-(2, 'bb', 'bb', 'b@viacesi.fr', '$2y$12$zoKhQENk0h8i9dhqbIJuO.vi4b66j.2sUqfdBGXnFN6MB/P0EnaCa', 1),
-(3, 'cc', 'cc', 'c@viacesi.fr', '$2y$12$YDejQr.gpDoumqhJqY91JOJw7d1txnB9jyTOjbHPayXl4ARQAgm5y', 1),
-(4, 'Dd', 'Dd', 'd@viacesi.fr', '$2y$12$COgcMnkSCclbrMchi0qiaeMnX0Enun9mpG1Iahmi3Hop8LAA8mOPW', 1),
-(5, 'Brunelot', 'Romain', 'rbrunelot@cesi.fr', '$2y$12$CQgrSU9nPrdejzu2j9nWHuphyCZaco6wWFYVQmxRXSdtZ5KW.A0Pe', 3),
-(6, 'zz', 'zz', 'z@viacesi.fr', '$2y$12$UlNLIMt5ttoYmfn3FvIlWOsGPRCWKlT072pXadRe7Xa3.HqkX/oaS', 1);
+(1, 'Brunelot', 'Romain', 'rbrunelot@cesi.fr', '$2y$12$CQgrSU9nPrdejzu2j9nWHuphyCZaco6wWFYVQmxRXSdtZ5KW.A0Pe', 3),
+(2, 'Klein', 'Aurélien', 'aurelien.klein@viacesi.fr', '$2y$12$eB2ubcja4bF5SN3kh1cad.4qEQfp6DeAS74FkEolpion6k5cDQW9K', 2),
+(3, 'Bonjour', 'root', 'test@viacesi.fr', '$2y$12$uZkSZY8nc9s5VTgPmaK9Qe7Z9Nysp8ta7GH.BokVypodOT.Yi8Sma', 1),
+(4, 'aa', 'aa', 'aa@viacesi.fr', '$2y$12$6JlWhevFluCQM8wHX5wfnuQ0TPYIhsstYWjKBlkZHYgaS5I8bjRyu', 1),
+(5, 'bb', 'bb', 'bb@viacesi.fr', '$2y$12$16dSmz6MiM0.qBRj3RmyXeYc.184Oym428qJnh.4vmFaBsOgvrhs.', 1),
+(6, 'cc', 'cc', 'cc@viacesi.fr', '$2y$12$p.GCJ/gILSi3G.IITrdk4e59YNBXUPLiHEA8WBrS/S8Ditp9ZRWOO', 1),
+(7, 'dd', 'dd', 'dd@viacesi.fr', '$2y$12$K06Z/xXmfGZ0NB397ube5ecGPRLa./RmV3T0BbNLdTppECCGGq9Ny', 1);
 
 -- --------------------------------------------------------
 
@@ -72,11 +68,9 @@ INSERT INTO `account` (`id`, `last_name`, `first_name`, `mail`, `pwd`, `statute`
 -- Structure de la table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,12 +79,46 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- Structure de la table `commentary`
 --
 
-DROP TABLE IF EXISTS `commentary`;
-CREATE TABLE IF NOT EXISTS `commentary` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `commentary` (
+  `id` int(11) NOT NULL,
   `com` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_event` int(11) NOT NULL,
+  `id_account` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `event`
+--
+
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `event_date` varchar(255) DEFAULT NULL,
+  `place` varchar(255) DEFAULT NULL,
+  `club` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
+  `eventStatus` tinyint(1) NOT NULL DEFAULT '0',
+  `published` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_account` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `event`
+--
+
+INSERT INTO `event` (`id`, `title`, `description`, `event_date`, `place`, `club`, `price`, `eventStatus`, `published`, `id_account`) VALUES
+(1, 'Test 1', 'Test 1', '12/03/18', 'hjv', 'miam', '789', 0, '2018-04-14 18:29:44', 3),
+(2, 'Test 2', 'Test 2', '', '', '', '500', 0, '2018-04-14 18:29:53', 3),
+(3, 'Test 3', 'Test 3', '', '', '', '', 0, '2018-04-15 03:34:14', 2),
+(5, 'Test 5', 'Test 5', '', '', '', '', 1, '2018-04-15 03:28:54', 2),
+(7, 'Test 7', 'Test 7', '7/7/77', '', '', '', 1, '2018-04-14 18:53:29', 3),
+(8, 'Test 8', 'Test 8', '', '', '', '', 1, '2018-04-14 18:30:21', 3),
+(9, 'Test 9', 'Test 9', '', '', '', '', 1, '2018-04-14 18:30:27', 3),
+(10, 'Test 10', 'Test 10', '', '', '', '', 1, '2018-04-14 18:52:04', 3),
+(12, 'Test 12', 'Test 12', '', '', '', '', 1, '2018-04-14 18:52:15', 3);
 
 -- --------------------------------------------------------
 
@@ -98,79 +126,32 @@ CREATE TABLE IF NOT EXISTS `commentary` (
 -- Structure de la table `event_picture`
 --
 
-DROP TABLE IF EXISTS `event_picture`;
-CREATE TABLE IF NOT EXISTS `event_picture` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `event_picture` (
+  `id` int(11) NOT NULL,
   `url` varchar(255) NOT NULL,
   `ref` tinyint(1) DEFAULT NULL,
-  `id_happening` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_event_picture_id_happening` (`id_happening`)
+  `id_event` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `happening`
+-- Structure de la table `likes`
 --
 
-DROP TABLE IF EXISTS `happening`;
-CREATE TABLE IF NOT EXISTS `happening` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `event_date` varchar(255) DEFAULT NULL,
-  `place` varchar(255) DEFAULT NULL,
-  `club` varchar(255) DEFAULT NULL,
-  `price` varchar(255) DEFAULT NULL,
-  `Validate` tinyint(1) DEFAULT '0',
-  `finished` int(11) DEFAULT NULL,
-  `published` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE `likes` (
   `id_account` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_happening_id_account` (`id_account`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `happening`
---
-
-INSERT INTO `happening` (`id`, `title`, `description`, `event_date`, `place`, `club`, `price`, `Validate`, `finished`, `published`, `id_account`) VALUES
-(1, 'dd', 'dd', '2018-04-12', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:22:52', 2),
-(2, 'ee', 'ee', '2018-04-12', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:22:52', 2),
-(3, 'rr', 'rr', '2018-04-12', NULL, NULL, NULL, 0, NULL, '2018-04-12 09:22:52', 2),
-(4, 'ee', 'ee', '2018-04-12', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:22:52', 2),
-(5, 'zzzzzzzzzzzzzz', 'zzzzzzzzzzzzz', '2018-04-12', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:22:52', 2),
-(6, 'Aurélien', 'Aurélien', 'Tous les jeudi', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:22:52', 2),
-(7, 'Florian', 'Florian', 'Tous les mercredi', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:22:52', 1),
-(8, 'PAUL', 'PAUL', 'PAUL', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:23:22', 1),
-(9, 'efkjdsdhfjb,sbfbsjbfnjbdsnbfj', 'sfkjdshfjbfjbsdjhfbjhbfhsbjbfhjsvfhsbhjfb', 'ksdjfkdnxgdngndngvxnkvnxkvn', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:31:57', 1),
-(10, 'dsfsdfjshfhjdjhfb', 'jdscjdsbfjhfb', 'sqkjhfjsbfjdb', NULL, NULL, NULL, 1, NULL, '2018-04-12 09:33:30', 1),
-(11, 'aehjg ', 'aekvgu ', 'wxbxwb', 'wbwb', 'xbxfb', '62', 1, NULL, '2018-04-12 09:49:47', 1),
-(12, 'aehjg ', 'aekvgu ', '', 'wbwb', 'xbxfb', '62', 1, NULL, '2018-04-12 09:50:24', 1),
-(13, 'aa', 'aekvgu ', '', '', 'xbxfb', '62', 1, NULL, '2018-04-12 09:50:42', 1),
-(14, 'bb', 'aekvgu ', '', '', 'xbxfb', '6€', 1, NULL, '2018-04-12 09:54:01', 1),
-(15, 'bb', 'aekvgu ', '', '', 'xbxfb', '', 1, NULL, '2018-04-12 09:54:12', 1),
-(16, 'bb', 'aekvgu ', '', '', '', '', 1, NULL, '2018-04-12 09:54:21', 1),
-(17, 'fejhfgjsqfkjnskjfnkdrsgnfsnkfjbsdjfbhj', 'sdgjdfkdshfbskjfbhjsbjcvhd', 'skdjfnsdnbfksfbjdsbfjdsbdjfbjsfbjhb', 'kjdnkdxnfjsbfjbxdjfbjdsbfjsbjb', 'kdjvbkdbjgbsdngbjdsbfkjdsbkvdjbs', 'kcxjbkvbxkjfnkjxbjsbjvbjxbv', 1, NULL, '2018-04-12 09:58:07', 1),
-(18, 'Maxime', 'Maxime', 'Maxime', 'Maxime', 'Maxime', 'Maxime', 1, NULL, '2018-04-12 12:31:40', 4),
-(19, 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 1, NULL, '2018-04-12 13:25:06', 6),
-(20, 'sfhkjsfnkjn', 'cskjnfkdjcn', 'lkvfdkfnkdjn', 'kjdskgfnksjn', 'ksdfnksjnfkj', 'dvsknskdjsgn', 1, NULL, '2018-04-12 13:30:22', 6),
-(21, 'rt;,fn', 'scdml', 'nfdkgn', 'VFD.NV?', 'DNSKCDN', 'ndcsknvk', 0, NULL, '2018-04-12 13:30:30', 6);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `love`
---
-
-DROP TABLE IF EXISTS `love`;
-CREATE TABLE IF NOT EXISTS `love` (
-  `id_account` int(11) NOT NULL,
-  `id_happening` int(11) NOT NULL,
-  PRIMARY KEY (`id_account`,`id_happening`),
-  KEY `FK_love_id_happening` (`id_happening`)
+  `id_event` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `likes`
+--
+
+INSERT INTO `likes` (`id_account`, `id_event`) VALUES
+(1, 1),
+(5, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -178,14 +159,11 @@ CREATE TABLE IF NOT EXISTS `love` (
 -- Structure de la table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
   `statute` char(25) NOT NULL,
   `purchase_date` timestamp NOT NULL,
-  `id_account` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_orders_id_account` (`id_account`)
+  `id_account` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -194,27 +172,10 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Structure de la table `order_composite`
 --
 
-DROP TABLE IF EXISTS `order_composite`;
-CREATE TABLE IF NOT EXISTS `order_composite` (
+CREATE TABLE `order_composite` (
   `qantity` int(11) NOT NULL,
   `id_orders` int(11) NOT NULL,
-  `id_produce` int(11) NOT NULL,
-  PRIMARY KEY (`id_orders`,`id_produce`),
-  KEY `FK_order_composite_id_produce` (`id_produce`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `post_comment`
---
-
-DROP TABLE IF EXISTS `post_comment`;
-CREATE TABLE IF NOT EXISTS `post_comment` (
-  `id_account` int(11) NOT NULL,
-  `id_commentary` int(11) NOT NULL,
-  PRIMARY KEY (`id_account`,`id_commentary`),
-  KEY `FK_post_comment_id_commentary` (`id_commentary`)
+  `id_produce` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -223,16 +184,13 @@ CREATE TABLE IF NOT EXISTS `post_comment` (
 -- Structure de la table `produce`
 --
 
-DROP TABLE IF EXISTS `produce`;
-CREATE TABLE IF NOT EXISTS `produce` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `produce` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_produce_id_category` (`id_category`)
+  `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -241,13 +199,10 @@ CREATE TABLE IF NOT EXISTS `produce` (
 -- Structure de la table `produce_picture`
 --
 
-DROP TABLE IF EXISTS `produce_picture`;
-CREATE TABLE IF NOT EXISTS `produce_picture` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `produce_picture` (
+  `id` int(11) NOT NULL,
   `url` varchar(255) NOT NULL,
-  `id_produce` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_produce_picture_id_produce` (`id_produce`)
+  `id_produce` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -256,36 +211,178 @@ CREATE TABLE IF NOT EXISTS `produce_picture` (
 -- Structure de la table `register`
 --
 
-DROP TABLE IF EXISTS `register`;
-CREATE TABLE IF NOT EXISTS `register` (
+CREATE TABLE `register` (
   `id_account` int(11) NOT NULL,
-  `id_happening` int(11) NOT NULL,
-  PRIMARY KEY (`id_account`,`id_happening`),
-  KEY `FK_register_id_happening` (`id_happening`)
+  `id_event` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contraintes pour les tables déchargées
+-- Contenu de la table `register`
 --
+
+INSERT INTO `register` (`id_account`, `id_event`) VALUES
+(4, 7),
+(5, 7),
+(6, 7),
+(2, 8),
+(4, 8),
+(6, 9),
+(5, 10),
+(7, 10);
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `commentary`
+--
+ALTER TABLE `commentary`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_event` (`id_event`),
+  ADD KEY `id_account` (`id_account`);
+
+--
+-- Index pour la table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_happening_id_account` (`id_account`);
+
+--
+-- Index pour la table `event_picture`
+--
+ALTER TABLE `event_picture`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_event_picture_id_happening` (`id_event`);
+
+--
+-- Index pour la table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_account`,`id_event`),
+  ADD KEY `FK_love_id_happening` (`id_event`);
+
+--
+-- Index pour la table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_orders_id_account` (`id_account`);
+
+--
+-- Index pour la table `order_composite`
+--
+ALTER TABLE `order_composite`
+  ADD PRIMARY KEY (`id_orders`,`id_produce`),
+  ADD KEY `FK_order_composite_id_produce` (`id_produce`);
+
+--
+-- Index pour la table `produce`
+--
+ALTER TABLE `produce`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_produce_id_category` (`id_category`);
+
+--
+-- Index pour la table `produce_picture`
+--
+ALTER TABLE `produce_picture`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_produce_picture_id_produce` (`id_produce`);
+
+--
+-- Index pour la table `register`
+--
+ALTER TABLE `register`
+  ADD PRIMARY KEY (`id_account`,`id_event`),
+  ADD KEY `FK_register_id_happening` (`id_event`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `account`
+--
+ALTER TABLE `account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `commentary`
+--
+ALTER TABLE `commentary`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT pour la table `event_picture`
+--
+ALTER TABLE `event_picture`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `produce`
+--
+ALTER TABLE `produce`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `produce_picture`
+--
+ALTER TABLE `produce_picture`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `commentary`
+--
+ALTER TABLE `commentary`
+  ADD CONSTRAINT `FK_id_account_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_id_event_event` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `event`
+--
+ALTER TABLE `event`
+  ADD CONSTRAINT `FK_happening_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`);
 
 --
 -- Contraintes pour la table `event_picture`
 --
 ALTER TABLE `event_picture`
-  ADD CONSTRAINT `FK_event_picture_id_happening` FOREIGN KEY (`id_happening`) REFERENCES `happening` (`id`);
+  ADD CONSTRAINT `FK_event_picture_id_happening` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`);
 
 --
--- Contraintes pour la table `happening`
+-- Contraintes pour la table `likes`
 --
-ALTER TABLE `happening`
-  ADD CONSTRAINT `FK_happening_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`);
-
---
--- Contraintes pour la table `love`
---
-ALTER TABLE `love`
-  ADD CONSTRAINT `FK_love_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`),
-  ADD CONSTRAINT `FK_love_id_happening` FOREIGN KEY (`id_happening`) REFERENCES `happening` (`id`);
+ALTER TABLE `likes`
+  ADD CONSTRAINT `FK_love_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_love_id_happening` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `orders`
@@ -299,13 +396,6 @@ ALTER TABLE `orders`
 ALTER TABLE `order_composite`
   ADD CONSTRAINT `FK_order_composite_id_orders` FOREIGN KEY (`id_orders`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `FK_order_composite_id_produce` FOREIGN KEY (`id_produce`) REFERENCES `produce` (`id`);
-
---
--- Contraintes pour la table `post_comment`
---
-ALTER TABLE `post_comment`
-  ADD CONSTRAINT `FK_post_comment_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`),
-  ADD CONSTRAINT `FK_post_comment_id_commentary` FOREIGN KEY (`id_commentary`) REFERENCES `commentary` (`id`);
 
 --
 -- Contraintes pour la table `produce`
@@ -323,9 +413,8 @@ ALTER TABLE `produce_picture`
 -- Contraintes pour la table `register`
 --
 ALTER TABLE `register`
-  ADD CONSTRAINT `FK_register_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`),
-  ADD CONSTRAINT `FK_register_id_happening` FOREIGN KEY (`id_happening`) REFERENCES `happening` (`id`);
-COMMIT;
+  ADD CONSTRAINT `FK_register_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_register_id_event` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

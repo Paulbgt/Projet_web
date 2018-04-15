@@ -34,18 +34,21 @@
     <span class="header-log-span">Statut :</span>
     <span class="header-log-status">
         <?php  
-            switch($_SESSION['statute']) {
-                case '1' : echo("Étudiant"); break;
-                case '2' : echo("BDE"); break;
-                case '3' : echo("Salarié"); break;
-                default : echo("Invité"); break;
+            if ($_SESSION['mail'] == "aurelien.klein@viacesi.fr") {
+                echo("Root");
+            } else {
+                switch($_SESSION['statute']) {
+                    case '0' :  echo("Invité"); break;
+                    case '1' :  echo("Étudiant"); break;
+                    case '2' :  echo("BDE"); break;
+                    case '3' :  echo("Salarié"); break;
+                }
             }   
         ?>
     </span>
     <span class="header-log-name">
         <?php 
-            echo($_SESSION['last_name'] . " ");
-            echo($_SESSION['first_name']);
+            echo($_SESSION['last_name'] . " " . $_SESSION['first_name']);
         ?>
     </span>
     <a href="php/logout.php">
@@ -82,19 +85,22 @@
         <hr>
         <span class="headerPhone-log-name">
         <?php 
-            echo($_SESSION['last_name'] . " ");
-            echo($_SESSION['first_name']);
+            echo($_SESSION['last_name'] . " " . $_SESSION['first_name']);
 
         ?>
         </span>
         <span class="headerPhone-log-span">Statut : 
         <?php 
-            switch($_SESSION['statute']) {
-                case '0' :  echo("Invité"); break;
-                case '1' :  echo("Étudiant"); break;
-                case '2' :  echo("BDE"); break;
-                case '3' :  echo("Salarié"); break;
-            }   
+            if ($_SESSION['mail'] == "aurelien.klein@viacesi.fr") {
+                echo("Root");
+            } else {
+                switch($_SESSION['statute']) {
+                    case '0' :  echo("Invité"); break;
+                    case '1' :  echo("Étudiant"); break;
+                    case '2' :  echo("BDE"); break;
+                    case '3' :  echo("Salarié"); break;
+                }
+            }
         ?>    
         </span>
         
