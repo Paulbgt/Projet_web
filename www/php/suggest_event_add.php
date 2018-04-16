@@ -11,6 +11,26 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 
 }
 
+$msg = "";
+
+if(isset($_FILES['image'])) {
+
+	$path = "../event_picture/"..basename($_FILES['image']['name']);
+
+	$image = $_FILES['image']['name'];
+
+	$request = $bdd->prepare("INSERT INTO event_picture (url) VALUES(:url)");
+	$request->execute(['url' => $image]);
+
+	if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
+  		$msg = "Image uploaded successfully";
+  		echo($msg);
+  	}else{
+  		$msg = "Failed to upload image";
+  		echo($msg);
+  	}
+
+}
 
 //on définit les variables avec ce que l'utilisateurs a rempli dans le formulaire
 $title = $_POST['title'];
@@ -45,7 +65,9 @@ $add->errorInfo();
 //
 ////message si l'insertion s'est bien passée
 //echo "insertion dans la base de données";
-    header('Location: ../ideaBox');
+    
+
+    // header('Location: ../ideaBox'); -------------------------------------------------------
 
 }else{
 

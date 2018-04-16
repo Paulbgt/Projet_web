@@ -1,4 +1,4 @@
-<?php session_start();  ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,10 +27,10 @@
             
 
 
-            <form action="php/suggest_event_add.php" method="POST">
+            <form action="php/suggest_event_add.php" method="POST" enctype="multipart/form-data">
                 <div class="AKL-ctn--c2-s1 suggestion-img">
                     <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
-                    <input type="file" id="fileImg" class="AKL-btnFile" hidden>
+                    <input type="file" id="fileImg" name="image" class="AKL-btnFile" hidden>
                 </div>
                 <div class="AKL-ctn--c2-s1 suggestion-infos">
                     <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
