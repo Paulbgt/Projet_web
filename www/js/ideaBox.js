@@ -43,12 +43,12 @@ inputImg.addEventListener('change', function(e) {
 for (var i = 0; i<btnLike.length; i++) {
     btnLike[i].addEventListener('click', function() {
         if (this.style.backgroundImage.search('grey') > 0) {
-            this.style.backgroundImage = "url(img/like_blue.svg)";
+            this.style.backgroundImage = "url(site_picture/like_blue.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) + 1);
             this.style.animation = "like 225ms";
             document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'like_id');
         } else {
-            this.style.backgroundImage = "url(img/like_grey.svg)";
+            this.style.backgroundImage = "url(site_picture/like_grey.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
             this.style.animation = "unlike 225ms";
             document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'unlike_id');

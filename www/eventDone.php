@@ -55,7 +55,7 @@ while ($response = $display->fetch()) {
 ?>
         
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c2-t1 event">
-        <div class="AKL-ctn--c3-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
+        <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)"></div>
             <div class="AKL-ctn--c2-s1 event-infos">
                 <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
                 <span id="event-infos-place<?= $i ?>" class="event-infos-place"><?= $response['place'] ?></span>
