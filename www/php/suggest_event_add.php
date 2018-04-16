@@ -45,13 +45,14 @@ $add->errorInfo();
 ////message si l'insertion s'est bien passée
 //echo "insertion dans la base de données";
 
-$q = $bdd->prepare("SELECT id FROM event ORDER BY id DESC LIMIT 1");
-$q->execute([
-  'title' => $title,
-  'description' => $description
-]);
+$result = $bdd->lastInsertId();
+//    prepare("SELECT id FROM event WHERE title=:title AND description=:description ORDER BY id DESC LIMIT 1");
+//$q->execute([
+//  'title' => $title,
+//  'description' => $description
+//]);
 
-$result = $q->fetch();
+//$result = $q->fetch();
 if(isset($result)) {
 
 $msg = "";
@@ -59,18 +60,18 @@ $ref = 1;
 
 if(isset($_FILES['image'])) {
 
-  if(!file_exists("../event_picture/".$result['id'])) {
-    mkdir("../event_picture/".$result['id']);
+  if(!file_exists("../event_picture/".$result)) {
+    mkdir("../event_picture/".$result);
   }
 
-  $path = "../event_picture/".$result['id']."/".basename($_FILES['image']['name']);
+  $path = "../event_picture/".$result."/".basename($_FILES['image']['name']);
   $image = $_FILES['image']['name'];
 
   $request = $bdd->prepare("INSERT INTO event_picture (url, ref, id_event) VALUES(:url, :ref, :id_event)");
   $request->execute([
       'url' => $image,
       'ref' => $ref,
-      'id_event' => $result['id']
+      'id_event' => $result
       ]);
 
   if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
