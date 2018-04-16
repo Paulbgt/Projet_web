@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 15 Avril 2018 à 22:09
--- Version du serveur :  5.7.14
--- Version de PHP :  7.0.10
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 16 avr. 2018 à 09:28
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -24,10 +26,11 @@ DELIMITER $$
 --
 -- Procédures
 --
+DROP PROCEDURE IF EXISTS `new_idea`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `new_idea` (IN `_title` VARCHAR(25), IN `_description` VARCHAR(255), IN `_publish_dated` DATE, IN `_mail` VARCHAR(255))  BEGIN
 SET autocommit = 0 ;
 START TRANSACTION;
-INSERT INTO `happening`(`title`, `description`, `finished`, `validate`, `publish_dated`, `id_account`) 
+INSERT INTO `event`(`title`, `description`, `finished`, `validate`, `publish_dated`, `id_account`) 
 VALUES (_title,_description, 0,0,_publish_dated,(SELECT id FROM account WHERE `mail`= _mail));
 COMMIT;
 END$$
@@ -40,17 +43,19 @@ DELIMITER ;
 -- Structure de la table `account`
 --
 
-CREATE TABLE `account` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `last_name` char(255) NOT NULL,
   `first_name` char(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `pwd` varchar(255) NOT NULL,
-  `statute` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `statute` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `account`
+-- Déchargement des données de la table `account`
 --
 
 INSERT INTO `account` (`id`, `last_name`, `first_name`, `mail`, `pwd`, `statute`) VALUES
@@ -73,9 +78,11 @@ INSERT INTO `account` (`id`, `last_name`, `first_name`, `mail`, `pwd`, `statute`
 -- Structure de la table `category`
 --
 
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -84,11 +91,15 @@ CREATE TABLE `category` (
 -- Structure de la table `commentary`
 --
 
-CREATE TABLE `commentary` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commentary`;
+CREATE TABLE IF NOT EXISTS `commentary` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `com` varchar(255) NOT NULL,
   `id_event` int(11) NOT NULL,
-  `id_account` int(11) NOT NULL
+  `id_account` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_event` (`id_event`),
+  KEY `id_account` (`id_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -97,8 +108,9 @@ CREATE TABLE `commentary` (
 -- Structure de la table `event`
 --
 
-CREATE TABLE `event` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE IF NOT EXISTS `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `event_date` varchar(255) DEFAULT NULL,
@@ -107,11 +119,13 @@ CREATE TABLE `event` (
   `price` varchar(255) DEFAULT NULL,
   `eventStatus` tinyint(1) NOT NULL DEFAULT '0',
   `published` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_account` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_account` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_event_id_account` (`id_account`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `event`
+-- Déchargement des données de la table `event`
 --
 
 INSERT INTO `event` (`id`, `title`, `description`, `event_date`, `place`, `club`, `price`, `eventStatus`, `published`, `id_account`) VALUES
@@ -130,29 +144,35 @@ INSERT INTO `event` (`id`, `title`, `description`, `event_date`, `place`, `club`
 -- Structure de la table `event_picture`
 --
 
-CREATE TABLE `event_picture` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `event_picture`;
+CREATE TABLE IF NOT EXISTS `event_picture` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
   `ref` tinyint(1) DEFAULT NULL,
-  `id_event` int(11) NOT NULL
+  `id_event` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_event_picture_id_event` (`id_event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `likes`
+-- Structure de la table `like_event`
 --
 
-CREATE TABLE `likes` (
+DROP TABLE IF EXISTS `like_event`;
+CREATE TABLE IF NOT EXISTS `like_event` (
   `id_account` int(11) NOT NULL,
-  `id_event` int(11) NOT NULL
+  `id_event` int(11) NOT NULL,
+  PRIMARY KEY (`id_account`,`id_event`),
+  KEY `FK_like_event_id_event` (`id_event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `likes`
+-- Déchargement des données de la table `like_event`
 --
 
-INSERT INTO `likes` (`id_account`, `id_event`) VALUES
+INSERT INTO `like_event` (`id_account`, `id_event`) VALUES
 (1, 1),
 (2, 1),
 (5, 1),
@@ -161,14 +181,31 @@ INSERT INTO `likes` (`id_account`, `id_event`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `like_event_picture`
+--
+
+DROP TABLE IF EXISTS `like_event_picture`;
+CREATE TABLE IF NOT EXISTS `like_event_picture` (
+  `id_account` int(11) NOT NULL,
+  `id_event_picture` int(11) NOT NULL,
+  PRIMARY KEY (`id_account`,`id_event_picture`),
+  KEY `FK_like_event_picture_id_event_picture` (`id_event_picture`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `orders`
 --
 
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `statute` char(25) NOT NULL,
   `purchase_date` timestamp NOT NULL,
-  `id_account` int(11) NOT NULL
+  `id_account` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_orders_id_account` (`id_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -177,10 +214,13 @@ CREATE TABLE `orders` (
 -- Structure de la table `order_composite`
 --
 
-CREATE TABLE `order_composite` (
+DROP TABLE IF EXISTS `order_composite`;
+CREATE TABLE IF NOT EXISTS `order_composite` (
   `qantity` int(11) NOT NULL,
   `id_orders` int(11) NOT NULL,
-  `id_produce` int(11) NOT NULL
+  `id_produce` int(11) NOT NULL,
+  PRIMARY KEY (`id_orders`,`id_produce`),
+  KEY `FK_order_composite_id_produce` (`id_produce`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -189,13 +229,16 @@ CREATE TABLE `order_composite` (
 -- Structure de la table `produce`
 --
 
-CREATE TABLE `produce` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produce`;
+CREATE TABLE IF NOT EXISTS `produce` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
-  `id_category` int(11) NOT NULL
+  `id_category` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_produce_id_category` (`id_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -204,10 +247,13 @@ CREATE TABLE `produce` (
 -- Structure de la table `produce_picture`
 --
 
-CREATE TABLE `produce_picture` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produce_picture`;
+CREATE TABLE IF NOT EXISTS `produce_picture` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
-  `id_produce` int(11) NOT NULL
+  `id_produce` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_produce_picture_id_produce` (`id_produce`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -216,13 +262,16 @@ CREATE TABLE `produce_picture` (
 -- Structure de la table `register`
 --
 
-CREATE TABLE `register` (
+DROP TABLE IF EXISTS `register`;
+CREATE TABLE IF NOT EXISTS `register` (
   `id_account` int(11) NOT NULL,
-  `id_event` int(11) NOT NULL
+  `id_event` int(11) NOT NULL,
+  PRIMARY KEY (`id_account`,`id_event`),
+  KEY `FK_register_id_event` (`id_event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `register`
+-- Déchargement des données de la table `register`
 --
 
 INSERT INTO `register` (`id_account`, `id_event`) VALUES
@@ -251,155 +300,22 @@ INSERT INTO `register` (`id_account`, `id_event`) VALUES
 -- Structure de la table `selling`
 --
 
-CREATE TABLE `selling` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `selling`;
+CREATE TABLE IF NOT EXISTS `selling` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `indent` char(25) NOT NULL,
   `dated_sale` timestamp NOT NULL,
   `quantity` int(11) NOT NULL,
   `statute` char(25) NOT NULL,
   `id_produce` int(11) NOT NULL,
-  `id_account` int(11) NOT NULL
+  `id_account` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_selling_id_produce` (`id_produce`),
+  KEY `FK_selling_id_account` (`id_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `account`
---
-ALTER TABLE `account`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `commentary`
---
-ALTER TABLE `commentary`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_event` (`id_event`),
-  ADD KEY `id_account` (`id_account`);
-
---
--- Index pour la table `event`
---
-ALTER TABLE `event`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_happening_id_account` (`id_account`);
-
---
--- Index pour la table `event_picture`
---
-ALTER TABLE `event_picture`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_event_picture_id_happening` (`id_event`);
-
---
--- Index pour la table `likes`
---
-ALTER TABLE `likes`
-  ADD PRIMARY KEY (`id_account`,`id_event`),
-  ADD KEY `FK_love_id_happening` (`id_event`);
-
---
--- Index pour la table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_orders_id_account` (`id_account`);
-
---
--- Index pour la table `order_composite`
---
-ALTER TABLE `order_composite`
-  ADD PRIMARY KEY (`id_orders`,`id_produce`),
-  ADD KEY `FK_order_composite_id_produce` (`id_produce`);
-
---
--- Index pour la table `produce`
---
-ALTER TABLE `produce`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_produce_id_category` (`id_category`);
-
---
--- Index pour la table `produce_picture`
---
-ALTER TABLE `produce_picture`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_produce_picture_id_produce` (`id_produce`);
-
---
--- Index pour la table `register`
---
-ALTER TABLE `register`
-  ADD PRIMARY KEY (`id_account`,`id_event`),
-  ADD KEY `FK_register_id_happening` (`id_event`);
-
---
--- Index pour la table `selling`
---
-ALTER TABLE `selling`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_selling_id_produce` (`id_produce`),
-  ADD KEY `FK_selling_id_account` (`id_account`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `account`
---
-ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT pour la table `category`
---
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `commentary`
---
-ALTER TABLE `commentary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `event`
---
-ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
---
--- AUTO_INCREMENT pour la table `event_picture`
---
-ALTER TABLE `event_picture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `produce`
---
-ALTER TABLE `produce`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `produce_picture`
---
-ALTER TABLE `produce_picture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `selling`
---
-ALTER TABLE `selling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -413,20 +329,27 @@ ALTER TABLE `commentary`
 -- Contraintes pour la table `event`
 --
 ALTER TABLE `event`
-  ADD CONSTRAINT `FK_happening_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`);
+  ADD CONSTRAINT `FK_event_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`);
 
 --
 -- Contraintes pour la table `event_picture`
 --
 ALTER TABLE `event_picture`
-  ADD CONSTRAINT `FK_event_picture_id_happening` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`);
+  ADD CONSTRAINT `FK_event_picture_id_event` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`);
 
 --
--- Contraintes pour la table `likes`
+-- Contraintes pour la table `like_event`
 --
-ALTER TABLE `likes`
-  ADD CONSTRAINT `FK_love_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_love_id_happening` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE;
+ALTER TABLE `like_event`
+  ADD CONSTRAINT `FK_like_event_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_like_event_id_event` FOREIGN KEY (`id_event`) REFERENCES `event` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `like_event_picture`
+--
+ALTER TABLE `like_event_picture`
+  ADD CONSTRAINT `FK_like_event_picture_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_like_event_picture_id_event_picture` FOREIGN KEY (`id_event_picture`) REFERENCES `event_picture` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `orders`
@@ -466,6 +389,7 @@ ALTER TABLE `register`
 ALTER TABLE `selling`
   ADD CONSTRAINT `FK_selling_id_account` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`),
   ADD CONSTRAINT `FK_selling_id_produce` FOREIGN KEY (`id_produce`) REFERENCES `produce` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
