@@ -56,6 +56,7 @@ $result = $q->fetch();
 if($result == true) {
 
 $msg = "";
+$ref = 1;
 
 if(isset($_FILES['image'])) {
 
@@ -66,9 +67,10 @@ if(isset($_FILES['image'])) {
   $path = "../event_picture/".$result['id']."/".basename($_FILES['image']['name']);
   $image = $_FILES['image']['name'];
 
-  $request = $bdd->prepare("INSERT INTO event_picture (url) VALUES(:url)");
+  $request = $bdd->prepare("INSERT INTO event_picture (url, ref) VALUES(:url, :ref)");
   $request->execute([
       'url' => $image,
+      'ref' => $ref
       ]);
 
   if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
