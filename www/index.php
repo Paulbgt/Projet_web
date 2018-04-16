@@ -4,7 +4,7 @@
 <head>
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="img/exia-logo.png"/>
+    <link rel="icon" type="image/png" href="site_picture/exia-logo.png"/>
 	<title>BDE Connexion</title>
     <meta name="description" content="Site web du BDE de l'Exia.Cesi d'Arras."/>
     <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
@@ -18,9 +18,9 @@
     <div class="wrapper">
        
         <div class="authentification">
-            <img class="exiaPart-grey1" src="img/exia-logo-grey1.png" alt="Logo exia partie gris 1">
-            <img class="exiaPart-grey2" src="img/exia-logo-grey2.png" alt="Logo exia partie gris 2">
-            <img class="exiaPart-red" src="img/exia-logo-red.png" alt="Logo exia partie rouge">
+            <img class="exiaPart-grey1" src="site_picture/exia-logo-grey1.png" alt="Logo exia partie gris 1">
+            <img class="exiaPart-grey2" src="site_picture/exia-logo-grey2.png" alt="Logo exia partie gris 2">
+            <img class="exiaPart-red" src="site_picture/exia-logo-red.png" alt="Logo exia partie rouge">
             <div class="form">
                 <div class="form-btnRegister">Inscription</div>
                 <div class="form-btnConnection">Connexion</div>

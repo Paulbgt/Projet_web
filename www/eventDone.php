@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image/png" href="img/exia-logo.png"/>
+    <link rel="icon" type="image/png" href="site_picture/exia-logo.png"/>
     <title>BDE - Evénements terminés</title>
     <meta name="description" content="">
     <meta name="description" content="Ecvénements du mois du BDE de l'Exia.Cesi d'Arras."/>

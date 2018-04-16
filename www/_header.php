@@ -23,7 +23,7 @@
 
     
     <div class="header-logo">
-        <img src="img/exia-logo.png" alt="Logo Exia Cesi" class="header-logo-img">
+        <img src="site_picture/exia-logo.png" alt="Logo Exia Cesi" class="header-logo-img">
     </div>
     <span class="header-spanExia">Exia.Cesi Arras</span>
     <span class="header-title">Site du BDE</span>
@@ -52,8 +52,8 @@
         ?>
     </span>
     <a href="php/logout.php">
-        <img class="header-logout" src="img/logout2.svg" alt="Déconnexion">
-        <img class="header-logout" src="img/logout1.svg" alt="Déconnexion">
+        <img class="header-logout" src="site_picture/logout2.svg" alt="Déconnexion">
+        <img class="header-logout" src="site_picture/logout1.svg" alt="Déconnexion">
     </a>
     <?php
         }
@@ -105,8 +105,8 @@
         </span>
         
         <a href="php/logout.php">
-            <img class="headerPhone-logout" src="img/logout2.svg" alt="Déconnexion">
-            <img class="headerPhone-logout" src="img/logout1.svg" alt="Déconnexion">
+            <img class="headerPhone-logout" src="site_picture/logout2.svg" alt="Déconnexion">
+            <img class="headerPhone-logout" src="site_picture/logout1.svg" alt="Déconnexion">
         </a>
     </div>
     <?php

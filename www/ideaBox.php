@@ -5,9 +5,9 @@
 <head>
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="img/exia-logo.png"/>
+    <link rel="icon" type="image/png" href="site_picture/exia-logo.png"/>
 	<title>BDE - Boite à idée</title>
-    <meta name="description" content="Boite à idée du BDE de l'Exia.Cesi d'Arras."/>
+    <meta name="description" content="Boite à idée du BDE de site_picturel'Exia.Cesi d'Arras."/>
     <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
     <link rel="stylesheet" href="css/common.min.css">
     <link rel="stylesheet" href="css/ideaBox.min.css">
@@ -89,11 +89,11 @@ while ($response = $display->fetch()) {
 
     <div id="idea<?= $response['id'] ?>" class="AKL-ctn--c2-t1 idea">
         <form id="likeForm<?= $i ?>" action="php/like.php" method="POST"></form>
-        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
+        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
            
             <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $response['id'] ?>" form="likeForm<?= $i ?>" readonly hidden>
-            <button type="submit" class="idea-infos-like" value="<?= $count ?>" style="background-image: url(img/like_<?= $liked ? 'blue' : 'grey' ?>.svg)" form="likeForm<?= $i ?>"></button>
+            <button type="submit" class="idea-infos-like" value="<?= $count ?>" style="background-image: url(site_picture/like_<?= $liked ? 'blue' : 'grey' ?>.svg)" form="likeForm<?= $i ?>"></button>
             
             <span id="idea-infos-title<?= $i ?>" class="idea-infos-title"><?= $response['title'] ?></span>
             <span id="idea-infos-place<?= $i ?>" class="idea-infos-place"><?= $response['place'] ?></span>

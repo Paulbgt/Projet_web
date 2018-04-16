@@ -1,7 +1,7 @@
 <div class="AKL-ctn--c1 footer">
     
     <span class="footer-akl">Site développé avec <a href="https://aklibrary.fr">AKLibrary</a></span>
-    <img class="footer-twitter" src="img/twitter.png" alt="twitter">
+    <img class="footer-twitter" src="site_picture/twitter.png" alt="twitter">
     <?php
         if(isset($_SESSION['statute'])){
     ?>

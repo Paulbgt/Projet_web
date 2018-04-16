@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image/png" href="img/exia-logo.png"/>
+    <link rel="icon" type="image/png" href="site_picture/exia-logo.png"/>
     <title>BDE - Evénement du mois</title>
     <meta name="description" content="Ecvénements du mois du BDE de l'Exia.Cesi d'Arras."/>
     <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
@@ -56,9 +56,9 @@ while ($response = $display->fetch()) {
     
     <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
         <form id="registrationForm<?= $i ?>" action="php/registration.php" method="POST"></form>
-        <div class="AKL-ctn--c3-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(photos/popcorn.jpg)"></div>
+        <div class="AKL-ctn--c3-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)"></div>
         <div class="AKL-ctn--c2_3-s1 event-infos">
-            <a id="subsCount<?= $i ?>" class="event-infos-subsCount" value="<?= $count ?>" style="background-image: url(img/subscribe_<?= $subscribed ? 'full' : 'empty' ?>.svg)">
+            <a id="subsCount<?= $i ?>" class="event-infos-subsCount" value="<?= $count ?>" style="background-image: url(site_picture/subscribe_<?= $subscribed ? 'full' : 'empty' ?>.svg)">
                 <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
                 <div class="event-infos-subsCount-list">
                     <span>Télécharger la liste :</span>
