@@ -3,6 +3,7 @@
     min-height: calc(100% - 70px);
     float: left;
     background-color: var(--exia-grey2);
+    transition: filter 225ms;
 }
 
 .banner {
@@ -148,31 +149,31 @@
         }
 
         .event:nth-child(2n+1) .event-infos-date::before {
-            background-image: url(../img/date_black.svg);
+            background-image: url(../site_picture/date_black.svg);
         }
         .event:nth-child(2n) .event-infos-date::before, .event-infos-date.right::before {
-            background-image: url(../img/date_white.svg) !important;
+            background-image: url(../site_picture/date_white.svg);
         }
 
         .event:nth-child(2n+1) .event-infos-place::before {
-            background-image: url(../img/place_black.svg);
+            background-image: url(../site_picture/place_black.svg);
         }
         .event:nth-child(2n) .event-infos-place::before, .event-infos-place.right::before {
-            background-image: url(../img/place_white.svg) !important;
+            background-image: url(../site_picture/place_white.svg);
         }
 
         .event:nth-child(2n+1) .event-infos-price::before {
-            background-image: url(../img/price_black.svg);
+            background-image: url(../site_picture/price_black.svg);
         }
         .event:nth-child(2n) .event-infos-price::before, .event-infos-price.right::before {
-            background-image: url(../img/price_white.svg) !important;
+            background-image: url(../site_picture/price_white.svg);
         }
 
         .event:nth-child(2n+1) .event-infos-club::before {
-            background-image: url(../img/club_black.svg);
+            background-image: url(../site_picture/club_black.svg);
         }
         .event:nth-child(2n) .event-infos-club::before, .event-infos-club.right::before {
-            background-image: url(../img/club_white.svg) !important;
+            background-image: url(../site_picture/club_white.svg);
         }
 
 

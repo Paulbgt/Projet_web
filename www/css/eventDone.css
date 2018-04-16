@@ -3,6 +3,7 @@
     min-height: calc(100% - 70px);
     float: left;
     background-color: var(--exia-grey2);
+    transition: filter 225ms;
 }
 
 .banner {
@@ -27,7 +28,7 @@
     float: left;
 }
 
-.event:nth-child(4n+1), .event:nth-child(4n+2) {
+.event:nth-child(2n) {
     background-color: var(--exia-red2);
     --primary_color: var(--exia-grey2);
     --secondary_color: var(--exia-grey1);
@@ -35,7 +36,7 @@
     --font_color: white;
 }
 
-.event:nth-child(4n+3), .event:nth-child(4n+4) {
+.event:nth-child(2n+1) {
     background-color: white;
     --primary_color: var(--exia-red2);
     --secondary_color: var(--exia-red1);
@@ -44,7 +45,7 @@
 }
 
     [class*=event-img] {
-        height: 200px;
+        height: 280px;
 /*        height: calc(100% - 40px);*/
         background-repeat: no-repeat;
         background-position: center;
@@ -54,6 +55,7 @@
     .event-infos {
         display: flex;
         flex-wrap: wrap;
+        height: 280px;
     }
 
         .event-infos-like {
@@ -94,7 +96,7 @@
         }
 
         .event-infos-date, .event-infos-place, .event-infos-price, .event-infos-club {
-            width: 50%;
+            width: calc(100%/3);
             font-size: 0.9em;
             position: relative;
             text-indent: 30px;
@@ -113,6 +115,14 @@
                 margin-bottom: -2px
             }
 
+        .event-infos-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: 10px 0 -20px 0;
+        }
+
     [class*=event-admin] {
         display: flex;
         align-items: center;
@@ -126,7 +136,7 @@
             width: 100%;
         }
 
-        .event:nth-child(4n+3) .event-infos-description, .event:nth-child(4n+4) .event-infos-description {
+        .event:nth-child(2n+1) .event-infos-description {
             color: black;
         }
 
@@ -140,33 +150,91 @@
             left: 0;
         }
 
-        .event:nth-child(4n+3) .event-infos-date::before, .event:nth-child(4n+4) .event-infos-date::before {
+        .event:nth-child(2n+1) .event-infos-date::before {
             background-image: url(../site_picture/date_black.svg);
         }
-        .event:nth-child(4n+1) .event-infos-date::before, .event:nth-child(4n+2) .event-infos-date::before, .event-infos-date.right::before {
-            background-image: url(../site_picture/date_white.svg) !important;
+        .event:nth-child(2n) .event-infos-date::before, .event-infos-date.right::before {
+            background-image: url(../site_picture/date_white.svg);
         }
 
-        .event:nth-child(4n+3) .event-infos-place::before, .event:nth-child(4n+4) .event-infos-place::before {
+        .event:nth-child(2n+1) .event-infos-place::before {
             background-image: url(../site_picture/place_black.svg);
         }
-        .event:nth-child(4n+1) .event-infos-place::before, .event:nth-child(4n+2) .event-infos-place::before, .event-infos-place.right::before {
-            background-image: url(../site_picture/place_white.svg) !important;
+        .event:nth-child(2n) .event-infos-place::before, .event-infos-place.right::before {
+            background-image: url(../site_picture/place_white.svg);
         }
 
-        .event:nth-child(4n+3) .event-infos-price::before, .event:nth-child(4n+4) .event-infos-price::before {
+        .event:nth-child(2n+1) .event-infos-price::before {
             background-image: url(../site_picture/price_black.svg);
         }
-        .event:nth-child(4n+1) .event-infos-price::before, .event:nth-child(4n+2) .event-infos-price::before, .event-infos-price.right::before {
-            background-image: url(../site_picture/price_white.svg) !important;
+        .event:nth-child(2n) .event-infos-price::before, .event-infos-price.right::before {
+            background-image: url(../site_picture/price_white.svg);
         }
 
-        .event:nth-child(4n+3) .event-infos-club::before, .event:nth-child(4n+4) .event-infos-club::before {
+        .event:nth-child(2n+1) .event-infos-club::before {
             background-image: url(../site_picture/club_black.svg);
         }
-        .event:nth-child(4n+1) .event-infos-club::before, .event:nth-child(4n+2) .event-infos-club::before, .event-infos-club.right::before {
-            background-image: url(../site_picture/club_white.svg) !important;
+        .event:nth-child(2n) .event-infos-club::before, .event-infos-club.right::before {
+            background-image: url(../site_picture/club_white.svg);
         }
+
+.event-swap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+    .event:nth-child(2n+1) .event-swap-previous {
+        background-image: url(../site_picture/previous_arrow_black.svg);
+        background-size: 50px 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .event:nth-child(2n) .event-swap-previous {
+        background-image: url(../site_picture/previous_arrow_white.svg);
+        background-size: 50px 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .event:nth-child(2n+1) .event-swap-next {
+        background-image: url(../site_picture/next_arrow_black.svg);
+        background-size: 50px 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .event:nth-child(2n) .event-swap-next {
+        background-image: url(../site_picture/next_arrow_white.svg);
+        background-size: 50px 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .event-swap-like {
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        transition: all 225ms;
+        transform-origin: bottom left;
+        position: relative;
+        width: 50px;
+        height: 50px;
+    }
+
+    .event-swap-like::after {
+        content: attr(value);
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50px;
+        text-align: center;
+        color: var(--font_color);
+        font-family: 'Open sans', 'Arial', sans-serif;
+        font-size: 1.2em;
+    }
 
 
 
@@ -176,78 +244,9 @@
         height: auto;
     }
 
-    .event:nth-child(2n) {
-        background-color: var(--exia-red2);
-        --primary_color: var(--exia-grey2);
-        --secondary_color: var(--exia-grey1);
-        color: white;
-    }
-
-    .event:nth-child(2n+1) {
-        background-color: white;
-        --primary_color: var(--exia-red2);
-        --secondary_color: var(--exia-red1);
-        color: black;
-    }
-
-        [class*=event-img] {
-            height: 280px;
-        }
-
-        .event-infos-like {
-            top: 20px;
-            right: 20px;
-        }
-
-        .event-infos-title {
-            margin: 0 40px 20px 40px;
-            width: calc(100% - 80px);
-        }
-
-        .event-infos-date, .event-infos-place, .event-infos-price, .event-infos-club {
-            margin: 20px 0;
-        }
-
-        .event-infos-description {
-            margin: 10px 0 0 0;
-        }
-    
-    
-        .event:nth-child(2n) .event-infos-description{
-            color: white;
-        }
-    
-    
-        .event:nth-child(2n+1) .event-infos-description{
-            color: black;
-        }
-
-        .event:nth-child(2n) .event-infos-date::before {
-            background-image: url(../site_picture/date_white.svg);
-        }
-        .event:nth-child(2n+1) .event-infos-date::before {
-            background-image: url(../site_picture/date_black.svg);
-        }
-
-        .event:nth-child(2n) .event-infos-place::before {
-            background-image: url(../site_picture/place_white.svg);
-        }
-        .event:nth-child(2n+1) .event-infos-place::before {
-            background-image: url(../site_picture/place_black.svg);
-        }
-
-        .event:nth-child(2n) .event-infos-price::before {
-            background-image: url(../site_picture/price_white.svg);
-        }
-        .event:nth-child(2n+1) .event-infos-price::before {
-            background-image: url(../site_picture/price_black.svg);
-        }
-
-        .event:nth-child(2n) .event-infos-club::before {
-            background-image: url(../site_picture/club_white.svg);
-        }
-        .event:nth-child(2n+1) .event-infos-club::before {
-            background-image: url(../site_picture/club_black.svg);
+        .event-infos-btn {
+            justify-content: center;
+            flex-direction: column;
         }
 }
 
@@ -425,5 +424,26 @@
         line-height: 30px;
         font-size: .6em;
         width: 60px;
+    }
+}
+
+
+/* //////////////////////////// Animations //////////////////////////// */
+
+@keyframes like {
+    0%, 100% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes unlike {
+    0%, 100% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(10deg);
     }
 }

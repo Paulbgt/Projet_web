@@ -32,7 +32,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 }
 
 //requête qui permet de récupérer les données dans la BDD
-$display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 2");
+$display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 2 ORDER BY id DESC");
 $display->execute();
 $i = 1;
 //$liked = false;
@@ -54,21 +54,34 @@ while ($response = $display->fetch()) {
 //    }
 ?>
         
-        <div id="event<?= $response['id'] ?>" class="AKL-ctn--c2-t1 event">
-        <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)"></div>
+        <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
+            <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)">
+                
+                
+            </div>
             <div class="AKL-ctn--c2-s1 event-infos">
                 <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
                 <span id="event-infos-place<?= $i ?>" class="event-infos-place"><?= $response['place'] ?></span>
                 <span id="event-infos-club<?= $i ?>" class="event-infos-club"><?= $response['club'] ?></span>
                 <span id="event-infos-date<?= $i ?>" class="event-infos-date"><?= $response['event_date'] ?></span>
-                <span id="event-infos-price<?= $i ?>" class="event-infos-price"><?= $response['price'] ?></span>
+<!--                <span id="event-infos-price<?= $i ?>" class="event-infos-price"><?= $response['price'] ?></span>-->
                 <textarea id="event-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked event-infos-description" readonly><?= $response['description'] ?></textarea>
                 
                 <div class="event-infos-btn">
+<!--
+                    <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="">
+                    <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="">
+-->
+                   
                     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
                     <div class="AKL-ctn--c1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
                     <?php } ?>
                 </div>
+            </div>
+            <div class="AKL-ctn--c2-s1 event-swap">
+                <a class="event-swap-previous"></a>
+                <a class="event-swap-like" value="10" style="background-image: url(site_picture/like_grey.svg)"></a>
+                <a class="event-swap-next"></a>
             </div>
         </div>
 

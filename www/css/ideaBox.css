@@ -32,7 +32,7 @@
 
     #displaySuggestion::before, #displaySuggestion::after {
         content: '';
-        background-image: url(../img/sort-down.svg);
+        background-image: url(../site_picture/sort-down.svg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 14px 14px;
@@ -54,6 +54,27 @@
             color: white;
         }
 
+        .form-error {
+            color: red;
+            font-size: .8em;
+            position: absolute;
+            background-color: hsla(357, 100%, 57%, .5);
+            cursor: text;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .form-error::after {
+            content: 'X';
+            position: absolute;
+            right: 5px;
+            top: 0;
+            height: 100%;
+            line-height: 30px;
+            font-size: 14.4px;
+            font-weight: bold;
+        }
+
     .suggestion-title, .modal-title {
         text-align: center;
         width: 100%;
@@ -67,7 +88,7 @@
 
             .suggestion-title::before, .suggestion-title::after {
                 content: '';
-                background-image: url(../img/sort-up.svg);
+                background-image: url(../site_picture/sort-up.svg);
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: 14px 14px;
@@ -250,31 +271,31 @@
         }
 
         .idea:nth-child(4n+4) .idea-infos-date::before, .idea:nth-child(4n+1) .idea-infos-date::before {
-            background-image: url(../img/date_black.svg);
+            background-image: url(../site_picture/date_black.svg);
         }
         .idea:nth-child(4n+3) .idea-infos-date::before, .idea:nth-child(4n+2) .idea-infos-date::before, .idea-infos-date.right::before {
-            background-image: url(../img/date_white.svg) !important;
+            background-image: url(../site_picture/date_white.svg);
         }
 
         .idea:nth-child(4n+4) .idea-infos-place::before, .idea:nth-child(4n+1) .idea-infos-place::before {
-            background-image: url(../img/place_black.svg);
+            background-image: url(../site_picture/place_black.svg);
         }
         .idea:nth-child(4n+3) .idea-infos-place::before, .idea:nth-child(4n+2) .idea-infos-place::before, .idea-infos-place.right::before {
-            background-image: url(../img/place_white.svg) !important;
+            background-image: url(../site_picture/place_white.svg);
         }
 
         .idea:nth-child(4n+4) .idea-infos-price::before, .idea:nth-child(4n+1) .idea-infos-price::before {
-            background-image: url(../img/price_black.svg);
+            background-image: url(../site_picture/price_black.svg);
         }
         .idea:nth-child(4n+3) .idea-infos-price::before, .idea:nth-child(4n+2) .idea-infos-price::before, .idea-infos-price.right::before {
-            background-image: url(../img/price_white.svg) !important;
+            background-image: url(../site_picture/price_white.svg);
         }
 
         .idea:nth-child(4n+4) .idea-infos-club::before, .idea:nth-child(4n+1) .idea-infos-club::before {
-            background-image: url(../img/club_black.svg);
+            background-image: url(../site_picture/club_black.svg);
         }
         .idea:nth-child(4n+3) .idea-infos-club::before, .idea:nth-child(4n+2) .idea-infos-club::before, .idea-infos-club.right::before {
-            background-image: url(../img/club_white.svg) !important;
+            background-image: url(../site_picture/club_white.svg);
         }
 
 
@@ -322,36 +343,40 @@
         }
     
     
+        .idea:nth-child(2n+1) .idea-infos-description{
+            color: white;
+        }
+    
         .idea:nth-child(2n) .idea-infos-description{
             color: black;
         }
 
         .idea:nth-child(2n+1) .idea-infos-date::before {
-            background-image: url(../img/date_white.svg);
+            background-image: url(../site_picture/date_white.svg);
         }
         .idea:nth-child(2n) .idea-infos-date::before {
-            background-image: url(../img/date_black.svg);
+            background-image: url(../site_picture/date_black.svg);
         }
 
         .idea:nth-child(2n+1) .idea-infos-place::before {
-            background-image: url(../img/place_white.svg);
+            background-image: url(../site_picture/place_white.svg);
         }
         .idea:nth-child(2n) .idea-infos-place::before {
-            background-image: url(../img/place_black.svg);
+            background-image: url(../site_picture/place_black.svg);
         }
 
         .idea:nth-child(2n+1) .idea-infos-price::before {
-            background-image: url(../img/price_white.svg);
+            background-image: url(../site_picture/price_white.svg);
         }
         .idea:nth-child(2n) .idea-infos-price::before {
-            background-image: url(../img/price_black.svg);
+            background-image: url(../site_picture/price_black.svg);
         }
 
         .idea:nth-child(2n+1) .idea-infos-club::before {
-            background-image: url(../img/club_white.svg);
+            background-image: url(../site_picture/club_white.svg);
         }
         .idea:nth-child(2n) .idea-infos-club::before {
-            background-image: url(../img/club_black.svg);
+            background-image: url(../site_picture/club_black.svg);
         }
 }
 

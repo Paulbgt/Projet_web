@@ -1,3 +1,26 @@
+var btnLike = document.querySelectorAll('.event-swap-like');
+
+// Event listener used to swap the likes image and to update the display of number of likes
+for (var i = 0; i<btnLike.length; i++) {
+    btnLike[i].addEventListener('click', function() {
+        if (this.style.backgroundImage.search('grey') > 0) {
+            this.style.backgroundImage = "url(site_picture/like_blue.svg)";
+            this.setAttribute('value', parseInt(this.getAttribute('value')) + 1);
+            this.style.animation = "like 225ms";
+//            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'like_id');
+        } else {
+            this.style.backgroundImage = "url(site_picture/like_grey.svg)";
+            this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
+            this.style.animation = "unlike 225ms";
+//            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'unlike_id');
+        }
+    });
+}
+
+
+
+
+
 /* ///////////// Modal //////////// */
 
 if (document.getElementById('fileImgModal')) {
@@ -19,7 +42,7 @@ if (document.getElementById('fileImgModal')) {
             document.querySelector('.modal-img').style.backgroundImage = document.getElementById('event-img' + id).style.backgroundImage;
             document.querySelector('.modal-infos-title').value = document.getElementById('event-infos-title' + id).innerHTML;
             document.querySelector('.modal-infos-place').value = document.getElementById('event-infos-place' + id).innerHTML;
-            document.querySelector('.modal-infos-price').value = document.getElementById('event-infos-price' + id).innerHTML;
+//            document.querySelector('.modal-infos-price').value = document.getElementById('event-infos-price' + id).innerHTML;
             document.querySelector('.modal-infos-date').value = document.getElementById('event-infos-date' + id).innerHTML;
             document.querySelector('.modal-infos-club').value = document.getElementById('event-infos-club' + id).innerHTML;
             document.querySelector('.modal-infos-description').value = document.getElementById('event-infos-description' + id).innerHTML;
