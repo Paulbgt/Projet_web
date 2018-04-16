@@ -176,14 +176,14 @@
         height: auto;
     }
 
-    .event:nth-child(2n+1) {
+    .event:nth-child(2n) {
         background-color: var(--exia-red2);
         --primary_color: var(--exia-grey2);
         --secondary_color: var(--exia-grey1);
         color: white;
     }
 
-    .event:nth-child(2n) {
+    .event:nth-child(2n+1) {
         background-color: white;
         --primary_color: var(--exia-red2);
         --secondary_color: var(--exia-red1);
@@ -214,34 +214,39 @@
     
     
         .event:nth-child(2n) .event-infos-description{
+            color: white;
+        }
+    
+    
+        .event:nth-child(2n+1) .event-infos-description{
             color: black;
         }
 
-        .event:nth-child(2n+1) .event-infos-date::before {
+        .event:nth-child(2n) .event-infos-date::before {
             background-image: url(../site_picture/date_white.svg);
         }
-        .event:nth-child(2n) .event-infos-date::before {
+        .event:nth-child(2n+1) .event-infos-date::before {
             background-image: url(../site_picture/date_black.svg);
         }
 
-        .event:nth-child(2n+1) .event-infos-place::before {
+        .event:nth-child(2n) .event-infos-place::before {
             background-image: url(../site_picture/place_white.svg);
         }
-        .event:nth-child(2n) .event-infos-place::before {
+        .event:nth-child(2n+1) .event-infos-place::before {
             background-image: url(../site_picture/place_black.svg);
         }
 
-        .event:nth-child(2n+1) .event-infos-price::before {
+        .event:nth-child(2n) .event-infos-price::before {
             background-image: url(../site_picture/price_white.svg);
         }
-        .event:nth-child(2n) .event-infos-price::before {
+        .event:nth-child(2n+1) .event-infos-price::before {
             background-image: url(../site_picture/price_black.svg);
         }
 
-        .event:nth-child(2n+1) .event-infos-club::before {
+        .event:nth-child(2n) .event-infos-club::before {
             background-image: url(../site_picture/club_white.svg);
         }
-        .event:nth-child(2n) .event-infos-club::before {
+        .event:nth-child(2n+1) .event-infos-club::before {
             background-image: url(../site_picture/club_black.svg);
         }
 }
