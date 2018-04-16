@@ -45,15 +45,14 @@ $add->errorInfo();
 ////message si l'insertion s'est bien passée
 //echo "insertion dans la base de données";
 
-$q = $bdd->prepare("SELECT id FROM event WHERE title = :title AND description = :description");
+$q = $bdd->prepare("SELECT id FROM event ORDER BY id DESC LIMIT 1");
 $q->execute([
   'title' => $title,
   'description' => $description
 ]);
 
 $result = $q->fetch();
-
-if($result == true) {
+if(isset($result)) {
 
 $msg = "";
 $ref = 1;
@@ -67,10 +66,11 @@ if(isset($_FILES['image'])) {
   $path = "../event_picture/".$result['id']."/".basename($_FILES['image']['name']);
   $image = $_FILES['image']['name'];
 
-  $request = $bdd->prepare("INSERT INTO event_picture (url, ref) VALUES(:url, :ref)");
+  $request = $bdd->prepare("INSERT INTO event_picture (url, ref, id_event) VALUES(:url, :ref, :id_event)");
   $request->execute([
       'url' => $image,
-      'ref' => $ref
+      'ref' => $ref,
+      'id_event' => $result['id']
       ]);
 
   if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
