@@ -10,7 +10,7 @@
     text-align: center;
     margin: 0;
     float: left;
-    height: 50px;
+    line-height: 50px;
 }
 
 
@@ -101,7 +101,7 @@
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-evenly;
             margin: 10px 0 -20px 0;
         }
 
@@ -110,7 +110,7 @@
                 align-items: center;
                 justify-content: center;
                 padding: 10px;
-                margin: 0;
+                margin: 0 0 0 -20px;
 /*                margin: 10px 10px -20px 0;*/
                 width: calc(50% - 10px);
                 outline: none;
@@ -125,11 +125,12 @@
                 padding: 0;
 /*                margin: 10px 0 -20px 10px;*/
                 width: calc(50% - 10px);
+                margin-right: -20px;
             }
 
                 [class*=event-admin] a {
-                    margin: 0;
                     width: 100%;
+                    margin: 0;
                 }
 
         .event:nth-child(2n+1) .event-infos-description {
@@ -200,6 +201,21 @@
         .event-infos-description {
             margin: 10px 0 0 0;
         }
+
+        .event-infos-btn {
+            justify-content: center;
+            flex-direction: column;
+        }
+
+            .event-infos-subscribe {
+                width: 100%;
+                margin: 0 0 10px 0;
+            }
+
+            [class*=event-admin] {
+                width: 100%;
+                margin-right: 0;
+            }
 }
 
 
@@ -250,6 +266,7 @@ table {
 td, th {
     text-align: left;
     padding: 8px;
+    min-width: 90px;
 }
 
 tr:nth-child(odd) {
@@ -259,6 +276,13 @@ tr:nth-child(odd) {
 th {
     background-color: var(--exia-red1);
     color: white;
+}
+
+@media screen and (max-width: 767px) {
+    .event-infos-subsCount-list {
+        min-width: 0;
+        max-width: 240px;
+    }
 }
 
 

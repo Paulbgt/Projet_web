@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="img/exia-logo.png"/>
     <title>BDE - Evénement du mois</title>
     <meta name="description" content="Ecvénements du mois du BDE de l'Exia.Cesi d'Arras."/>
-    <link rel="stylesheet" href="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.css">
+    <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
     <link rel="stylesheet" href="css/common.min.css">
     <link rel="stylesheet" href="css/eventMonth.min.css">
 </head>
@@ -159,7 +159,7 @@ $display->closeCursor();
        
     <?php include '_footer.php' ?>
         
-<script src="https://aklibrary.fr/AKLibrary/1.4.0/AURELIENKLEIN.library.min.js"></script>
+<script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/eventMonth.min.js"></script>
 </body>

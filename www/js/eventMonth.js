@@ -17,6 +17,11 @@ for (var i = 0; i<btnSubscribe.length; i++) {
     });
 }
 
+var list = document.querySelectorAll('.event-infos-subsCount-list');
+for (var u = 0; u< list.length; u++) {
+    list[u].style.maxWidth = window.innerWidth - 80 + 'px';
+}
+
 
 /* ///////////// Modal //////////// */
 
