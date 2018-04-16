@@ -14,10 +14,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 
 if (!empty($_POST['like_id'])) {
     $like_id = $_POST['like_id'];
-    $delete = $bdd->prepare('INSERT INTO likes(id_account, id_event) VALUES(:account_id, :like_id)');
+    $delete = $bdd->prepare('INSERT INTO like_event(id_account, id_event) VALUES(:account_id, :like_id)');
 } else if (!empty($_POST['unlike_id'])) {
     $like_id = $_POST['unlike_id'];
-    $delete = $bdd->prepare('DELETE FROM likes WHERE id_account=:account_id AND id_event=:like_id');
+    $delete = $bdd->prepare('DELETE FROM like_event WHERE id_account=:account_id AND id_event=:like_id');
 } else {
     //message si l'insertion dans la base de données ne s'effectue pas
     echo "L'événement n'a pas pu être ajouté à la base de données.";
