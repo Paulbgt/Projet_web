@@ -6,11 +6,11 @@ for (var i = 0; i<btnSubscribe.length; i++) {
     btnSubscribe[i].addEventListener('click', function() {
         var icone = document.getElementById("subsCount" + this.id.replace('subscribe', ''));
         if (this.value == "S'inscrire") {
-            icone.style.backgroundImage = "url(img/subscribe_full.svg)";
+            icone.style.backgroundImage = "url(site_picture/subscribe_full.svg)";
             icone.setAttribute('value', parseInt(icone.getAttribute('value')) + 1);
             this.value = "Se désinscrire";
         } else {
-            icone.style.backgroundImage = "url(img/subscribe_empty.svg)";
+            icone.style.backgroundImage = "url(site_picture/subscribe_empty.svg)";
             icone.setAttribute('value', parseInt(icone.getAttribute('value')) - 1);
             this.value = "S'inscrire";
         }
