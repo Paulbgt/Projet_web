@@ -73,7 +73,7 @@ while ($response = $display->fetch()) {
     
     
     //request to get list of likes
-    $subs = $bdd->prepare("SELECT last_name, first_name, mail FROM account INNER JOIN likes ON likes.id_account=account.id WHERE id_event=:mid");
+    $subs = $bdd->prepare("SELECT last_name, first_name, mail FROM account INNER JOIN like_event ON like_event.id_account=account.id WHERE id_event=:mid");
     $subs->execute([
         ':mid' => $response['id']
     ]);

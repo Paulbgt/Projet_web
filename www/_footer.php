@@ -8,10 +8,8 @@
     <ul class="footer-ul">
         <li class="footer-ul-li"><a href="ideaBox">Boite à idée</a></li>
         <li class="footer-ul-li"><a href="eventMonth">Evénements du mois</a></li>
-        <li class="footer-ul-li"><a>Evénements passés</a></li>
+        <li class="footer-ul-li"><a href="eventDone">Evénements passés</a></li>
         <li class="footer-ul-li"><a>Boutique</a></li>
     </ul>
-    <?php
-		}
-	?>
+    <?php } ?>
 </div>
