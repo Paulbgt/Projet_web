@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" href="site_picture/exia-logo.png"/>
     <title>BDE - Evénements terminés</title>
-    <meta name="description" content="Ecvénements du mois du BDE de l'Exia.Cesi d'Arras."/>
+    <meta name="description" content="Evénements terminés du BDE de l'Exia.Cesi d'Arras."/>
     <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
     <link rel="stylesheet" href="css/common.min.css">
     <link rel="stylesheet" href="css/eventDone.min.css">
@@ -97,6 +97,7 @@ $photos->execute(['id' => $response['id']]);
                 <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-inputLabel">Choisir une image</label>
                 <input type="file" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" class="modalPhoto-input" hidden>
                 <input type="submit" class="AKL-btnClassic-Flat-ocean modalPhoto-submit" value="Valider">
+                <input type="number" class="" id="photo_event_id" name="photo_event_id" form="idFileImgModalPhoto<?= $i ?>" readonly hidden>
             </div>
         </div>
 

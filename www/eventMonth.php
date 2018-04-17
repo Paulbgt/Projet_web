@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" href="site_picture/exia-logo.png"/>
     <title>BDE - Evénement du mois</title>
-    <meta name="description" content="Ecvénements du mois du BDE de l'Exia.Cesi d'Arras."/>
+    <meta name="description" content="Evénements du mois du BDE de l'Exia.Cesi d'Arras."/>
     <link rel="stylesheet" href="AKLibrary/AURELIENKLEIN.library.min.css">
     <link rel="stylesheet" href="css/common.min.css">
     <link rel="stylesheet" href="css/eventMonth.min.css">
