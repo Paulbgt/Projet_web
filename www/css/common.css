@@ -356,8 +356,6 @@ a {
         position: absolute;
         right: 20px;
         bottom: 25px;
-        width: 40px;
-        height: 40px;
     }
 
 
@@ -371,11 +369,13 @@ a {
             display: block;
         }
         .footer-twitter {
-            display: block;
             position: relative;
             margin: 10px auto;
             right: auto;
             bottom: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .footer-ul {

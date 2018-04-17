@@ -55,9 +55,10 @@ while ($response = $display->fetch()) {
 ?>
         
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
-            <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)">
-                
-                
+            <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
+                <div class="event-img-<?= $i ?>" liked="false" value="2" style="background-image: url(event_picture/popcorn.jpg)"></div>
+                <div class="event-img-<?= $i ?>" liked="false" value="0" style="background-image: url(event_picture/foot.jpg)"></div>
+                <div class="event-img-<?= $i ?>" liked="false" value="6" style="background-image: url(event_picture/barbecue.jpg)"></div>
             </div>
             <div class="AKL-ctn--c2-s1 event-infos">
                 <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
@@ -68,19 +69,16 @@ while ($response = $display->fetch()) {
                 <textarea id="event-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked event-infos-description" readonly><?= $response['description'] ?></textarea>
                 
                 <div class="event-infos-btn">
-<!--
-                    <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="">
-                    <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="">
--->
-                   
-                    <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
-                    <div class="AKL-ctn--c1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
-                    <?php } ?>
+                    <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-sendPhoto" value="Déposer une photo">
+                    <a class="AKL-btnClassic-Flat-ocean event-infos-comment">Commentaires</a>
                 </div>
+                    <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+                    <div class="AKL-btnClassic-Flat-dark event-admin<?= $i ?>" id="<?= $response['id'] ?>">Administrer</div>
+                    <?php } ?>
             </div>
-            <div class="AKL-ctn--c2-s1 event-swap">
+            <div class="AKL-ctn--c2-s1 event-swap" step="0">
                 <a class="event-swap-previous"></a>
-                <a class="event-swap-like" value="10" style="background-image: url(site_picture/like_grey.svg)"></a>
+                <a class="event-swap-like" value="2" style="background-image: url(site_picture/like_grey.svg)"></a>
                 <a class="event-swap-next"></a>
             </div>
         </div>
