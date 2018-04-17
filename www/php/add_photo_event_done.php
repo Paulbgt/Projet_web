@@ -11,7 +11,7 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
 
 }
 
-$result = ; // On va récupérer l'ID de l'event actuel en JS
+$result = $_POST['$photo_event_id'];
 $msg = "";
 $ref = 0;
 
