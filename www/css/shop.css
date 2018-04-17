@@ -85,51 +85,53 @@
             float: left;
         }
 
-.promotion .article-infos-price {
-    width: 50%;
-    float: left;
-    text-indent: 5px;
-    line-height: 20px;
-}
+            .promotion .article-infos-price {
+                width: 40%;
+                float: left;
+                text-indent: 5px;
+                line-height: 20px;
+                font-size: 0.9em;
+            }
 
-.promotion .article-infos-price::before {
-    content: '';
-    float: left;
-    width: 20px;
-    height: 20px;
-    background-image: url(../site_picture/price_black.svg);
-}
+                .promotion .article-infos-price::before {
+                    content: '';
+                    float: left;
+                    width: 20px;
+                    height: 20px;
+                    background-image: url(../site_picture/price_black.svg);
+                }
 
-.promotion .article-infos-category {
-    width: 50%;
-    float: left;
-    text-indent: 5px;
-    line-height: 20px;
-}
+            .promotion .article-infos-category {
+                width: 60%;
+                float: left;
+                text-indent: 5px;
+                line-height: 20px;
+                font-size: 0.9em;
+            }
 
-.promotion .article-infos-category::before {
-    content: '';
-    float: left;
-    width: 20px;
-    height: 20px;
-    background-image: url(../site_picture/category_black.svg);
-}
+                .promotion .article-infos-category::before {
+                    content: '';
+                    float: left;
+                    width: 20px;
+                    height: 20px;
+                    background-image: url(../site_picture/category_black.svg);
+                }
 
-.promotion .article-infos-description {
-    padding: 0;
-    width: 100%;
-    float: left;
-    max-height: 70px;
-    overflow: hidden;
-    font-size: 0.8em;
-}
+            .promotion .article-infos-description {
+                padding: 0;
+                width: 100%;
+                float: left;
+                max-height: 70px;
+                overflow: hidden;
+                font-size: 0.8em;
+            }
 
-.promotion .article-infos-btnAdd {
-    position: absolute;
-    top: -30px;
-    right: 0;
-    outline: none;
-    border: none;
-    font-size: 1.3em;
-    font-weight: bold;
-}
+            .promotion .article-infos-btnAdd {
+                position: absolute;
+                top: -30px;
+                right: 0;
+                outline: none;
+                border: none;
+                font-size: 1.3em;
+                font-weight: bold;
+            }
