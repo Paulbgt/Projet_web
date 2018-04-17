@@ -1,6 +1,6 @@
 <?php  
 //conexion à la base de données
-$db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
+$db = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 
 $add_category = ($_POST['name_category']);

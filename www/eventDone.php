@@ -23,7 +23,7 @@
 <?php  
 try{
 //conexion à la base de données
-$bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 

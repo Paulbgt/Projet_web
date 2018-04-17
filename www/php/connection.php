@@ -1,7 +1,7 @@
 <?php session_start();  
 
 //conexion à la base de données
-$db = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
+$db = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 //on définit les vraibles avec ce que l'uitlisateurs a rempli dans le formulaire et on sécurise les variables
 $lmail = htmlspecialchars($_POST['lmail']);
