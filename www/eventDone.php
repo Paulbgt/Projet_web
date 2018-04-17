@@ -94,8 +94,8 @@ $photos->execute(['id' => $response['id']]);
                 </div>
             </div>
             <div class="AKL-ctn--c2-s1 modalPhoto">
-                <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-input">Choisir une image</label>
-                <input type="file" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" hidden>
+                <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-inputLabel">Choisir une image</label>
+                <input type="file" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" class="modalPhoto-input" hidden>
             </div>
         </div>
 

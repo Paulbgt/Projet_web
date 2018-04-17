@@ -26,8 +26,20 @@ for (var i=0; i<btnComment.length; i++) {
     });
 }
 
+// Event listener to display the photo modal
+var btnPhoto = document.querySelectorAll('.event-infos-sendPhoto');
+for (var i=0; i<btnPhoto.length; i++) {
+    btnPhoto[i].addEventListener('click', function() {
+        this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
+        this.parentElement.parentElement.parentElement.querySelector('.modalPhoto-close').addEventListener('click', function() {
+            this.parentElement.style.display = 'none';
+        });
+    });
+}
+
 
 // Event listener used to display the image selected on the designated area
+var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
 for (vari=0; i<inputImg.length; i++) {
     inputImg[i].addEventListener('change', function(e) {
         var files = this.files[0];
@@ -37,7 +49,8 @@ for (vari=0; i<inputImg.length; i++) {
         if (allowedTypes.indexOf(imgType) != -1) {
             var path = URL.createObjectURL(this.files[0]);
             this.parentElement.style.backgroundImage = 'url(' + path + ')';
-            document.querySelector('[for=fileImg]').style.marginBottom = '-290px';
+            console.log(this.parentElement.querySelector('.modalPhoto-inputLabel'));
+            this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
         }
     });
 }
