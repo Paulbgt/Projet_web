@@ -35,8 +35,10 @@ while ($response = $see->fetch()) {
 
 <span id="idea-infos-title" class="idea-infos-title"><?= $response['price'] ?> euros</span><br>
 
-<input type="text" name="quantity" value="<?= $response['qantity']?>"><br><br><br>
+<input type="text" name="quantity" value="<?= $response['qantity']?>"><br>
 
+<input type="submit" name="delete_article" value="supprimer ce produit de votre panier"><br><br><br><br>
+ 
 
 
 <?php
