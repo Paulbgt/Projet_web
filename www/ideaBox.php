@@ -76,8 +76,7 @@ while ($response = $display->fetch()) {
     $subs = $bdd->prepare("SELECT id_account from like_event where id_event=:idevent AND id_account=:idaccount");
     $subs->execute([
         ':idevent' => $response['id'],
-				':idaccount' => $_SESSION['id']
-
+        ':idaccount' => $_SESSION['id']
     ]);
 		$liked = $subs->fetchAll();
 

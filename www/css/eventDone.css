@@ -272,7 +272,7 @@
         }
     
             .event-infos-sendPhoto {
-                width: 100%;
+                width: calc(100% - 30px);
                 margin: 0;
                 font-size: 0.9em;
             }
@@ -289,6 +289,9 @@
 /* ////////////////////////// modalPhoto /////////////////////// */
 
 .modalPhoto {
+    background-position: center;
+    background-size: calc(70% - 40px) calc(70% - 40px) cover;
+    background-repeat: no-repeat;
     position: absolute;
     top: 0;
     left: 0;
