@@ -24,7 +24,7 @@
         <a id="displaySuggestion" class="AKL-btnClassic-Flat-ocean">Proposer une idée</a>
         <div class="AKL-ctn--c3_4-s1 suggestion">
             <a class="suggestion-title">Proposer une idée</a>
-            
+
 
 
             <form action="php/suggest_event_add.php" method="POST" enctype="multipart/form-data">
@@ -38,21 +38,21 @@
                     <input type="text" name="place" id="place" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
                     <input type="text" name="club" id="club" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
                     <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
-                    <input type="text" name="price" id="price" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price"> 
+                    <input type="text" name="price" id="price" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price">
                     <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
                     <label class="form-error" for="description"></label>
-              
+
                     <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit" id="submitIdea"/>
-                      
+
                 </div>
             </form>
-            
+
         </div>
     </div>
 
 
 
-<?php  
+<?php
 try{
 //conexion à la base de données
 $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
@@ -64,37 +64,35 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 }
 
 //requête qui permet de récupérer les données dans la BDD
-$display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 0");
+$display = $bdd->prepare("SELECT COUNT(like_event.id_account) as nb_like,event.id, event.title, event.description, event.event_date,event.place,event.club,event.price,event_picture.url  FROM (like_event right JOIN event ON like_event.id_event=event.id) LEFT join event_picture ON event.id=event_picture.id_event where event.eventStatus = 0 GROUP BY event.id");
 $display->execute();
 $i = 1;
 $liked = false;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
-    
-    
+
+
     //request to get list of likes
-    $subs = $bdd->prepare("SELECT last_name, first_name, mail FROM account INNER JOIN like_event ON like_event.id_account=account.id WHERE id_event=:mid");
+    $subs = $bdd->prepare("SELECT id_account from like_event where id_event=:idevent AND id_account=:idaccount");
     $subs->execute([
-        ':mid' => $response['id']
+        ':idevent' => $response['id'],
+				':idaccount' => $_SESSION['id']
+
     ]);
-    $count = $subs->rowCount(); // var to know the number of likes on each idea
-    $event = $subs->fetchAll(PDO::FETCH_ASSOC); //Fetch to know if the user liked for each idea
-    for ($u=0; $u < $count; $u++) {
-        if ($event[$u]['mail'] == $_SESSION['mail']) {
-            $liked = true;
-        }
-    }
+		$liked = $subs->fetchAll();
+
+		//echo ('event_picture/'.$response['id'].'/'.$response['url']);
 ?>
 
 
     <div id="idea<?= $response['id'] ?>" class="AKL-ctn--c2-t1 idea">
         <form id="likeForm<?= $i ?>" action="php/like.php" method="POST"></form>
-        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)"></div>
+        <div class="AKL-ctn--c3-t1 idea-img" id="idea-img<?= $i ?>" style="background-image: url(<?=('event_picture/'.$response['id'].'/'.$response['url'])?>)"></div>
         <div class="AKL-ctn--c2_3-t1 idea-infos">
-           
+
             <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $response['id'] ?>" form="likeForm<?= $i ?>" readonly hidden>
-            <button type="submit" class="idea-infos-like" value="<?= $count ?>" style="background-image: url(site_picture/like_<?= $liked ? 'blue' : 'grey' ?>.svg)" form="likeForm<?= $i ?>"></button>
-            
+            <button type="submit" class="idea-infos-like" value="<?= $response['nb_like'] ?>" style="background-image: url(site_picture/like_<?= $liked ? 'blue' : 'grey' ?>.svg)" form="likeForm<?= $i ?>"></button>
+
             <span id="idea-infos-title<?= $i ?>" class="idea-infos-title"><?= $response['title'] ?></span>
             <span id="idea-infos-place<?= $i ?>" class="idea-infos-place"><?= $response['place'] ?></span>
             <span id="idea-infos-club<?= $i ?>" class="idea-infos-club"><?= $response['club'] ?></span>
@@ -110,7 +108,7 @@ while ($response = $display->fetch()) {
 
 
 
-<?php 
+<?php
 $i++;
 $liked = false; }
 $display->closeCursor();
@@ -240,8 +238,8 @@ Cdlmt.</textarea>
     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
     <form id="administerForm" action="php/administer_event.php" method="POST"></form>
     <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
-    
-    
+
+
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <span class="modal-title">Editer l'événement</span>
