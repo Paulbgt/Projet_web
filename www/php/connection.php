@@ -28,7 +28,7 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['id'] = $result['id'];
 
 
-			$ez = $db->prepare("SELECT id FROM orders WHERE id_account = :idaccount AND statute='panier'");
+			$ez = $db->prepare("SELECT * FROM orders WHERE id_account = :idaccount AND statute='panier'");
 			$ez->execute([
 				'idaccount'=> $_SESSION['id']
 			]);
@@ -36,16 +36,14 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$resultpanier=$ez->fetch();
 				if($resultpanier)
 				{
-					$_SESSION['id_order'] = 10;
-					//$resultpanier['id'];
+					$_SESSION['id_order'] = $resultpanier['id'];
 				}
 				else{
-					$eza = $db->prepare("INSERT INTO orders statute, id_account VALUES 'panier',:idaccount");
+					$eza = $db->prepare("INSERT INTO orders (statute, id_account) VALUES ('panier',:idaccount)");
 					$eza->execute([
 					'idaccount' => $_SESSION['id']
 				]);
-					$_SESSION['id_order'] = 8;
-				//$db->lastInsertId();
+					$_SESSION['id_order'] = $db->lastInsertId();
 				}
 
 			header('Location: ../ideaBox');
