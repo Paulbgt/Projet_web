@@ -92,12 +92,9 @@ $photos->execute(['id' => $response['id']]);
                     <span class="modalComment-comment-span">Paul Boogaert</span>
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
                 </div>
-<<<<<<< HEAD
             </div>$
             <form action="php/add_photo_event_done.php" id="add_imageForm" method="POST" enctype="multipart/form-data">
-=======
             </div>
->>>>>>> 0f41bf1236bbe97ef98d156b15e361abfb5131a5
             <div class="AKL-ctn--c2-s1 modalPhoto">
                 <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-inputLabel">Choisir une image</label>
                 <input type="file" name="image" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" class="modalPhoto-input" hidden>
