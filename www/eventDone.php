@@ -80,18 +80,29 @@ $photos->execute(['id' => $response['id']]);
                     <textarea class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
                     <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
                 </div>
+    
+                <?php
+                $comments = $bdd->prepare("SELECT * FROM commentary WHERE id_event = :id ORDER BY id DESC");
+                $comments->execute(['id' => $response['id']]);
+
+                while($comment = $comments->fetch()) {
+                ?>
+
                 <div class="modalComment-comment">
                     <span class="modalComment-comment-span">Aurélien Klein</span>
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus perspiciatis sequi incidunt quod in ea, ducimus magnam velit optio, eum asperiores debitis commodi nesciunt, sint facere vel voluptatum itaque necessitatibus.</p>
                 </div>
-                <div class="modalComment-comment">
+
+                <?php } ?>
+
+            <!-- <div class="modalComment-comment">
                     <span class="modalComment-comment-span">Florian Fritsch</span>
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor incidunt quasi illum corporis fugiat animi dolore itaque veritatis laboriosam voluptatem sit quam eos, pariatur sapiente repudiandae, cumque eligendi, consequuntur culpa.</p>
                 </div>
                 <div class="modalComment-comment">
                     <span class="modalComment-comment-span">Paul Boogaert</span>
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
-                </div>
+                </div> -->
             </div>
             <div class="AKL-ctn--c2-s1 modalPhoto">
                 <form action="php/add_photo_event_done.php" id="add_imageForm" method="POST" enctype="multipart/form-data">
