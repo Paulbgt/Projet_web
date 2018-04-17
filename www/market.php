@@ -36,11 +36,13 @@ while ($response = $display->fetch()) {
 	<form action="php/add_article_caddy.php" method="POST">
     <div class="AKL-ctn--c2-t1 idea">
         <div class="AKL-ctn--c2_3-t1 idea-infos">
-            <span id="idea-infos-title1" class="idea-infos-title"><?= $response['name'] ?></span><br>
+            <span id="shop-info-name" name="shop-info-name" class="shop-info-name"><?= $response['name'] ?></span><br>
 
-            <span id="idea-infos-place1" class="idea-infos-place"><?= $response['description'] ?></span><br>
+            <span id="shop-info-description" name="shop-info-description" class="shop-info-description"><?= $response['description'] ?></span><br>
 
-            <span id="idea-infos-club1" class="idea-infos-club"><?= $response['price'] ?></span><br>
+            <span id="shop-info-price" name="shop-info-price" class="shop-info-price"><?= $response['price'] ?></span><br>
+
+            <input type="hidden" name="take_id_produce" id="take_id_produce" value="<?= $response['id_category']?>"> 
 
             <input type="submit" name="add_caddy" value="Ajouter au panier"><br>
 
@@ -61,7 +63,7 @@ $display->closeCursor();
             <br><br><br><br>
 
 
-<form action="caddy.php" method="POST">
+<form action="php/caddy.php" method="POST">
 <input type="submit" name="see_panier" value="Voir votre panier">
 </form>
 
