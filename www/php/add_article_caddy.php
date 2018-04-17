@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <?php
 try{
 //conexion à la base de données
@@ -11,9 +12,15 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 
 $id_account = $_SESSION['id'];
 
-$insert = $db->prepare("INSERT INTO orders(statute, id_account) VALUES('panier', ':id_account')");
+var_dump($id_account);
+
+$insert = $bdd->prepare("INSERT INTO orders(id_account) VALUES(:id_account)");
 
 $insert->execute([
-    ':id_account' => $id_account
+    'id_account' => $id_account
 ]);
+
+echo "ok";
+
+header('Location: ../market.php')
 ?>
