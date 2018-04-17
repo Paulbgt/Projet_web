@@ -2,7 +2,10 @@ var btnLike = document.querySelectorAll('.event-swap-like');
 var btnPrevious = document.querySelectorAll('.event-swap-previous');
 var btnNext = document.querySelectorAll('.event-swap-next');
 var btnCloseModalComment = document.querySelector('.modalComment-close');
+var inputImg = document.querySelectorAll('.modalPhoto-input');
 
+
+// Event listener to display the comment modal
 var btnComment = document.querySelectorAll('.event-infos-comment');
 for (var i=0; i<btnComment.length; i++) {
     btnComment[i].addEventListener('click', function() {
@@ -24,8 +27,23 @@ for (var i=0; i<btnComment.length; i++) {
 }
 
 
+// Event listener used to display the image selected on the designated area
+for (vari=0; i<inputImg.length; i++) {
+    inputImg[i].addEventListener('change', function(e) {
+        var files = this.files[0];
+        var imgType = files.name.split('.');
+        imgType = imgType[imgType.length - 1].toLowerCase();
+
+        if (allowedTypes.indexOf(imgType) != -1) {
+            var path = URL.createObjectURL(this.files[0]);
+            this.parentElement.style.backgroundImage = 'url(' + path + ')';
+            document.querySelector('[for=fileImg]').style.marginBottom = '-290px';
+        }
+    });
+}
 
 
+// buttons used for the caroussel
 for (var i=0; i<btnNext.length; i++) {
     btnNext[i].addEventListener('click', function() {
         var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');

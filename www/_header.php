@@ -14,7 +14,7 @@
             <li class="nav-blc-ul-li"><a href="ideaBox">Boite à idée</a></li>
             <li class="nav-blc-ul-li"><a href="eventMonth">Evénements du mois</a></li>
             <li class="nav-blc-ul-li"><a href="eventDone">Evénements passés</a></li>
-            <li class="nav-blc-ul-li"><a>Boutique</a></li>
+            <li class="nav-blc-ul-li"><a href="shop">Boutique</a></li>
         </ul>
     </div>
     <?php
@@ -80,7 +80,7 @@
             <li class="nav-blc-ul-li"><a href="ideaBox">Boite à idée</a></li>
             <li class="nav-blc-ul-li"><a href="eventMonth">Evénements du mois</a></li>
             <li class="nav-blc-ul-li"><a href="eventDone">Evénements passés</a></li>
-            <li class="nav-blc-ul-li"><a>Boutique</a></li>
+            <li class="nav-blc-ul-li"><a href="shop">Boutique</a></li>
         </ul>
         <hr>
         <span class="headerPhone-log-name">

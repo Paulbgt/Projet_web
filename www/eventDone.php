@@ -35,23 +35,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 2 ORDER BY id DESC");
 $display->execute();
 $i = 1;
-//$liked = false;
+    
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
     
-    
-    //request to get list of likes
-//    $subs = $bdd->prepare("SELECT last_name, first_name, mail FROM account INNER JOIN like_event ON like_event.id_account=account.id WHERE id_event=:mid");
-//    $subs->execute([
-//        ':mid' => $response['id']
-//    ]);
-//    $count = $subs->rowCount(); // var to know the number of likes on each idea
-//    $event = $subs->fetchAll(PDO::FETCH_ASSOC); //Fetch to know if the user liked for each idea
-//    for ($u=0; $u < $count; $u++) {
-//        if ($event[$u]['mail'] == $_SESSION['mail']) {
-//            $liked = true;
-//        }
-//    }
 ?>
         
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
@@ -69,7 +56,7 @@ while ($response = $display->fetch()) {
                 <textarea id="event-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked event-infos-description" readonly><?= $response['description'] ?></textarea>
                 
                 <div class="event-infos-btn">
-                    <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-sendPhoto" value="Déposer une photo">
+                    <a class="AKL-btnClassic-Flat-ocean event-infos-sendPhoto">Déposer une photo</a>
                     <a class="AKL-btnClassic-Flat-ocean event-infos-comment">Commentaires</a>
                 </div>
             </div>
@@ -103,12 +90,15 @@ while ($response = $display->fetch()) {
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
                 </div>
             </div>
+            <div class="AKL-ctn--c2-s1 modalPhoto">
+                <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-input">Choisir une image</label>
+                <input type="file" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" hidden>
+            </div>
         </div>
 
        
 <?php
-$i++;
-$subscribed = false; }
+$i++; }
 $display->closeCursor();
 ?>
         

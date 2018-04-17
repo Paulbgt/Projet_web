@@ -136,11 +136,8 @@
         }
 
             .event-infos-sendPhoto {
-                width: calc(50% - 20px);
-                border: none;
-                outline: none;
+                width: calc(50% - 50px);
                 margin: 0 20px 0 0;
-                font-size: 1em;
             }
 
             .event-infos-comment {
@@ -286,6 +283,32 @@
                 font-size: 0.9em;
             }
 }
+
+
+
+/* ////////////////////////// modalPhoto /////////////////////// */
+
+.modalPhoto {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100% - 40px);
+/*    display: none;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event:nth-child(2n) .modalPhoto  {
+    background-color: var(--exia-red2);
+}
+
+.event:nth-child(2n+1) .modalPhoto {
+    background-color: white;
+}
+
+
+
 
 
 /* ///////////////////////// modalComment ////////////////////// */
