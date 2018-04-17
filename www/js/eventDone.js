@@ -1,17 +1,57 @@
 var btnLike = document.querySelectorAll('.event-swap-like');
+var btnPrevious = document.querySelectorAll('.event-swap-previous');
+var btnNext = document.querySelectorAll('.event-swap-next');
+
+for (var i=0; i<btnNext.length; i++) {
+    btnNext[i].addEventListener('click', function() {
+        var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
+        var position = parseInt(this.parentElement.getAttribute('step'));
+        img[position].setAttribute('value', this.parentElement.querySelector('.event-swap-like').getAttribute('value'));
+        for (var m=0; m<img.length; m++) {
+            img[m].style.opacity = 0;
+        }
+        position == img.length-1 ? position = 0 : position += 1;
+        img[position].style.opacity = 1;
+        this.parentElement.setAttribute('step', position);
+        this.parentElement.querySelector('.event-swap-like').setAttribute('value', img[position].getAttribute('value'));
+        img[position].getAttribute('liked') == "true" ? this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
+        this.parentElement.querySelector('.event-swap-like').style.animation = "none";
+    });
+    btnPrevious[i].addEventListener('click', function() {
+        var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
+        var position = parseInt(this.parentElement.getAttribute('step'));
+        img[position].setAttribute('value', this.parentElement.querySelector('.event-swap-like').getAttribute('value'));
+        for (var m=0; m<img.length; m++) {
+            img[m].style.opacity = 0;
+        }
+        position == 0 ? position = img.length-1 : position -= 1;
+        img[position].style.opacity = 1;
+        this.parentElement.setAttribute('step', position);
+        this.parentElement.querySelector('.event-swap-like').setAttribute('value', img[position].getAttribute('value'));
+        img[position].getAttribute('liked') == "true" ? this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
+        this.parentElement.querySelector('.event-swap-like').style.animation = "none";
+    });
+}
+
+
+
 
 // Event listener used to swap the likes image and to update the display of number of likes
 for (var i = 0; i<btnLike.length; i++) {
     btnLike[i].addEventListener('click', function() {
+        var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
+        var position = parseInt(this.parentElement.getAttribute('step'));
         if (this.style.backgroundImage.search('grey') > 0) {
             this.style.backgroundImage = "url(site_picture/like_blue.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) + 1);
             this.style.animation = "like 225ms";
+            img[position].setAttribute('liked', true);
 //            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'like_id');
         } else {
             this.style.backgroundImage = "url(site_picture/like_grey.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
             this.style.animation = "unlike 225ms";
+            img[position].setAttribute('liked', false);
 //            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'unlike_id');
         }
     });
