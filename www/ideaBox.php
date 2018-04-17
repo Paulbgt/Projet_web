@@ -55,7 +55,7 @@
 <?php
 try{
 //conexion à la base de données
-$bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 
@@ -76,8 +76,7 @@ while ($response = $display->fetch()) {
     $subs = $bdd->prepare("SELECT id_account from like_event where id_event=:idevent AND id_account=:idaccount");
     $subs->execute([
         ':idevent' => $response['id'],
-				':idaccount' => $_SESSION['id']
-
+        ':idaccount' => $_SESSION['id']
     ]);
 		$liked = $subs->fetchAll();
 

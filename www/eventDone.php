@@ -23,7 +23,7 @@
 <?php  
 try{
 //conexion à la base de données
-$bdd = new PDO('mysql:host=localhost;dbname=web_project;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 
@@ -92,10 +92,11 @@ $photos->execute(['id' => $response['id']]);
                     <span class="modalComment-comment-span">Paul Boogaert</span>
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
                 </div>
-            </div>
+            </div>$
             <div class="AKL-ctn--c2-s1 modalPhoto">
                 <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-inputLabel">Choisir une image</label>
                 <input type="file" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" class="modalPhoto-input" hidden>
+                <input type="submit" class="AKL-btnClassic-Flat-ocean modalPhoto-submit" value="Valider">
             </div>
         </div>
 

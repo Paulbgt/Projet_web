@@ -2,7 +2,8 @@ var btnLike = document.querySelectorAll('.event-swap-like');
 var btnPrevious = document.querySelectorAll('.event-swap-previous');
 var btnNext = document.querySelectorAll('.event-swap-next');
 var btnCloseModalComment = document.querySelector('.modalComment-close');
-var inputImg = document.querySelectorAll('.modalPhoto-input');
+var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
+//var inputImg = document.querySelectorAll('.modalPhoto-input');
 
 
 // Event listener to display the comment modal
@@ -26,34 +27,35 @@ for (var i=0; i<btnComment.length; i++) {
     });
 }
 
-// Event listener to display the photo modal
+// Event listener to display the photo modal and to used to display the image selected on the designated area
 var btnPhoto = document.querySelectorAll('.event-infos-sendPhoto');
 for (var i=0; i<btnPhoto.length; i++) {
     btnPhoto[i].addEventListener('click', function() {
-        this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
-        this.parentElement.parentElement.parentElement.querySelector('.modalPhoto-close').addEventListener('click', function() {
-            this.parentElement.style.display = 'none';
-        });
-    });
-}
+        if (this.innerHTML == 'Déposer une photo') {
+            this.innerHTML = 'Anuler';
+            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
 
+            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').children[1].addEventListener('change', function(e) {
+                var files = this.files[0];
+                var imgType = files.name.split('.');
+                imgType = imgType[imgType.length - 1].toLowerCase();
 
-// Event listener used to display the image selected on the designated area
-var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
-for (vari=0; i<inputImg.length; i++) {
-    inputImg[i].addEventListener('change', function(e) {
-        var files = this.files[0];
-        var imgType = files.name.split('.');
-        imgType = imgType[imgType.length - 1].toLowerCase();
-
-        if (allowedTypes.indexOf(imgType) != -1) {
-            var path = URL.createObjectURL(this.files[0]);
-            this.parentElement.style.backgroundImage = 'url(' + path + ')';
-            console.log(this.parentElement.querySelector('.modalPhoto-inputLabel'));
-            this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
+                if (allowedTypes.indexOf(imgType) != -1) {
+                    var path = URL.createObjectURL(this.files[0]);
+                    this.parentElement.style.backgroundImage = 'url(' + path + ')';
+                    this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
+                    this.parentElement.querySelector('.modalPhoto-inputLabel').style.boxShadow = '0 0 5px black';
+                    this.parentElement.querySelector('.modalPhoto-submit').style.display = 'block';
+                }
+            });
+        } else {
+            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'none';
+            this.innerHTML = 'Déposer une photo';
         }
     });
 }
+
+
 
 
 // buttons used for the caroussel

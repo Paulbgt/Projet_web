@@ -272,7 +272,7 @@
         }
     
             .event-infos-sendPhoto {
-                width: 100%;
+                width: calc(100% - 30px);
                 margin: 0;
                 font-size: 0.9em;
             }
@@ -289,6 +289,9 @@
 /* ////////////////////////// modalPhoto /////////////////////// */
 
 .modalPhoto {
+    background-position: center;
+    background-size: calc(100% - 40px) calc(100% - 40px);
+    background-repeat: no-repeat;
     position: absolute;
     top: 0;
     left: 0;
@@ -306,6 +309,19 @@
 
 .event:nth-child(2n+1) .modalPhoto {
     background-color: white;
+}
+
+.modalPhoto-inputLabel {
+    box-shadow: 0 0 100px var(--exia-red1);
+}
+
+.modalPhoto-submit {
+    outline: none;
+    border: none;
+    font-size: 1em;
+    display: none;
+    margin-bottom: -290px;
+    box-shadow: 0 0 5px black;
 }
 
 
