@@ -26,6 +26,7 @@
 
 .event {
     float: left;
+    position: relative;
 }
 
 .event:nth-child(2n) {
@@ -131,7 +132,7 @@
 
         .event-infos-btn {
             width: 100%;
-            margin: 10px 0 -20px 0;
+            margin: 10px 0 -46px 0;
         }
 
             .event-infos-sendPhoto {
@@ -158,10 +159,8 @@
     }
 
         [class*=event-admin] a {
-/*
             margin: 0;
-            width: 100%;
-*/
+            width: calc(100% - 30px);
         }
 
         .event:nth-child(2n+1) .event-infos-description {
@@ -272,6 +271,7 @@
         .event-infos-btn {
             justify-content: center;
             flex-direction: column;
+            margin: 10px 0 -30px 0;
         }
     
             .event-infos-sendPhoto {
@@ -286,6 +286,117 @@
                 font-size: 0.9em;
             }
 }
+
+
+/* ///////////////////////// modalComment ////////////////////// */
+
+.modalComment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    color: inherit;
+    font-weight: bold;
+    line-height: 30px;
+    display: none;
+}
+
+.event:nth-child(2n) .modalComment  {
+    background-color: var(--exia-red2);
+}
+
+.event:nth-child(2n+1) .modalComment {
+    background-color: white;
+}
+
+    .modalComment-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+.event:nth-child(2n) .modalComment-close  {
+        color: white;
+}
+
+.event:nth-child(2n+1) .modalComment-close {
+        color: black;
+}
+
+    .modalComment-comment {
+        width: calc(100% - 40px);
+        padding: 20px;
+        border-top: 2px solid var(--exia-grey1);
+        background-color: white;
+        color: black;
+        font-weight: normal;
+        line-height: 20px;
+        float: left;
+    }
+
+        .modalComment-comment-span {
+            color: var(--exia-red1);
+            font-weight: bold;
+        }
+
+        .modalComment-comment-plus {
+            color: var(--exia-red1);
+            font-weight: bold;
+            border: 2px solid var(--exia-red1);
+            border-radius: 100%;
+            padding: 0 6.3px;
+            font-size: 15px;
+            margin-left: 10px;
+        }
+
+    .modalComment-post {
+        width: calc(100% - 40px);
+        padding: 20px;
+        color: black;
+        font-weight: normal;
+        line-height: 20px;
+        background-color: var(--exia-grey2);
+        float: left;
+    }
+
+        .modalComment-post-input {
+            --primary_color: var(--exia-red2);
+            --secondary_color: var(--exia-red1);
+            width: calc(100% - 20px);
+            color: black;
+            margin: 15px 0 0 0;
+            display: none;
+        }
+
+        .modalComment-post-btn {
+            outline: none;
+            border: none;
+            font-size: 1em;
+            float: right;
+            margin: 0 10px;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            display: none;
+        }
+
+@media screen and (max-width: 767px) {
+    .modalComment-post-btn {
+        position: relative;
+        float: left;
+        top: auto;
+        right: auto;
+        margin: 10px auto;
+    }
+}
+
+
+
 
 
 

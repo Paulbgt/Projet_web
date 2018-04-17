@@ -1,6 +1,30 @@
 var btnLike = document.querySelectorAll('.event-swap-like');
 var btnPrevious = document.querySelectorAll('.event-swap-previous');
 var btnNext = document.querySelectorAll('.event-swap-next');
+var btnCloseModalComment = document.querySelector('.modalComment-close');
+
+var btnComment = document.querySelectorAll('.event-infos-comment');
+for (var i=0; i<btnComment.length; i++) {
+    btnComment[i].addEventListener('click', function() {
+        this.parentElement.parentElement.parentElement.querySelector('.modalComment').style.display = 'block';
+        this.parentElement.parentElement.parentElement.querySelector('.modalComment-close').addEventListener('click', function() {
+            this.parentElement.style.display = 'none';
+            
+            this.parentElement.querySelector('.modalComment-post-input').style.display = 'none';
+            this.parentElement.querySelector('.modalComment-post-btn').style.display = 'none';
+            this.parentElement.querySelector('.modalComment-comment-plus').style.display = 'inline-block';
+        });
+        
+        this.parentElement.parentElement.parentElement.querySelector('.modalComment-comment-plus').addEventListener('click', function() {
+            this.parentElement.querySelector('.modalComment-post-input').style.display = 'block';
+            this.parentElement.querySelector('.modalComment-post-btn').style.display = 'block';
+            this.style.display = 'none';
+        });
+    });
+}
+
+
+
 
 for (var i=0; i<btnNext.length; i++) {
     btnNext[i].addEventListener('click', function() {

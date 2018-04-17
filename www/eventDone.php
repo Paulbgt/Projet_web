@@ -72,14 +72,36 @@ while ($response = $display->fetch()) {
                     <input type="submit" name="" id="" class="AKL-btnClassic-Flat-ocean event-infos-sendPhoto" value="Déposer une photo">
                     <a class="AKL-btnClassic-Flat-ocean event-infos-comment">Commentaires</a>
                 </div>
-                    <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
-                    <div class="AKL-btnClassic-Flat-dark event-admin<?= $i ?>" id="<?= $response['id'] ?>">Administrer</div>
-                    <?php } ?>
             </div>
             <div class="AKL-ctn--c2-s1 event-swap" step="0">
                 <a class="event-swap-previous"></a>
                 <a class="event-swap-like" value="2" style="background-image: url(site_picture/like_grey.svg)"></a>
                 <a class="event-swap-next"></a>
+            </div>
+            <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+            <div class="AKL-ctn--c2-s1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
+            <?php } ?>
+            <div class="AKL-ctn--c2-s1 modalComment">
+                <div class="modalComment-close">X</div>
+                    Commentaires :
+                <div class="modalComment-post">
+                    <span class="modalComment-comment-span">Poster un commentaire</span>
+                    <a class="modalComment-comment-plus">+</a>
+                    <textarea class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
+                    <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
+                </div>
+                <div class="modalComment-comment">
+                    <span class="modalComment-comment-span">Aurélien Klein</span>
+                    <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus perspiciatis sequi incidunt quod in ea, ducimus magnam velit optio, eum asperiores debitis commodi nesciunt, sint facere vel voluptatum itaque necessitatibus.</p>
+                </div>
+                <div class="modalComment-comment">
+                    <span class="modalComment-comment-span">Florian Fritsch</span>
+                    <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor incidunt quasi illum corporis fugiat animi dolore itaque veritatis laboriosam voluptatem sit quam eos, pariatur sapiente repudiandae, cumque eligendi, consequuntur culpa.</p>
+                </div>
+                <div class="modalComment-comment">
+                    <span class="modalComment-comment-span">Paul Boogaert</span>
+                    <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
+                </div>
             </div>
         </div>
 
