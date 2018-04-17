@@ -311,6 +311,11 @@
     background-color: white;
 }
 
+.modalPhoto-submit {
+    outline: none;
+    border: none;
+}
+
 
 
 
