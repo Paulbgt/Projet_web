@@ -23,7 +23,7 @@
 <!--          .AKL-ctn--c1.promotion>h2.promotion-title+.AKL-ctn--c4-s1.article*3>(.AKL-ctn--c1.article-img>h3.article-img-title)+.AKL-ctn--c1.article-infos>span.AKL-ctn--c2.article-infos-price+span.AKL-ctn--c2.article-infos-category+p.AKL-ctn--c1.article-infos-description+input[type=submit].AKL-btnClassic-Flat-ocean.article-infos-btnAdd-->
           <div class="AKL-ctn--c1 promotion">
               <h2 class="promotion-title">Articles les plus populaires</h2>
-              <div class="AKL-ctn--c4-t3-s1 article">
+              <div class="AKL-ctn--c4-s1 article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Tasse exiaCorp</h3>
                   </div>
@@ -34,7 +34,7 @@
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
-              <div class="AKL-ctn--c4-t3-s1 article">
+              <div class="AKL-ctn--c4-s1 article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Pull année 2017-2018</h3>
                   </div>
@@ -45,7 +45,7 @@
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
-              <div class="AKL-ctn--c4-t3-s1 article">
+              <div class="AKL-ctn--c4-s1 article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Clé USB</h3>
                   </div>
