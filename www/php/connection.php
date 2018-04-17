@@ -27,6 +27,25 @@ if (!empty($lmail) && !empty($lpwd)) {
 			$_SESSION['statute'] = $result['statute'];
 			$_SESSION['id'] = $result['id'];
 
+
+			$ez = $db->prepare("SELECT * FROM orders WHERE id_account = :idaccount AND statute='panier'");
+			$ez->execute([
+				'idaccount'=> $_SESSION['id']
+			]);
+			$resultpanier=null;
+			$resultpanier=$ez->fetch();
+				if($resultpanier)
+				{
+					$_SESSION['id_order'] = $resultpanier['id'];
+				}
+				else{
+					$eza = $db->prepare("INSERT INTO orders (statute, id_account) VALUES ('panier',:idaccount)");
+					$eza->execute([
+					'idaccount' => $_SESSION['id']
+				]);
+					$_SESSION['id_order'] = $db->lastInsertId();
+				}
+
 			header('Location: ../ideaBox');
 
 			exit();

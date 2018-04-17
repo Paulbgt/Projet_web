@@ -104,24 +104,12 @@ while ($response = $display->fetch()) {
         <?php } ?>
     </div>
 
-
-
-
 <?php
 $i++;
 $liked = false; }
 $display->closeCursor();
 
 ?>
-
-
-
-
-
-
-
-
-
 
 <!--
     <div class="AKL-ctn--c2-t1 idea">
