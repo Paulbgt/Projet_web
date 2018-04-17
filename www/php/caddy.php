@@ -31,15 +31,21 @@ $see->execute([
 while ($response = $see->fetch()) {
 ?>
 
+<form action="" method="POST">
+
 <span id="idea-infos-title" class="idea-infos-title"><?= $response['name'] ?></span><br>
 
 <span id="idea-infos-title" class="idea-infos-title"><?= $response['price'] ?> euros</span><br>
 
-<input type="text" name="quantity" value="<?= $response['qantity']?>"><br>
+<p>Veuillez choisir votre quantité : 
 
-<input type="submit" name="delete_article" value="supprimer ce produit de votre panier"><br><br><br><br>
+<input type="text" name="quantity" value="<?= $response['qantity']?>"></p><br>
+
+<a href="delete_article_caddy.php">Supprimer cet élément de la liste</a>
+
+<br><br><br><br>
  
-
+</form>
 
 <?php
 }

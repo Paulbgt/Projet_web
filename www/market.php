@@ -71,3 +71,6 @@ $display->closeCursor();
 
 </body>
 </html>
+
+<script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
+<script defer src="js/common.min.js"></script>
