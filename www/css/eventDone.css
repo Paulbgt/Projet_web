@@ -290,7 +290,7 @@
 
 .modalPhoto {
     background-position: center;
-    background-size: calc(70% - 40px) calc(70% - 40px) cover;
+    background-size: calc(100% - 40px) calc(100% - 40px);
     background-repeat: no-repeat;
     position: absolute;
     top: 0;
@@ -311,9 +311,17 @@
     background-color: white;
 }
 
+.modalPhoto-inputLabel {
+    box-shadow: 0 0 100px var(--exia-red1);
+}
+
 .modalPhoto-submit {
     outline: none;
     border: none;
+    font-size: 1em;
+    display: none;
+    margin-bottom: -290px;
+    box-shadow: 0 0 5px black;
 }
 
 

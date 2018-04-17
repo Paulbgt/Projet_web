@@ -31,21 +31,27 @@ for (var i=0; i<btnComment.length; i++) {
 var btnPhoto = document.querySelectorAll('.event-infos-sendPhoto');
 for (var i=0; i<btnPhoto.length; i++) {
     btnPhoto[i].addEventListener('click', function() {
-        this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
-        
-        this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').children[1].addEventListener('change', function(e) {
-            var files = this.files[0];
-            var imgType = files.name.split('.');
-            imgType = imgType[imgType.length - 1].toLowerCase();
-            console.log(files);
+        if (this.innerHTML == 'Déposer une photo') {
+            this.innerHTML = 'Anuler';
+            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
 
-            if (allowedTypes.indexOf(imgType) != -1) {
-                var path = URL.createObjectURL(this.files[0]);
-                this.parentElement.style.backgroundImage = 'url(' + path + ')';
-                this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
-            }
-        });
-        
+            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').children[1].addEventListener('change', function(e) {
+                var files = this.files[0];
+                var imgType = files.name.split('.');
+                imgType = imgType[imgType.length - 1].toLowerCase();
+
+                if (allowedTypes.indexOf(imgType) != -1) {
+                    var path = URL.createObjectURL(this.files[0]);
+                    this.parentElement.style.backgroundImage = 'url(' + path + ')';
+                    this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
+                    this.parentElement.querySelector('.modalPhoto-inputLabel').style.boxShadow = '0 0 5px black';
+                    this.parentElement.querySelector('.modalPhoto-submit').style.display = 'block';
+                }
+            });
+        } else {
+            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'none';
+            this.innerHTML = 'Déposer une photo';
+        }
     });
 }
 
