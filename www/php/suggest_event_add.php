@@ -64,8 +64,10 @@ if(isset($_FILES['image'])) {
     mkdir("../event_picture/".$result);
   }
 
-  $path = "../event_picture/".$result."/".basename($_FILES['image']['name']);
-  $image = $_FILES['image']['name'];
+  $image = str_replace(" ","_",$_FILES['image']['name']);
+  $image = str_replace("#","_",$image);
+
+  $path = "../event_picture/".$result."/".basename($image);
 
   $request = $bdd->prepare("INSERT INTO event_picture (url, ref, id_event) VALUES(:url, :ref, :id_event)");
   $request->execute([
@@ -83,7 +85,7 @@ if(isset($_FILES['image'])) {
     }
   }
 }
-    // header('Location: ../ideaBox');
+    header('Location: ../ideaBox');
 
 }else{
 

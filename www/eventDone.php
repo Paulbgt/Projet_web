@@ -39,7 +39,7 @@ $i = 1;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
     
-    
+
     //request to get list of likes
 //    $subs = $bdd->prepare("SELECT last_name, first_name, mail FROM account INNER JOIN like_event ON like_event.id_account=account.id WHERE id_event=:mid");
 //    $subs->execute([
@@ -52,13 +52,17 @@ while ($response = $display->fetch()) {
 //            $liked = true;
 //        }
 //    }
+
+$photos = $bdd->prepare("SELECT * FROM event_picture WHERE id_event = :id ORDER BY ref DESC");
+$photos->execute(['id' => $response['id']]);
+
 ?>
-        
+       
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
             <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
-                <div class="event-img-<?= $i ?>" liked="false" value="2" style="background-image: url(event_picture/popcorn.jpg)"></div>
-                <div class="event-img-<?= $i ?>" liked="false" value="0" style="background-image: url(event_picture/foot.jpg)"></div>
-                <div class="event-img-<?= $i ?>" liked="false" value="6" style="background-image: url(event_picture/barbecue.jpg)"></div>
+                <?php while($photo = $photos->fetch()) { ?>
+                <div class="event-img-<?= $i ?>" liked="false" value="2" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)"></div>
+                 <?php } ?>
             </div>
             <div class="AKL-ctn--c2-s1 event-infos">
                 <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
