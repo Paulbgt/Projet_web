@@ -38,11 +38,10 @@ for (var i=0; i<btnComment.length; i++) {
                 p.innerHTML = this.parentElement.querySelector('.modalComment-post-input').value;
                 div.appendChild(p);
                 this.parentElement.parentElement.parentElement.insertBefore(div, this.parentElement.parentElement.parentElement.childNodes[4]);
-                
-//                <div class="modalComment-comment">
-//                    <span class="modalComment-comment-span"><?= $comment['first_name'] ?> <?= $comment['last_name'] ?></span>
-//                    <p class="modamComment-comment-p"><?= $comment['com'] ?></p>
-//                </div>
+            
+                this.parentElement.parentElement.querySelector('.modalComment-post-input').style.display = 'none';
+                this.parentElement.parentElement.querySelector('.modalComment-post-btn').style.display = 'none';
+                this.parentElement.parentElement.querySelector('.modalComment-comment-plus').style.display = 'inline-block';
             })
         });
     });
@@ -73,6 +72,15 @@ for (var i=0; i<btnPhoto.length; i++) {
             this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'none';
             this.innerHTML = 'Déposer une photo';
         }
+    });
+}
+
+
+// Event to delete a comment
+var btnDeleteComment = document.querySelectorAll('.modalComment-delete');
+for (var i=0; i<btnDeleteComment.length; i++) {
+    btnDeleteComment[i].addEventListener('click', function() {
+        this.parentElement.remove();
     });
 }
 

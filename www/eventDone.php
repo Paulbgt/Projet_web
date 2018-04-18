@@ -104,6 +104,10 @@ $photos->execute(['id' => $response['id']]);
                 ?>
 
                 <div class="modalComment-comment">
+                    <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+                    <input type="submit" class="modalComment-delete" value="X">
+                    <input type="number" id="comment_id" name="comment_id" value="<?= $comment['id'] ?>" readonly hidden>
+                    <?php } ?>
                     <span class="modalComment-comment-span"><?= $comment['first_name'] ?> <?= $comment['last_name'] ?></span>
                     <p class="modamComment-comment-p"><?= $comment['com'] ?></p>
                 </div>

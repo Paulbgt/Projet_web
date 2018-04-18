@@ -1,5 +1,6 @@
 var btnSubsCount = document.querySelectorAll('.event-infos-subsCount');
 var btnSubscribe= document.querySelectorAll('.event-infos-subscribe');
+var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
 
 // Event listener used to swap the subscribe image and to update the display of number of subscribers
 for (var i = 0; i<btnSubscribe.length; i++) {

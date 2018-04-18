@@ -381,7 +381,25 @@
         font-weight: normal;
         line-height: 20px;
         float: left;
+        position: relative;
     }
+
+    .modalComment-delete {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        background-color: transparent;
+        color: var(--exia-red1);
+        outline: none;
+        cursor: pointer;
+        font-weight: bold;
+        display: none;
+    }
+
+        .modalComment-comment:hover .modalComment-delete {
+            display: block;
+        }
 
         .modalComment-comment-span {
             color: var(--exia-red1);
