@@ -18,12 +18,14 @@
       
       
       <div class="wrapper">
-          <h1 class="AKL-ctn--c1 banner">Boutique</h1>
+          <h1 class="AKL-ctn--c1 banner">Boutique
+              <a class="banner-cart">14</a>
+          </h1>
           
 <!--          .AKL-ctn--c1.promotion>h2.promotion-title+.AKL-ctn--c4-s1.article*3>(.AKL-ctn--c1.article-img>h3.article-img-title)+.AKL-ctn--c1.article-infos>span.AKL-ctn--c2.article-infos-price+span.AKL-ctn--c2.article-infos-category+p.AKL-ctn--c1.article-infos-description+input[type=submit].AKL-btnClassic-Flat-ocean.article-infos-btnAdd-->
           <div class="AKL-ctn--c1 promotion">
               <h2 class="promotion-title">Articles les plus populaires</h2>
-              <div class="AKL-ctn--c4-t2_3-s3_4 article">
+              <div class="article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Tasse exiaCorp</h3>
                   </div>
@@ -34,7 +36,7 @@
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
-              <div class="AKL-ctn--c4-t2_3-s3_4 article">
+              <div class="article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Pull année 2017-2018</h3>
                   </div>
@@ -45,7 +47,7 @@
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
-              <div class="AKL-ctn--c4-t2_3-s3_4 article">
+              <div class="article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Clé USB</h3>
                   </div>
@@ -64,7 +66,7 @@
                   <option>Clé USB</option>
               </select>
               <input class="AKL-menu-input AKL-inputClassic-snow searchNav-input" placeholder="Chercher...">
-              <a class="AKL-btnClassic-ocean searchNav-btnSearch" type="submit">Chercher</a>
+              <input class="AKL-btnClassic-ocean searchNav-btnSearch" type="submit" value="Chercher">
           </div>
           
           <div class="listArticle">
@@ -139,11 +141,61 @@
               
           </div>
           
-          
-          
-          
-          
       </div>
+      
+      
+      
+      
+    <div class="backgroundModal">
+        <div class="modal">
+            <h2 class="modal-title">Panier</h2>
+            <a class="modal-close">X</a>
+            <div class="lineTitle">
+                <a class="line-delete"></a>
+                <span class="line-name">Nom de l'article</span>
+                <span class="line-price">Prix unitaire</span>
+                <span class="line-quantity">Quantité</span>
+            </div>
+            <div class="line">
+                <a class="line-delete">X</a>
+                <span class="line-name">Pull A2</span>
+                <span class="line-price">35€</span>
+                <span class="line-quantity">1</span>
+            </div>
+            <div class="line">
+                <a class="line-delete">X</a>
+                <span class="line-name">Clé USB</span>
+                <span class="line-price">2€</span>
+                <span class="line-quantity">4</span>
+            </div>
+            <div class="line">
+                <a class="line-delete">X</a>
+                <span class="line-name">Tasse</span>
+                <span class="line-price">10€</span>
+                <span class="line-quantity">2</span>
+            </div>
+            <div class="line">
+                <a class="line-delete">X</a>
+                <span class="line-name">Pull A1</span>
+                <span class="line-price">50€</span>
+                <span class="line-quantity">1</span>
+            </div>
+            
+            <div class="lineTT">
+                <span class="lineTT-ht">Prix HT :</span>
+                <span class="lineTT-ht"></span>
+            </div>
+            <div class="lineTT">
+                <span class="lineTT-tva">TVA :</span>
+                <span class="lineTT-tva"></span>
+            </div>
+            <div class="lineTT">
+                <span class="lineTT-ttc">Prix TTC :</span>
+                <span class="lineTT-ttc"></span>
+            </div>
+            <input class="AKL-btnClassic-Flat-ocean modal-payment" type="submit" value="Valider la commande">
+        </div>
+    </div>
        
     <?php include '_footer.php' ?>
     
