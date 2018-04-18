@@ -4,6 +4,8 @@ var inputRegister = document.querySelectorAll('[class*=form-register-input]');
 var inputConnection = document.querySelectorAll('[class*=form-connection-input]');
 var formError = document.querySelectorAll('.form-error');
 
+// *[English]* 
+// *[Français]* 
 //Verify if the field is correct when we click on the register button and check the type of field
 validationRegister.addEventListener('click', function(e) {
     for (var i = 0; i<formError.length; i++) {
