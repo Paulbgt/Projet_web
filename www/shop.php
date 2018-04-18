@@ -112,20 +112,20 @@ while ($response = $display->fetch()) {
 ?>         
 
 <form action="php/add_article_caddy.php" method="POST">
-              <div class="article">
-                  <div class="AKL-ctn--c1 article-img">
-                      <h3 id="shop-info-name" name="shop-info-name" class="article-img-title"><?= $response['name_produce'] ?></h3>
-                  </div>
-                  <div class="AKL-ctn--c1 article-infos">
-                      <span id="shop-info-price" name="shop-info-price" class="article-infos-price"><?= $response['price_produce'] ?></span>
-                      <span class="article-infos-category"><?= $response['name_category'] ?></span>
-                      <p id="shop-info-description" name="shop-info-description" class="article-infos-description"><?= $response['description_produce'] ?></p>
+      <div class="article">
+          <div class="AKL-ctn--c1 article-img">
+              <h3 name="shop-info-name" class="article-img-title"><?= $response['name_produce'] ?></h3>
+          </div>
+          <div class="AKL-ctn--c1 article-infos">
+              <span name="shop-info-price" class="article-infos-price"><?= $response['price_produce'] ?></span>
+              <span class="article-infos-category"><?= $response['name_category'] ?></span>
+              <p name="shop-info-description" class="article-infos-description"><?= $response['description_produce'] ?></p>
 
-                      <input type="hidden" name="take_id_produce" id="take_id_produce" value="<?= $response['id_produce']?>"> 
+              <input type="hidden" name="take_id_produce" value="<?= $response['id_produce']?>" readonly> 
 
-                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
-                  </div>
-              </div>
+              <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+          </div>
+      </div>
 </form>              
 
 <?php 
@@ -192,19 +192,9 @@ $display->closeCursor();
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
-<<<<<<< HEAD
-              
-          </div>
-          
-      </div>
-      
-      
-=======
              -->
            </div>
   </div>
-
->>>>>>> origin/master
       
       
     <?php include '_footer.php' ?>
