@@ -125,6 +125,17 @@ $photos->execute(['id' => $response['id']]);
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
                 </div> -->
             </div>
+            <?php 
+
+            $rights = $bdd->prepare("SELECT * FROM register WHERE id_event = :id_event AND id_account = :id_account");
+            $rights->execute([
+                'id_event' => $response['id'],
+                'id_account' => $_SESSION['id']
+                            ]);
+
+            $right = $rights->fetch();
+
+            if($right['id_account'] == $_SESSION['id'] OR isset($_SESSION['statute']) && $_SESSION['statute'] == 2) { ?>
             <form action="php/add_photo_event_done.php" id="add_imageForm" method="POST" enctype="multipart/form-data">
                 <div class="AKL-ctn--c2-s1 modalPhoto">
                         <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-inputLabel">Choisir une image</label>
@@ -133,6 +144,7 @@ $photos->execute(['id' => $response['id']]);
                         <input type="number" id="photo_event_id" name="photo_event_id" value="<?= $response['id'] ?>" readonly hidden>
                 </div>
             </form>
+            <?php } ?>
         </div>
        
 <?php
