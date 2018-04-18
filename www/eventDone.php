@@ -42,12 +42,24 @@ while ($response = $display->fetch()) {
 $photos = $bdd->prepare("SELECT * FROM event_picture WHERE id_event = :id ORDER BY ref DESC");
 $photos->execute(['id' => $response['id']]);
 
+
+
+
+
 ?>
        
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
             <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
-                <?php while($photo = $photos->fetch()) { ?>
-                <div class="event-img-<?= $i ?>" liked="false" value="2" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)"></div>
+                <?php while($photo = $photos->fetch()) { 
+
+                    $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture   FROM like_event_picture where id_event_picture =:id  GROUP BY id_event_picture");
+                        $plike->execute(['id' => $photo['id']]);
+                        $liked =$plike-> fetch();
+
+                    ?>
+                <form id="likeForm<?= $i ?>" action="php/like_done.php" method="POST"></form>
+                <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $response['id'] ?>" form="likeForm<?= $i ?>" readonly hidden>
+                <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)"></div>
                  <?php } ?>
             </div>
             <div class="AKL-ctn--c2-s1 event-infos">
@@ -65,7 +77,7 @@ $photos->execute(['id' => $response['id']]);
             </div>
             <div class="AKL-ctn--c2-s1 event-swap" step="0">
                 <a class="event-swap-previous"></a>
-                <a class="event-swap-like" value="2" style="background-image: url(site_picture/like_grey.svg)"></a>
+                <input class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>">
                 <a class="event-swap-next"></a>
             </div>
             <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
