@@ -1,6 +1,23 @@
+var btnCart = document.querySelector('.banner-cart');
+
+
+// Delete the article from the cart
+var btnDeleteCart = document.querySelectorAll('.line-delete');
+
+for (var i=0; i<btnDeleteCart.length; i++) {
+    btnDeleteCart[i].addEventListener('click', function() {
+        btnCart.innerHTML = parseInt(btnCart.innerHTML) - parseInt(this.parentElement.querySelector('.line-quantity').innerHTML);
+        this.parentElement.remove();
+    });
+}
+
+
+
+
+
+
 /* ///////////// Modal //////////// */
 
-var btnCart = document.querySelector('.banner-cart');
 var backgroundModal = document.querySelector('.backgroundModal');
 var btnDelete = document.querySelector('.modal-infos-delete');
 
