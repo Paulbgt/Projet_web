@@ -90,9 +90,9 @@ $photos->execute(['id' => $response['id']]);
                     <span class="modalComment-comment-span">Poster un commentaire</span>
                     <a class="modalComment-comment-plus">+</a>
                     <form action="php/add_comment_event_done.php" id="add_commentForm" method="POST">
-                    <textarea name="comment" class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
-                    <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
-                    <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
+                        <textarea name="comment" class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
+                        <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
+                        <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
                     </form>
                 </div>
     
