@@ -77,7 +77,7 @@ $photos->execute(['id' => $response['id']]);
             </div>
             <div class="AKL-ctn--c2-s1 event-swap" step="0">
                 <a class="event-swap-previous"></a>
-                <input class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>">
+                <button class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
                 <a class="event-swap-next"></a>
             </div>
             <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
