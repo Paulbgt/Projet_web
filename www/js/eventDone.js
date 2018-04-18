@@ -23,6 +23,27 @@ for (var i=0; i<btnComment.length; i++) {
             this.parentElement.querySelector('.modalComment-post-input').style.display = 'block';
             this.parentElement.querySelector('.modalComment-post-btn').style.display = 'block';
             this.style.display = 'none';
+            
+            this.parentElement.querySelector('.modalComment-post-btn').addEventListener('click', function() {
+                var div = document.createElement('div');
+                div.className = 'modalComment-comment';
+                
+                var span = document.createElement('span');
+                span.className = 'modalComment-comment-span';
+                span.innerHTML = document.querySelector('.header-log-name').innerHTML;
+                div.appendChild(span);
+                
+                var p = document.createElement('p');
+                p.className = 'modamComment-comment-p';
+                p.innerHTML = this.parentElement.querySelector('.modalComment-post-input').value;
+                div.appendChild(p);
+                this.parentElement.parentElement.parentElement.insertBefore(div, this.parentElement.parentElement.parentElement.childNodes[4]);
+                
+//                <div class="modalComment-comment">
+//                    <span class="modalComment-comment-span"><?= $comment['first_name'] ?> <?= $comment['last_name'] ?></span>
+//                    <p class="modamComment-comment-p"><?= $comment['com'] ?></p>
+//                </div>
+            })
         });
     });
 }
