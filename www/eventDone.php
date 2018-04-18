@@ -90,14 +90,14 @@ $photos->execute(['id' => $response['id']]);
                     <span class="modalComment-comment-span">Poster un commentaire</span>
                     <a class="modalComment-comment-plus">+</a>
                     <form action="php/add_comment_event_done.php" id="add_commentForm" method="POST">
-                        <textarea name="comment" class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
-                        <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
-                        <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
+                    <textarea name="comment" class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
+                    <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
+                    <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
                     </form>
                 </div>
     
                 <?php
-                $comments = $bdd->prepare("SELECT * FROM commentary INNER JOIN account ON commentary.id_account = account.id WHERE id_event = :id ORDER BY commentary.id DESC");
+                $comments = $bdd->prepare("SELECT commentary.id as id, commentary.com, commentary.id_event as id_event, commentary.id_account as id_account, account.last_name, account.first_name FROM commentary INNER JOIN account ON commentary.id_account = account.id WHERE id_event = :id ORDER BY commentary.id DESC");
                 $comments->execute(['id' => $response['id']]);
 
                 while($comment = $comments->fetch()) {
@@ -105,11 +105,13 @@ $photos->execute(['id' => $response['id']]);
 
                 <div class="modalComment-comment">
                     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+                    <form action="php/delete_comment.php" method="POST">
                     <input type="submit" class="modalComment-delete" value="X">
                     <input type="number" id="comment_id" name="comment_id" value="<?= $comment['id'] ?>" readonly hidden>
                     <?php } ?>
                     <span class="modalComment-comment-span"><?= $comment['first_name'] ?> <?= $comment['last_name'] ?></span>
                     <p class="modamComment-comment-p"><?= $comment['com'] ?></p>
+                    </form>
                 </div>
 
                 <?php } ?>
@@ -193,6 +195,6 @@ $display->closeCursor();
     
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
-<script src="js/eventDone.min.js"></script>
+<script src="js/eventDone.js"></script>
 </body>
 </html>

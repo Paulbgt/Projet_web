@@ -77,10 +77,14 @@ for (var i=0; i<btnPhoto.length; i++) {
 
 
 // Event to delete a comment
+
 var btnDeleteComment = document.querySelectorAll('.modalComment-delete');
 for (var i=0; i<btnDeleteComment.length; i++) {
     btnDeleteComment[i].addEventListener('click', function() {
-        this.parentElement.remove();
+        var that = this.parentElement;
+        setTimeout(function(){
+            that.parentElement.remove();
+        }, 20); // Timeout to let the time for the php to send the request before dleting the form
     });
 }
 
