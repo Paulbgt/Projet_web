@@ -90,9 +90,10 @@ $reponse->closeCursor();
  ?>
               </select>
               <span>Prix minimum :</span>
-              <input type="range" class='AKL-range min-range' min="0" max="1000" value="0" step="1">
+              <input type="range" class='AKL-range min-range' min="0" max="150" value="0" step="1">
               <span>Prix maximum :</span>
-              <input type="range" class='AKL-range max-range' min="0" max="1000" value="1000" step="1">
+              <input type="range" class='AKL-range max-range' min="0" max="150" value="150" step="1">
+              <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
           </div>
           <div class="listArticle">
  <?php  

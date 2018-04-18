@@ -100,6 +100,12 @@
     margin: 5px 2px;
 }
 
+.btnSearch {
+    clear: both;
+    width: 100px;
+    margin-left: 135px;
+}
+
 
 
 /* //////////////////////// List Article //////////////////////// */
