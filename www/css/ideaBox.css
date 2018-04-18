@@ -251,6 +251,15 @@
         width: 100%;
     }
 
+    [class*=idea-report] {
+        outline: none;
+        border: none;
+        font-size: 1em;
+        margin: 0 -20px 0 0;
+        padding: 10px 20px;
+        width: 100%;
+    }
+
         [class*=idea-admin] a {
             margin: 0;
             width: 100%;
