@@ -32,7 +32,7 @@ var btnPhoto = document.querySelectorAll('.event-infos-sendPhoto');
 for (var i=0; i<btnPhoto.length; i++) {
     btnPhoto[i].addEventListener('click', function() {
         if (this.innerHTML == 'Déposer une photo') {
-            this.innerHTML = 'Anuler';
+            this.innerHTML = 'Annuler';
             this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
 
             this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').children[1].addEventListener('change', function(e) {

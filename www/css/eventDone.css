@@ -311,8 +311,12 @@
     background-color: white;
 }
 
-.modalPhoto-inputLabel {
+.event:nth-child(2n) .modalPhoto-inputLabel {
     box-shadow: 0 0 100px var(--exia-red1);
+}
+
+.event:nth-child(2n+1) .modalPhoto-inputLabel {
+    box-shadow: 0 0 100px var(--exia-grey1);
 }
 
 .modalPhoto-submit {
