@@ -4,7 +4,7 @@ var inputDescription = document.querySelector('.suggestion-infos-description');
 var formError = document.querySelectorAll('.form-error');
 
 // *[English]* Verify if the field is correct when we click on the register button and check the type of field
-// *[Français]* Vérifier si le champ est correcte quand on clique sur le bouton s'inscrire et on vérifie le type de champ
+// *[Français]* Vérifier si le champ est correcte quand on clique sur le bouton enregistrer et on vérifie le type de champ
 validationIdea.addEventListener('click', function(e) {
     for (var i = 0; i<formError.length; i++) {
         formError[i].style.opacity = 0;

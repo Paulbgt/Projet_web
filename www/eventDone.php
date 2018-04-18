@@ -80,9 +80,15 @@ $photos->execute(['id' => $response['id']]);
                 <button class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
                 <a class="event-swap-next"></a>
             </div>
+            
             <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
             <div class="AKL-ctn--c2-s1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
             <?php } ?>
+            <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+            <input type="submit" value="Signaler" class="AKL-ctn--c2-s1 AKL-btnClassic-Flat-hell event-report<?= $i ?>">
+            <input type="number" id="report_event_id" name="report_event_id" value="<?= $response['id'] ?>" readonly hidden>
+            <?php } ?>
+            
             <div class="AKL-ctn--c2-s1 modalComment">
                 <div class="modalComment-close">X</div>
                     Commentaires :
