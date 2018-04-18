@@ -24,7 +24,7 @@
           
 <!--          .AKL-ctn--c1.promotion>h2.promotion-title+.AKL-ctn--c4-s1.article*3>(.AKL-ctn--c1.article-img>h3.article-img-title)+.AKL-ctn--c1.article-infos>span.AKL-ctn--c2.article-infos-price+span.AKL-ctn--c2.article-infos-category+p.AKL-ctn--c1.article-infos-description+input[type=submit].AKL-btnClassic-Flat-ocean.article-infos-btnAdd-->
           <div class="AKL-ctn--c1 promotion">
-              <h2 class="promotion-title">Articles les plus populaires</h2>
+              <h2 class="promotion-title">Les plus populaires</h2>
               <div class="article">
                   <div class="AKL-ctn--c1 article-img">
                       <h3 class="article-img-title">Tasse exiaCorp</h3>
@@ -59,15 +59,24 @@
                   </div>
               </div>
           </div>
+          
+          
           <div class="AKL-ctn--c1 searchNav">
+              <h2 class="searchNav-title">Goodies</h2>
+              <p class="searchNav-titleFilter">Appliquer un filtre</p>
+              <span>Catégorie :</span>
               <select class='AKL-select-snow searchNav-select'>
+                  <option></option>
                   <option>Tasse</option>
-                  <option>Pull</option>
+                  <option>Vêtement</option>
                   <option>Clé USB</option>
               </select>
-              <input class="AKL-menu-input AKL-inputClassic-snow searchNav-input" placeholder="Chercher...">
-              <input class="AKL-btnClassic-ocean searchNav-btnSearch" type="submit" value="Chercher">
+              <span>Prix minimum :</span>
+              <input type="range" class='AKL-range min-range' min="0" max="1000" value="0" step="1">
+              <span>Prix maximum :</span>
+              <input type="range" class='AKL-range max-range' min="0" max="1000" value="1000" step="1">
           </div>
+          
           
           <div class="listArticle">
               
@@ -137,7 +146,6 @@
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
-              
               
           </div>
           
