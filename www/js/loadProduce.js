@@ -86,7 +86,7 @@ function generateArticle(id, name, price, category, description, url) {
 
 
 function getUrl(url,category,min,max)
-{                       url,null,
+{
   if((category==null || category=="") && (min==null || min=="") && (max==null || max=="") )
   {
     return url;
@@ -97,7 +97,7 @@ function getUrl(url,category,min,max)
   }
   else if((category!=null || category!="") && (min!=null || min!="") && (max!=null || max!="") )
   {
-    return url+"category="+category+"&min="+min+"&max="+max;
+    return url+"?category="+category+"&min="+min+"&max="+max;
   }
   else {
     return url;
@@ -114,7 +114,7 @@ button.addEventListener("click",function(){
 var min=minBtn.value;
 var max=maxBtn.value;
 var cat=selectBtn.value;
-console.log(min, max, cat );
+getJSON2(getUrl("http://localhost/Projet_web/www/produce",cat,min,max)).then(createData);
 });
 
 function reload_produce()
@@ -127,3 +127,4 @@ function createData(data){
   for (var i = 0; i < data.length; i++) {
   generateArticle(data[i].id,data[i].name,data[i].price,data[i].category,data[i].description, data[i].url);
   }
+}
