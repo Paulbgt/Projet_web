@@ -16,7 +16,8 @@ function generateArticle(id, name, price, category, description, url) {
 
     art_img = document.createElement('div');
     art_img.className = "AKL-ctn--c1 article-img";
-    art_img.style.backgroundImage = "url(../" + id + "/" + url + ")";
+    if(!url){url="default.svg"};
+    art_img.style.backgroundImage = "url(shop_picture/" + url + ")";
 
     art_name = document.createElement('h3');
     art_name.className = "article-img-title";
