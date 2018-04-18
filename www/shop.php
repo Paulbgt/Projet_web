@@ -204,7 +204,7 @@ $display->closeCursor();
            </div>
   </div>
 
->>>>>>> origin/master
+
       
       
     <?php include '_footer.php' ?>
