@@ -71,7 +71,7 @@ $photos->execute(['id' => $response['id']]);
             <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
             <div class="AKL-ctn--c2-s1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
             <?php } ?>
-            <div class="AKL-ctn--2-s1 modalComment">
+            <div class="AKL-ctn--c2-s1 modalComment">
                 <div class="modalComment-close">X</div>
                     Commentaires :
                 <div class="modalComment-post">
@@ -79,6 +79,7 @@ $photos->execute(['id' => $response['id']]);
                     <a class="modalComment-comment-plus">+</a>
                     <textarea class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
                     <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
+                    <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
                 </div>
     
                 <?php
@@ -110,7 +111,7 @@ $photos->execute(['id' => $response['id']]);
                         <input type="file" name="image" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" class="modalPhoto-input" hidden>
                         <input type="submit" class="AKL-btnClassic-Flat-ocean modalPhoto-submit" value="Valider">
                         <input type="submit" class="AKL-btnClassic-Flat-ocean modalPhoto-submit" value="Valider">
-                        <input type="number" class="" id="photo_event_id" name="photo_event_id" value="<?= $response['id'] ?>" readonly hidden>
+                        <input type="number" id="photo_event_id" name="photo_event_id" value="<?= $response['id'] ?>" readonly hidden>
                 </div>
             </form>
         </div>
