@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .wrapper {
     display: flex;
     justify-content: center;
