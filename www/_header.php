@@ -48,7 +48,7 @@
     </span>
     <span class="header-log-name">
         <?php 
-            echo($_SESSION['last_name'] . " " . $_SESSION['first_name']);
+            echo($_SESSION['first_name'] . " " . $_SESSION['last_name']);
         ?>
     </span>
     <a href="php/logout.php">
@@ -85,8 +85,7 @@
         <hr>
         <span class="headerPhone-log-name">
         <?php 
-            echo($_SESSION['last_name'] . " " . $_SESSION['first_name']);
-
+            echo($_SESSION['first_name'] . " " . $_SESSION['last_name']);
         ?>
         </span>
         <span class="headerPhone-log-span">Statut : 
