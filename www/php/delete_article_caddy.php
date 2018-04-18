@@ -11,10 +11,12 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
 }
 
 $idorder = $_SESSION['id_order'];
+$idproduce = $_GET['idproduce'];
 
-$a = $bdd->prepare('DELETE FROM order_composite WHERE id_orders=:idorder LIMIT 1');
+$a = $bdd->prepare('DELETE FROM order_composite WHERE id_orders=:idorder AND id_produce=:idproduce');
 $a->execute([
-':idorder' => $idorder
+':idorder' => $idorder,
+':idproduce' => $idproduce
 ]);
 
 header('Location: caddy.php');

@@ -45,7 +45,7 @@ while ($response = $see->fetch()) {
 
 <input type="submit" name="add_quantity" value="ajouter votre nouvelle quantité">
 
-<a href="delete_article_caddy.php">Supprimer cet élément de la liste</a>
+<a href="delete_article_caddy.php?idproduce=<?= $response['id_produce']?>">Supprimer cet élément de la liste</a>
 </form>
 
 <br><br><br><br>
