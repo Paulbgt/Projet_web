@@ -15,13 +15,13 @@
 <body>
 
 	<?php include '_header.php' ?>
-      
-      
+
+
       <div class="wrapper">
           <h1 class="AKL-ctn--c1 banner">Boutique
               <a class="banner-cart"></a>
           </h1>
-          
+
 <!--        .AKL-ctn--c1.promotion>h2.promotion-title+.AKL-ctn--c4-s1.article*3>(.AKL-ctn--c1.article-img>h3.article-img-title)+.AKL-ctn--c1.article-infos>span.AKL-ctn--c2.article-infos-price+span.AKL-ctn--c2.article-infos-category+p.AKL-ctn--c1.article-infos-description+input[type=submit].AKL-btnClassic-Flat-ocean.article-infos-btnAdd-->
           <div class="AKL-ctn--c1 promotion">
               <h2 class="promotion-title">Les plus populaires</h2>
@@ -58,7 +58,7 @@
                       <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
                   </div>
               </div>
- 
+
           </div>
           <div class="AKL-ctn--c1 searchNav">
               <h2 class="searchNav-title">Goodies</h2>
@@ -70,20 +70,20 @@
 try
 {
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
- 
+
     }
 catch (Exception $e)
 {
         die('Erreur : ' . $e->getMessage());
 }
- 
+
 $reponse = $bdd->query( 'SELECT id, name FROM category' ) or die(print_r($bdd->errorInfo()));;
- 
+
 while ($donnees = $reponse->fetch())
 {
-    echo '<option value="' . $donnees['id'] . '">' . $donnees['name'] . '</option>';
+    echo '<option value="' . $donnees['name'] . '">' . $donnees['name'] . '</option>';
 }
- 
+
 $reponse->closeCursor();
 
 
@@ -96,7 +96,7 @@ $reponse->closeCursor();
               <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
           </div>
           <div class="listArticle">
- <?php  
+ <?php
 try{
 //conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
@@ -110,7 +110,7 @@ $display = $bdd->prepare("SELECT produce.id AS id_produce, produce.name AS name_
 $display->execute();
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
-?>         
+?>
 
 <form action="php/add_article_caddy.php" method="POST">
       <div class="article">
@@ -122,14 +122,14 @@ while ($response = $display->fetch()) {
               <span class="article-infos-category"><?= $response['name_category'] ?></span>
               <p name="shop-info-description" class="article-infos-description"><?= $response['description_produce'] ?></p>
 
-              <input type="hidden" name="take_id_produce" value="<?= $response['id_produce']?>" readonly> 
+              <input type="hidden" name="take_id_produce" value="<?= $response['id_produce']?>" readonly>
 
               <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
           </div>
       </div>
-</form>              
+</form>
 
-<?php 
+<?php
 }
 $display->closeCursor();
 
@@ -196,8 +196,8 @@ $display->closeCursor();
              -->
            </div>
   </div>
-      
-      
+
+
     <?php include '_footer.php' ?>
 
     <div class="backgroundModal">
@@ -244,7 +244,7 @@ while ($response = $see->fetch()) {
 }
 $see->closeCursor();
 ?>
-<!--            
+<!--
             <div class="line">
                 <a class="line-delete">X</a>
                 <span class="line-name">Clé USB</span>
@@ -329,8 +329,8 @@ while ($responsess = $saww->fetch()) {
             <div class="lineTT">
                 <span class="lineTT-ttc">Prix TTC :</span>
                 <span class="lineTT-ttc"><?= $responsess['sum_price_tva'] ?> €</span>
-            </div> 
-          
+            </div>
+
 <?php
 }
 $saww->closeCursor();
@@ -343,5 +343,6 @@ $saww->closeCursor();
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/shop.min.js"></script>
+<script src="js/loadProduce.js"></script>
 </body>
 </html>
