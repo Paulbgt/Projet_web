@@ -109,7 +109,7 @@ $photos->execute(['id' => $response['id']]);
                         <label for="fileImgModalPhoto<?= $i ?>" class="AKL-btnClassic-Flat-ocean modalPhoto-inputLabel">Choisir une image</label>
                         <input type="file" name="image" id="fileImgModalPhoto<?= $i ?>" class="AKL-btnFile" class="modalPhoto-input" hidden>
                         <input type="submit" class="AKL-btnClassic-Flat-ocean modalPhoto-submit" value="Valider">
-                        <input type="number" class="" id="photo_event_id" name="photo_event_id" form="idFileImgModalPhoto<?= $i ?>" readonly hidden>
+                        <input type="number" class="" id="photo_event_id" name="photo_event_id" readonly hidden>
                 </div>
             </form>
         </div>
