@@ -77,21 +77,23 @@ $photos->execute(['id' => $response['id']]);
                 <div class="modalComment-post">
                     <span class="modalComment-comment-span">Poster un commentaire</span>
                     <a class="modalComment-comment-plus">+</a>
-                    <textarea class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
+                    <form action="php/add_comment_event_done.php" id="add_commentForm" method="POST">
+                    <textarea name="comment" class="AKL-textareaUnderlined-locked-snow modalComment-post-input" rows="4" cols="30" placeholder="Ecrivez votre commentaire ici..."></textarea>
                     <input type="submit" value="Poster" class="AKL-btnClassic-Flat-ocean modalComment-post-btn">
                     <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
+                    </form>
                 </div>
     
                 <?php
-                $comments = $bdd->prepare("SELECT * FROM commentary WHERE id_event = :id ORDER BY id DESC");
+                $comments = $bdd->prepare("SELECT * FROM commentary INNER JOIN account ON commentary.id_account = account.id WHERE id_event = :id ORDER BY commentary.id DESC");
                 $comments->execute(['id' => $response['id']]);
 
                 while($comment = $comments->fetch()) {
                 ?>
 
                 <div class="modalComment-comment">
-                    <span class="modalComment-comment-span">Aurélien Klein</span>
-                    <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus perspiciatis sequi incidunt quod in ea, ducimus magnam velit optio, eum asperiores debitis commodi nesciunt, sint facere vel voluptatum itaque necessitatibus.</p>
+                    <span class="modalComment-comment-span"><?= $comment['first_name'] ?> <?= $comment['last_name'] ?></span>
+                    <p class="modamComment-comment-p"><?= $comment['com'] ?></p>
                 </div>
 
                 <?php } ?>
