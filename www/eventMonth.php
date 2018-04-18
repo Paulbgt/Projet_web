@@ -52,11 +52,16 @@ while ($response = $display->fetch()) {
             $subscribed = true;
         }
     }
+
+    $photos = $bdd->prepare("SELECT * FROM event_picture WHERE id_event = :id ORDER BY ref DESC LIMIT 1");
+    $photos->execute(['id' => $response['id']]);
 ?>
     
     <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
         <form id="registrationForm<?= $i ?>" action="php/registration.php" method="POST"></form>
-        <div class="AKL-ctn--c3-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/popcorn.jpg)"></div>
+        <?php while($photo = $photos->fetch()) { ?>
+        <div class="AKL-ctn--c3-s1 event-img" id="event-img<?= $i ?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)"></div>
+        <?php } ?>
         <div class="AKL-ctn--c2_3-s1 event-infos">
             <a id="subsCount<?= $i ?>" class="event-infos-subsCount" value="<?= $count ?>" style="background-image: url(site_picture/subscribe_<?= $subscribed ? 'full' : 'empty' ?>.svg)">
                 <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
