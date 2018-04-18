@@ -21,6 +21,6 @@ $insert->execute([
     ':idproduce' => $idproduce
 ]);
 
-header('Location: ../market.php')
+header('Location: ../shop.php')
 
 ?>
