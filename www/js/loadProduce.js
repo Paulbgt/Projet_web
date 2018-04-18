@@ -16,7 +16,8 @@ function generateArticle(id, name, price, category, description, url) {
 
     art_img = document.createElement('div');
     art_img.className = "AKL-ctn--c1 article-img";
-    art_img.style.backgroundImage = "url(../" + id + "/" + url + ")";
+    if(!url){url="default.svg"};
+    art_img.style.backgroundImage = "url(shop_picture/" + url + ")";
 
     art_name = document.createElement('h3');
     art_name.className = "article-img-title";
@@ -114,7 +115,7 @@ button.addEventListener("click",function(){
 var min=minBtn.value;
 var max=maxBtn.value;
 var cat=selectBtn.value;
-getJSON2(getUrl("http://localhost/Projet_web/www/produce",cat,min,max)).then(createData);
+getJSON2(getUrl("produce",cat,min,max)).then(createData);
 });
 
 function reload_produce()
@@ -129,4 +130,4 @@ function createData(data){
   }
 }
 clearArticle();
-getJSON2(getUrl("http://localhost/Projet_web/www/produce",null,null,null)).then(createData);
+getJSON2(getUrl("produce",null,null,null)).then(createData);

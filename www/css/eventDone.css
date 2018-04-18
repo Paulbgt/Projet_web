@@ -60,12 +60,33 @@
             left: 0;
             height: 100%;
             width: 100%;
+            overflow: hidden;
             opacity: 0;
         }
 
         .event-img [class*=event-img-]:nth-child(1) {
             opacity: 1;
         }
+
+.event-img [class*=event-download] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, .4);
+    padding: 0;
+    margin: 0;
+    font-size: 40px;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.event-img:hover [class*=event-download] {
+    opacity: 1;
+}
 
     .event-infos {
         display: flex;
