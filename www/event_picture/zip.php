@@ -1,18 +1,25 @@
 <?php  
 
-		$zip = new ZipArchive; //on créer un nouveau fichier archive zipp
+		$zip = new ZipArchive; //on créer un nouveau fichier archive zip
+							   //we create a new zip archive file
 		$zip->open("camarche.zip", ZipArchive::CREATE); //on lui donne un nom et on la créer avec la fonction CREATE
+		//we give it a name and create it with the CREATE function
 
 		$rep=scandir('35'); //on liste les fichiers et dossiers dans le dossier selectionner
+		//we list the files and folders in the select folder
 
 		unset($rep[0], $rep[1], $rep[200]); //permet de prendre jusqu'a 200 photos dans le dossier
+		//take up to 200 photos in the folder
 
 		foreach ($rep as $file) {
 			$zip->addfile("35/{$file}");//on ajoute le nom du fichier que l'on veut avoir en Zip
+			//we add the name of the file we want to have in Zip
 		}
 
 		header('Location:camarche.zip');//on redirige vers le nom du zip pour que le client puisse le télécharger.
+		//we redirect to the name of the zip so that the client can download it.
 
 		$zip->close();//on ferme l'archive.
+					  //we close the archive
 
 ?>

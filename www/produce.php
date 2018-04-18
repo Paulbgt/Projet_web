@@ -33,7 +33,7 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
     die($e->getMessage());
 
 }
-$q = $bdd->prepare("SELECT produce.id AS id , produce.name As name, produce.price As price, category.name As category, produce.description As description, produce_picture.url from (produce LEFT JOIN category ON produce.id_category=category.id) LEFT JOIN produce_picture ON produce.id=produce_picture.id_produce ".$where);
+$q = $bdd->prepare("SELECT produce.id AS id , produce.name As name, produce.price As price, category.name As category, produce.description As description, produce_picture.url As url from (produce LEFT JOIN category ON produce.id_category=category.id) LEFT JOIN produce_picture ON produce.id=produce_picture.id_produce ".$where);
 $q->execute();
 $data = $q->fetchAll(PDO::FETCH_ASSOC);
 

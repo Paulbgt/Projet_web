@@ -128,3 +128,5 @@ function createData(data){
   generateArticle(data[i].id,data[i].name,data[i].price,data[i].category,data[i].description, data[i].url);
   }
 }
+clearArticle();
+getJSON2(getUrl("http://localhost/Projet_web/www/produce",null,null,null)).then(createData);
