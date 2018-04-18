@@ -19,7 +19,7 @@ $a->execute([
 ':idproduce' => $idproduce
 ]);
 
-header('Location: caddy.php');
+header('Location: ../shop.php');
 
 ?>
 
