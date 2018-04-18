@@ -59,7 +59,12 @@ $photos->execute(['id' => $response['id']]);
                     ?>
                 <form id="likeForm<?= $i ?>" action="php/like_done.php" method="POST"></form>
                 <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $response['id'] ?>" form="likeForm<?= $i ?>" readonly hidden>
-                <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)"></div>
+                <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
+                    <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+                    <input type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>">
+                    <input type="number" id="download_id" name="download_id" value="<?= $response['id'] ?>" readonly hidden>
+                    <?php } ?>
+                </div>
                  <?php } ?>
             </div>
             <div class="AKL-ctn--c2-s1 event-infos">
