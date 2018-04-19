@@ -1,4 +1,10 @@
-<?php session_start();  ?>
+<?php session_start(); 
+
+if($_SESSION['statute'] == 0){
+    header('Location: index.php'); 
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -50,12 +56,12 @@ $photos->execute(['id' => $response['id']]);
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
             <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
                 <?php $j = 1;
-                while($photo = $photos->fetch()) { 
+                while($photo = $photos->fetch()) {
 
                     $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture FROM like_event_picture where id_event_picture=:id GROUP BY id_event_picture");
                         $plike->execute(['id' => $photo['id']]);
                         $nlike = $plike-> fetch();
-                    
+
                     $pliked= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as liked FROM like_event_picture WHERE id_event_picture=:id AND id_account=:account_id GROUP BY id_event_picture");
                         $pliked->execute(['id' => $photo['id'], 'account_id' => $_SESSION['id']]);
                         $liked = $pliked-> fetch();
@@ -135,14 +141,6 @@ $photos->execute(['id' => $response['id']]);
 
                 <?php } ?>
 
-            <!-- <div class="modalComment-comment">
-                    <span class="modalComment-comment-span">Florian Fritsch</span>
-                    <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor incidunt quasi illum corporis fugiat animi dolore itaque veritatis laboriosam voluptatem sit quam eos, pariatur sapiente repudiandae, cumque eligendi, consequuntur culpa.</p>
-                </div>
-                <div class="modalComment-comment">
-                    <span class="modalComment-comment-span">Paul Boogaert</span>
-                    <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
-                </div> -->
             </div>
             <?php
 
@@ -176,7 +174,7 @@ $display->closeCursor();
 
 
     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
-    <form id="administerForm" action="php/administer_event.php" method="POST" enctype="multipart/form-data"></form>        
+    <form id="administerForm" action="php/administer_event.php" method="POST" enctype="multipart/form-data"></form>
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <span class="modal-title">Editer l'événement</span>
@@ -195,7 +193,7 @@ $display->closeCursor();
                 <div class="modal-infos-btn">
                     <input type="number" class="modal-infos-id" id="numEvent" name="mid" form="administerForm" readonly hidden>
                     <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder" form="administerForm"/>
-                    
+
                     <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
                     <input type="submit" class="AKL-btnClassic-Flat-hell modal-infos-delete" value="Supprimer" form="deleteForm"/>
                     <input type="number" class="modal-infos-id-delete" id="event_id" name="event_id" form="deleteForm" readonly hidden>
