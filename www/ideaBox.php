@@ -1,10 +1,4 @@
-<?php session_start(); 
-
-if($_SESSION['statute'] == 0){
-    header('Location: index.php'); 
-}
-
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,6 +15,8 @@ if($_SESSION['statute'] == 0){
 <body>
 
 	<?php include '_header.php' ?>
+
+<!--.wrapper>.AKL-ctn--c1.banner+(.AKL-ctn--c1.displaySuggestion>.AKL-ctn--c2-s3_4.suggestion>span.suggestion-title+(.AKL-ctn--c2-s1.suggestion-img>label.AKL-btnClassic-Flat-ocean+input#fileImg.AKL-btnFile)+.AKL-ctn--c2-s1.suggestion-infos>input.suggestion-infos-title+input.suggestion-infos-date+input.suggestion-infos-place+input.suggestion-infos-club+input.suggestion-infos-price+input.suggestion-infos-description+.AKL-btnClassic-Flat-ocean)+.AKL-ctn--c2-s1.idea*8>#idea-img$.AKL-ctn--c2-s1.idea-img+.AKL-ctn--c2-s1.idea-infos>span#idea-infos-title$.idea-infos-title+span#idea-infos-date$.idea-infos-date+span#idea-infos-place$.idea-infos-place+span#idea-infos-club$.idea-infos-club+span#idea-infos-price$.idea-infos-price+textarea#idea-infos-description$.idea-infos-description-->
 
 <div class="wrapper">
     <h1 class="AKL-ctn--c1 banner">Boite à idée</h1>
@@ -54,10 +50,11 @@ if($_SESSION['statute'] == 0){
         </div>
     </div>
 
+
+
 <?php
 try{
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+//conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
@@ -66,18 +63,16 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
 
 }
 
-// *[English]* query that retrieves data from the database
-// *[Français]* requête qui récupère des données de la base de données
+//requête qui permet de récupérer les données dans la BDD
 $display = $bdd->prepare("SELECT COUNT(like_event.id_account) as nb_like,event.id, event.title, event.description, event.event_date,event.place,event.club,event.price,event_picture.url  FROM (like_event right JOIN event ON like_event.id_event=event.id) LEFT join event_picture ON event.id=event_picture.id_event where event.eventStatus = 0 GROUP BY event.id");
 $display->execute();
 $i = 1;
 $liked = false;
-// *[English]* display each data one by one
-// *[Français]* afficher chaque donnée une par une
+//afficher chaque entrée une à une
 while ($response = $display->fetch()) {
 
-    // *[English]* request to get the list of likes
-    // *[Français]* requête pour obtenir la liste des likes
+
+    //request to get list of likes
     $subs = $bdd->prepare("SELECT id_account from like_event where id_event=:idevent AND id_account=:idaccount");
     $subs->execute([
         ':idevent' => $response['id'],

@@ -1,10 +1,4 @@
-<?php session_start(); 
-
-if($_SESSION['statute'] == 0){
-    header('Location: index.php'); 
-}
-
-?>
+<?php session_start();  ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,22 +13,26 @@ if($_SESSION['statute'] == 0){
     <link rel="stylesheet" href="css/shop.min.css">
 </head>
 <body>
+
 	<?php include '_header.php' ?>
+
       <div class="wrapper">
           <h1 class="AKL-ctn--c1 banner">Boutique
               <a class="banner-cart"></a>
           </h1>
+
+<!--        .AKL-ctn--c1.promotion>h2.promotion-title+.AKL-ctn--c4-s1.article*3>(.AKL-ctn--c1.article-img>h3.article-img-title)+.AKL-ctn--c1.article-infos>span.AKL-ctn--c2.article-infos-price+span.AKL-ctn--c2.article-infos-category+p.AKL-ctn--c1.article-infos-description+input[type=submit].AKL-btnClassic-Flat-ocean.article-infos-btnAdd-->
           <div class="AKL-ctn--c1 promotion">
               <h2 class="promotion-title">Les plus populaires</h2>
               <?php
 
-              try
-              {
+              try{
               $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
-              }
-              catch(PDOException $e)
-              {
+
+              } catch(PDOException $e){
+
                   die($e->getMessage());
+
               }
               $q = $bdd->prepare("SELECT count(order_composite.qantity) AS nb_sale, produce.id AS id , produce.name As name, produce.price As price, category.name As category, produce.description As description, produce_picture.url As url  from ((produce LEFT JOIN category ON produce.id_category=category.id) LEFT JOIN produce_picture ON produce.id=produce_picture.id_produce ) LEFT JOIN order_composite ON produce.id=order_composite.id_produce GROUP BY order_composite.id_produce ORDER BY nb_sale DESC LIMIT 3");
               $q->execute();
@@ -70,19 +68,25 @@ if($_SESSION['statute'] == 0){
                   <option value=""></option>
 <?php
 try
-  {
+{
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
-  }
+
+    }
 catch (Exception $e)
-  {
+{
         die('Erreur : ' . $e->getMessage());
-      }
+}
+
 $reponse = $bdd->query( 'SELECT id, name FROM category' ) or die(print_r($bdd->errorInfo()));;
+
 while ($donnees = $reponse->fetch())
 {
     echo '<option value="' . $donnees['name'] . '">' . $donnees['name'] . '</option>';
 }
+
 $reponse->closeCursor();
+
+
  ?>
                   </select>
                   <span>Prix minimum :</span>
@@ -91,6 +95,7 @@ $reponse->closeCursor();
                   <input type="range" class='AKL-range max-range' min="0" max="150" value="150" step="1">
                   <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
               </div>
+
               <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
           <form action="php/add_category_bdd.php" method="POST">
               <div class="searchNav-rightSide">
@@ -102,6 +107,7 @@ $reponse->closeCursor();
                       </div>
                   </div>
           </form>
+
 <form action="php/add_article_bdd.php" method="POST" enctype="multipart/form-data">
                   <div class="addArticle">
                       <p class="addArticle-title">Ajouter un article</p>
@@ -138,20 +144,17 @@ $reponse->closeCursor();
           <div class="listArticle">
  <?php
 try{
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+//conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 
     die($e->getMessage());
 }
-// *[English]* query that retrieves data from the database
-// *[Français]* requête qui récupère des données de la base de données
+//requête qui permet de récupérer les données dans la BDD
 $display = $bdd->prepare("SELECT produce.id AS id_produce, produce.name AS name_produce, produce.description AS description_produce, produce.price AS price_produce, produce.id_category, category.name AS name_category FROM produce LEFT JOIN category ON produce.id_category=category.id");
 $display->execute();
-// *[English]* display each data one by one
-// *[Français]* afficher chaque donnée une par une
+//afficher chaque entrée une à une
 while ($response = $display->fetch()) {
 ?>
 
@@ -177,23 +180,71 @@ while ($response = $display->fetch()) {
 $display->closeCursor();
 
 ?>
-    </div>
+
+<!--
+
+
+              <div class="article">
+                  <div class="AKL-ctn--c1 article-img">
+                      <h3 class="article-img-title">Pull année 2017-2018</h3>
+                  </div>
+                  <div class="AKL-ctn--c1 article-infos">
+                      <span class="article-infos-price">50€</span>
+                      <span class="article-infos-category">Pull</span>
+                      <p class="article-infos-description">Pull de l'exia cesi année 2017-2018</p>
+                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                  </div>
+              </div>
+              <div class="article">
+                  <div class="AKL-ctn--c1 article-img">
+                      <h3 class="article-img-title">Clé USB</h3>
+                  </div>
+                  <div class="AKL-ctn--c1 article-infos">
+                      <span class="article-infos-price">2€</span>
+                      <span class="article-infos-category">Accessoire</span>
+                      <p class="article-infos-description">Clé USB à l'éffigie de l'exia cesi</p>
+                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                  </div>
+              </div>
+              <div class="article">
+                  <div class="AKL-ctn--c1 article-img">
+                      <h3 class="article-img-title">Tasse exiaCorp</h3>
+                  </div>
+                  <div class="AKL-ctn--c1 article-infos">
+                      <span class="article-infos-price">10€</span>
+                      <span class="article-infos-category">Tasse</span>
+                      <p class="article-infos-description">Tasse à l'éffigie de d'exiaCorp Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias placeat explicabo dolorem doloribus. aaaaaabbbbbbaaaa</p>
+                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                  </div>
+              </div>
+              <div class="article">
+                  <div class="AKL-ctn--c1 article-img">
+                      <h3 class="article-img-title">Pull année 2017-2018</h3>
+                  </div>
+                  <div class="AKL-ctn--c1 article-infos">
+                      <span class="article-infos-price">50€</span>
+                      <span class="article-infos-category">Pull</span>
+                      <p class="article-infos-description">Pull de l'exia cesi année 2017-2018</p>
+                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                  </div>
+              </div>
+              <div class="article">
+                  <div class="AKL-ctn--c1 article-img">
+                      <h3 class="article-img-title">Clé USB</h3>
+                  </div>
+                  <div class="AKL-ctn--c1 article-infos">
+                      <span class="article-infos-price">2€</span>
+                      <span class="article-infos-category">Accessoire</span>
+                      <p class="article-infos-description">Clé USB à l'éffigie de l'exia cesi</p>
+                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                  </div>
+              </div>
+             -->
+           </div>
   </div>
+
+
     <?php include '_footer.php' ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<form action="php/confirm_order.php" method="POST">
 
     <div class="backgroundModal">
         <div class="modal">
@@ -208,19 +259,23 @@ $display->closeCursor();
 
 <?php
 try{
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+//conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 
     die($e->getMessage());
 }
+
 $idorder = $_SESSION['id_order'];
+
 $see = $bdd->prepare("SELECT * FROM (orders LEFT JOIN order_composite ON orders.id=order_composite.id_orders)LEFT JOIN produce ON produce.id=order_composite.id_produce WHERE orders.id=:idorder AND orders.statute = 'panier'");
+
 $see->execute([
     ':idorder' => $idorder
 ]);
+
+
 while ($response = $see->fetch()) {
 ?>
 
@@ -230,27 +285,37 @@ while ($response = $see->fetch()) {
                 <span class="line-price"><?= $response['price'] ?> €</span>
                 <span class="line-quantity"><?= $response['qantity']?></span>
             </div>
+
 <?php
 }
 $see->closeCursor();
 ?>
 
+
 <?php
 try{
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+//conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
+
     die($e->getMessage());
 }
+
 $idorder = $_SESSION['id_order'];
+
 $saw = $bdd->prepare("SELECT *, SUM(price) AS sum_price FROM (orders LEFT JOIN order_composite ON orders.id=order_composite.id_orders)LEFT JOIN produce ON produce.id=order_composite.id_produce WHERE orders.id=:idorder AND orders.statute = 'panier'");
+
 $saw->execute([
     ':idorder' => $idorder
 ]);
+
+
 while ($responses = $saw->fetch()) {
+
 ?>
+
+
             <div class="lineTT">
                 <span class="lineTT-ht">Prix HT :</span>
                 <span class="lineTT-ht"><?= $responses['sum_price'] ?> €</span>
@@ -263,28 +328,36 @@ $saw->closeCursor();
                 <span class="lineTT-tva">TVA :</span>
                 <span class="lineTT-tva">20 %</span>
             </div>
+
+
 <?php
 try{
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+//conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 
     die($e->getMessage());
 }
+
 $idorder = $_SESSION['id_order'];
+
 $saww = $bdd->prepare("SELECT *, SUM(price)*1.20 AS sum_price_tva FROM (orders LEFT JOIN order_composite ON orders.id=order_composite.id_orders)LEFT JOIN produce ON produce.id=order_composite.id_produce WHERE orders.id=:idorder AND orders.statute = 'panier'");
+
 $saww->execute([
     ':idorder' => $idorder
 ]);
+
+
 while ($responsess = $saww->fetch()) {
+
 ?>
 
             <div class="lineTT">
                 <span class="lineTT-ttc">Prix TTC :</span>
                 <span class="lineTT-ttc"><?= $responsess['sum_price_tva'] ?> €</span>
             </div>
+
 <?php
 }
 $saww->closeCursor();
@@ -292,11 +365,6 @@ $saww->closeCursor();
             <input class="AKL-btnClassic-Flat-ocean modal-payment" type="submit" value="Valider la commande">
         </div>
     </div>
-</form>
-
-
-
-
 
 
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>

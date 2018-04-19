@@ -1,6 +1,3 @@
-<!-- // *[English]* This function allows us to register on the website, we must enter our name, first name, email address and password (the password is encrypted) the status is defined in relation to the email address -->
-<!-- // *[Français]* Cette fonction permet de nous inscrire sur le site internet, nous devons entrer notre nom, prenom, adresse mail et mot de passe (le mot de passe est crypté) le statut est définie par rapport à l'adresse mail -->
-
 <?php  
 //conexion à la base de données
 $db = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');

@@ -10,8 +10,6 @@ var btnRegisterValidate = document.querySelector('.suggestion-infos-submit');
 var btnDelete = document.querySelector('.modal-infos-delete');
 
 
-// *[English]* Function used to place the error message
-// *[Français]* Fonction servant à placer le message d'erreur
 function placeError() {
     for (var i = 0; i<formError.length; i++) {
         formError[i].style.width = '0px';
@@ -29,8 +27,7 @@ if (btnRegisterValidate != null) {
     });
 }
 
-// *[English]* Event listener used to display the image selected on the designated area
-// *[Français]* Evénement servant à afficher l'image selectioné
+// Event listener used to display the image selected on the designated area
 if (inputImg != null) {
     inputImg.addEventListener('change', function(e) {
         var files = this.files[0];
@@ -45,8 +42,7 @@ if (inputImg != null) {
     });
 }
 
-// *[English]* Event listener used to swap the likes image and to update the display of number of likes
-// *[Français]* Evénement servant à échanger les icônes du bouton "j'aime" et à mettre à jour le nombre de "j'aime"
+// Event listener used to swap the likes image and to update the display of number of likes
 for (var i = 0; i<btnLike.length; i++) {
     btnLike[i].addEventListener('click', function() {
         if (this.style.backgroundImage.search('grey') > 0) {
@@ -63,8 +59,7 @@ for (var i = 0; i<btnLike.length; i++) {
     });
 }
 
-// *[English]* Event listener used to display the suggestion form
-// *[Français]* Affiche le formulaire pour proposer une idée
+// Event listener used to display the suggestion form
 var ho, h;
 if (suggestionBtnOpen != null) {
     suggestionBtnOpen.addEventListener('click', function() {

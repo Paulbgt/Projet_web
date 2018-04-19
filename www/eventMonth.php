@@ -1,10 +1,4 @@
-<?php session_start(); 
-
-if($_SESSION['statute'] == 0){
-    header('Location: index.php'); 
-}
-
-?>
+<?php session_start();  ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,28 +17,30 @@ if($_SESSION['statute'] == 0){
 	<?php include '_header.php' ?>
 
     <div class="wrapper">
-       <h1 class="AKL-ctn--c1 banner">Evénements du mois</h1>
 
-<?php
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+        
+<!--        .AKL-ctn--c1.banner+.AKL-ctn--c1.event*4>#event-img$.AKL-ctn--c2-s1.event-img+.AKL-ctn--c2-s1.event-infos>span#event-infos-title$.event-infos-title+span#event-infos-date$.event-infos-date+span#event-infos-place$.event-infos-place+span#event-infos-club$.event-infos-club+span#event-infos-price$.event-infos-price+textarea#event-infos-description$.event-infos-description+input#subscribe$.AKL-btnClassic-Flat-ocean.event-infos-subscire-->
+       
+       <h1 class="AKL-ctn--c1 banner">Evénements du mois</h1>
+       
+       
+<?php  
+//conexion à la base de données
 try{
     $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 } catch(PDOException $e){
     die($e->getMessage());
 }
 
-// *[English]* query that retrieves data from the database
-// *[Français]* requête qui récupère des données de la base de données
+//requête qui permet de récupérer les données dans la BDD
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 1");
 $display->execute();
 $i = 1;
 $subscribed = false;
-// *[English]* display each data one by one
-// *[Français]* afficher chaque donnée une par une
+//afficher chaque entrée une à une
 while ($response = $display->fetch()) {
-
-
+    
+    
     $subs = $bdd->prepare("SELECT last_name, first_name, mail FROM account INNER JOIN register ON register.id_account=account.id WHERE id_event=:mid");
     $subs->execute([
         ':mid' => $response['id']
@@ -60,7 +56,7 @@ while ($response = $display->fetch()) {
     $photos = $bdd->prepare("SELECT * FROM event_picture WHERE id_event = :id ORDER BY ref DESC LIMIT 1");
     $photos->execute(['id' => $response['id']]);
 ?>
-
+    
     <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
         <form id="registrationForm<?= $i ?>" action="php/registration.php" method="POST"></form>
         <?php while($photo = $photos->fetch()) { ?>
@@ -96,7 +92,7 @@ while ($response = $display->fetch()) {
             <span id="event-infos-date<?= $i ?>" class="event-infos-date"><?= $response['event_date'] ?></span>
             <span id="event-infos-price<?= $i ?>" class="event-infos-price"><?= $response['price'] ?></span>
             <textarea id="event-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked event-infos-description" readonly><?= $response['description'] ?></textarea>
-
+            
             <div class="event-infos-btn">
                 <input name="subs_event_id" value="<?= $response['id'] ?>" form="registrationForm<?= $i ?>" readonly hidden>
                 <input type="submit" name="subscribe" id="subscribe<?= $i ?>" class="AKL-btnClassic-Flat-ocean event-infos-subscribe" value="<?= $subscribed ? "Se désinscrire" : "S'inscrire" ?>" form="registrationForm<?= $i ?>">
@@ -112,17 +108,17 @@ while ($response = $display->fetch()) {
         </div>
     </div>
 
-
+       
 <?php
 $i++;
 $subscribed = false; }
 $display->closeCursor();
 ?>
-
+        
     </div>
-
-
-
+        
+        
+        
 
     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
     <form id="administerForm" action="php/administer_event.php" method="POST" enctype="multipart/form-data">
@@ -170,9 +166,9 @@ $display->closeCursor();
         </div>
     </div>
     <?php } ?>
-
+       
     <?php include '_footer.php' ?>
-
+        
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/eventMonth.min.js"></script>

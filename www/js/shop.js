@@ -1,28 +1,21 @@
 var btnCart = document.querySelector('.banner-cart');
 
 
-// *[English]* Delete the article from the cart
-// *[Français]* Supprime l'article du panier
-//var btnDeleteCart = document.querySelectorAll('.line-delete');
-//var btnAddCart = document.querySelectorAll('.article-infos-btnAdd');
-//
-//for (var i=0; i<btnDeleteCart.length; i++) {
-//    btnDeleteCart[i].addEventListener('click', function() {
-//        btnCart.innerHTML = parseInt(btnCart.innerHTML) - parseInt(this.parentElement.querySelector('.line-quantity').innerHTML);
-//        this.parentElement.remove();
-//    });
-//}
-//for (var i=0; i<btnAddCart.length; i++) {
-//    btnAddCart[i].addEventListener('click', function() {
-//        btnCart.innerHTML = parseInt(btnCart.innerHTML) + 1;
-//        this.parentElement.remove();
-//    });
-//}
-
-
-
 // *[English]* Display the add article form and the add category form
 // *[Français]* Affiche les formulaires d'ajout de catégorie et de produit
+var btnDeleteCart = document.querySelectorAll('.line-delete');
+
+for (var i=0; i<btnDeleteCart.length; i++) {
+    btnDeleteCart[i].addEventListener('click', function() {
+        btnCart.innerHTML = parseInt(btnCart.innerHTML) - parseInt(this.parentElement.querySelector('.line-quantity').innerHTML);
+        this.parentElement.remove();
+    });
+}
+
+
+
+// *[English]* Delete the article from the cart
+// *[Français]* Supprime l'article du panier
 var rightSide = document.querySelectorAll('.searchNav-rightSide');
 if (rightSide.length > 0) {
     document.querySelector('.addArticle-title').addEventListener('click', function() {

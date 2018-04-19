@@ -1,9 +1,7 @@
-<!-- // *[English]* this function allows us to add likes or remove them for the completed events page.-->
-<!-- // *[Français]* cette fonction nous permet d'ajouter des likes ou de les retirer pour la page événements terminés. -->
-
 <?php session_start(); ?>
 
 <?php
+
 try{
 //conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
@@ -24,6 +22,8 @@ if (!empty($_POST['like_id'])) {
     echo "L'événement n'a pas pu être ajouté à la base de données.";
 }
 
+
+
 //on vérifie que le champs ne sont pas vide avant de remplir la base de données
 if (!empty($like_id)) {
     //requête permettant de supprimer l'événement
@@ -31,9 +31,11 @@ if (!empty($like_id)) {
         ':like_id' => $like_id,
         ':account_id' => $_SESSION['id']
     ]);
+    
     //Work to go back to previous page BUT it doesn't reload it so changes doesn't appear
-    header('Location: javascript://history.go(-1)');
-//    header('Location: ../ideaBox');
+    header('Location: javascript://history.go(-1)'); 
+//    header('Location: ../ideaBox'); 
+
     } else {
     //message si l'insertion dans la base de données ne s'effectue pas
     echo "L'événement n'a pas pu être ajouté à la base de données.";

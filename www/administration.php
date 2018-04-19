@@ -35,21 +35,18 @@ if ($_SESSION['statute'] != 3) {
                 </tr>
 
 <?php
-// *[English]* connection to the database
-// *[Français]* connexion à la base de données
+//conexion à la base de données
 try{
     $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 } catch(PDOException $e){
     die($e->getMessage());
 }
 
-// *[English]* query that retrieves data from the database
-// *[Français]* requête qui récupère des données de la base de données
+//requête qui permet de récupérer les données dans la BDD
 $display = $bdd->prepare("SELECT account.id, account.last_name, account.first_name, account.mail, account.statute FROM account ORDER BY account.last_name");
 $display->execute();
 $i = 1;
-// *[English]* display each data one by one
-// *[Français]* afficher chaque donnée une par une
+//afficher chaque entrée une à une
 while ($response = $display->fetch()) {
     switch ($response['statute']) {
         case 1 : $status = "Etudiant"; break;

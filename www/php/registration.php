@@ -1,6 +1,3 @@
-<!-- // *[English]* This feature allows you to register for an event in the event page of the month -->
-<!-- // *[Français]* Cette focntion permet de s'inscrire pour un événement dans la page événement du mois -->
-
 <?php session_start(); ?>
 
 <?php
@@ -8,11 +5,16 @@
 try{
 //conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
+
+} catch(PDOException $e){
+
+	die($e->getMessage());
+
 }
-catch(PDOException $e){die($e->getMessage());}
 
 $event_id = $_POST['subs_event_id'];
 $account_id = $_SESSION['id'];
+
 //Javascript is acting before php, so the name (POST value) has already changed before the form has been submitted, so we have to inverse the condition.
 if ($_POST['subscribe'] == "S'inscrire") {
     $register = $bdd->prepare('DELETE FROM register WHERE id_account=:account_id AND id_event=:event_id');
@@ -22,6 +24,8 @@ if ($_POST['subscribe'] == "S'inscrire") {
     //message if $_POST['subscribe'] is empty
     echo "L'événement n'a pas pu être ajouté à la base de données.";
 }
+
+
 //on vérifie que le champs ne sont pas vide avant de remplir la base de données
 if (!empty($event_id)) {
     //requête permettant de supprimer l'événement
@@ -29,10 +33,11 @@ if (!empty($event_id)) {
         ':event_id' => $event_id,
         ':account_id' => $account_id
     ]);
+    
     //Work to go back to previous page BUT it doesn't reload it so changes doesn't appear
-    header('Location: javascript://history.go(-1)');
-    }
-		else{
+    header('Location: javascript://history.go(-1)'); 
+
+    }else{
     //message si l'insertion dans la base de données ne s'effectue pas
     echo "L'événement n'a pas pu être ajouté à la base de données.";
 }
