@@ -140,7 +140,7 @@
             font-size: 1em;
             margin: 0 -20px 0 0;
             padding: 10px 20px;
-            width: calc(50% - 10px);
+            width: calc(50% - 30px);
         }
 
         .event:nth-child(2n+1) .event-infos-description {

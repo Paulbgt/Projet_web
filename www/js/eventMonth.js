@@ -24,6 +24,19 @@ for (var u = 0; u< list.length; u++) {
 }
 
 
+// Event listener used to delete the event who has been reported
+var btnReport = document.querySelectorAll('[class*=event-report]');
+if (btnReport.length > 0) {
+    for (var i=0; i<btnReport.length; i++) {
+        btnReport[i].addEventListener('click', function() {
+            var that = this;
+            setTimeout(function() {that.parentElement.parentElement.parentElement.remove();}, 20);
+        });
+    }
+}
+
+
+
 /* ///////////// Modal //////////// */
 
 if (document.getElementById('fileImgModal')) {
