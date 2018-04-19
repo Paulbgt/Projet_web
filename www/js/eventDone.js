@@ -133,6 +133,7 @@ for (var i=0; i<btnNext.length; i++) {
         img[position].style.opacity = 1;
         this.parentElement.setAttribute('step', position);
         this.parentElement.querySelector('.event-swap-like').setAttribute('value', img[position].getAttribute('value'));
+        this.parentElement.querySelector('.event-swap-like').setAttribute('form', img[position].parentElement.querySelectorAll('[class*=likeForm]')[position].getAttribute('form'));
         img[position].getAttribute('liked') == "true" ? this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
         this.parentElement.querySelector('.event-swap-like').style.animation = "none";
     });
