@@ -93,6 +93,7 @@ $reponse->closeCursor();
                   <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
               </div>
              
+              <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
               <div class="searchNav-rightSide">
                   <div class="addCategory">
                       <p class="addCategory-title">Ajouter une catégorie</p>
@@ -114,6 +115,7 @@ $reponse->closeCursor();
                       </div>
                   </div>
               </div>
+              <?php } ?>
           </div>
           <div class="listArticle">
  <?php

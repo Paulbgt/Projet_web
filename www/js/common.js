@@ -12,8 +12,13 @@ navButton.addEventListener('click', function() {
         this.children[1].style.transform = "scale(0)";
         this.children[2].style.transform = "rotate(-33deg)";
         right ? this.parentElement.style.backgroundColor = "var(--exia-red2)" : null;
-        navBloc.style.height = "160px";
         navBloc.children[0].style.display = "block";
+        navBloc.style.height = "auto";
+        var h = navBloc.offsetHeight;
+        navBloc.style.height = "0";
+        setTimeout(function(){
+            navBloc.style.height = h + "px";
+        }, 1);
         showMenu = true;
     } else {
         this.children[0].style.transform = "rotate(0)";

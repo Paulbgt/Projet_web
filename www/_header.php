@@ -15,6 +15,12 @@
             <li class="nav-blc-ul-li"><a href="eventMonth">Evénements du mois</a></li>
             <li class="nav-blc-ul-li"><a href="eventDone">Evénements passés</a></li>
             <li class="nav-blc-ul-li"><a href="shop">Boutique</a></li>
+          <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+            <li class="nav-blc-ul-li"><a href="report">Signalements</a></li>
+          <?php } ?>
+          <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+            <li class="nav-blc-ul-li"><a href="administration">Administration</a></li>
+          <?php } ?>
         </ul>
     </div>
     <?php
@@ -81,6 +87,14 @@
             <li class="nav-blc-ul-li"><a href="eventMonth">Evénements du mois</a></li>
             <li class="nav-blc-ul-li"><a href="eventDone">Evénements passés</a></li>
             <li class="nav-blc-ul-li"><a href="shop">Boutique</a></li>
+          <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+            <hr>
+            <li class="nav-blc-ul-li"><a href="report">Signalements</a></li>
+          <?php } ?>
+          <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+            <hr>
+            <li class="nav-blc-ul-li"><a href="administration">Administration</a></li>
+          <?php } ?>
         </ul>
         <hr>
         <span class="headerPhone-log-name">

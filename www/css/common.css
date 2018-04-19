@@ -61,6 +61,7 @@ a {
         justify-content: center;
         align-items: center;
         transition: all 225ms;
+        z-index: 1;
     }
 
         #nav-btn-svg, #navPhone-btn-svg {
@@ -95,6 +96,8 @@ a {
         transition: all 500ms;
         height: 0;
         overflow: hidden;
+        box-shadow: 0 0 25px -5px black;
+/*        box-shadow: 0 0 5px black;*/
     }
 
         .nav-blc-ul {
@@ -106,6 +109,10 @@ a {
             .nav-blc-ul-li {
                 line-height: 2em;
                 padding-left: 10px;
+            }
+
+            .nav-blc-ul-li:nth-child(5) {
+                border-top: 2px solid white;
             }
 
                 .nav-blc-ul-li:hover {
@@ -267,6 +274,7 @@ a {
                 height: 40px;
                 line-height: 40px;
                 padding: 0;
+                border: none;
             }
 
                 .navPhone-blc .nav-blc-ul-li:hover {

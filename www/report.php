@@ -19,37 +19,8 @@
 <!--.wrapper>.AKL-ctn--c1.banner+(.AKL-ctn--c1.displaySuggestion>.AKL-ctn--c2-s3_4.suggestion>span.suggestion-title+(.AKL-ctn--c2-s1.suggestion-img>label.AKL-btnClassic-Flat-ocean+input#fileImg.AKL-btnFile)+.AKL-ctn--c2-s1.suggestion-infos>input.suggestion-infos-title+input.suggestion-infos-date+input.suggestion-infos-place+input.suggestion-infos-club+input.suggestion-infos-price+input.suggestion-infos-description+.AKL-btnClassic-Flat-ocean)+.AKL-ctn--c2-s1.idea*8>#idea-img$.AKL-ctn--c2-s1.idea-img+.AKL-ctn--c2-s1.idea-infos>span#idea-infos-title$.idea-infos-title+span#idea-infos-date$.idea-infos-date+span#idea-infos-place$.idea-infos-place+span#idea-infos-club$.idea-infos-club+span#idea-infos-price$.idea-infos-price+textarea#idea-infos-description$.idea-infos-description-->
 
 <div class="wrapper">
-    <h1 class="AKL-ctn--c1 banner">éléments signaler</h1>
-    <div class="AKL-ctn--c1 blcSuggestion">
-        <a id="displaySuggestion" class="AKL-btnClassic-Flat-ocean">Proposer une idée</a>
-        <div class="AKL-ctn--c3_4-s1 suggestion">
-            <a class="suggestion-title">Proposer une idée</a>
-
-
-
-            <form action="php/suggest_event_add.php" method="POST" enctype="multipart/form-data">
-                <div class="AKL-ctn--c2-s1 suggestion-img">
-                    <label for="fileImg" class="AKL-btnClassic-Flat-ocean">Choisir une image</label>
-                    <input type="file" id="fileImg" name="image" class="AKL-btnFile" hidden>
-                </div>
-                <div class="AKL-ctn--c2-s1 suggestion-infos">
-                    <input type="text" name="title" id="title" placeholder="Titre de l'idée" class="AKL-inputUnderlined suggestion-infos-title">
-                    <label class="form-error" for="title"></label>
-                    <input type="text" name="place" id="place" placeholder="Lieu" class="AKL-inputUnderlined suggestion-infos-place">
-                    <input type="text" name="club" id="club" placeholder="Club" class="AKL-inputUnderlined suggestion-infos-club">
-                    <input type="text" name="event_date" id="event_date" placeholder="Date" class="AKL-inputUnderlined suggestion-infos-date">
-                    <input type="text" name="price" id="price" placeholder="Prix" class="AKL-inputUnderlined suggestion-infos-price">
-                    <textarea placeholder="Description" name="description" id="description" cols="30" rows="4" class="AKL-textareaUnderlined-locked suggestion-infos-description"></textarea>
-                    <label class="form-error" for="description"></label>
-
-                    <input type="submit" name="validation date_event" class="AKL-btnClassic-Flat-ocean suggestion-infos-submit" id="submitIdea"/>
-
-                </div>
-            </form>
-
-        </div>
-    </div>
-
+    <h1 class="AKL-ctn--c1 banner">Eléments signalés</h1>
+    <div></div> <!-- Useless div just for the checkerboard color -->
 
 
 <?php
@@ -158,7 +129,7 @@ $display->closeCursor();
 
             <div class="AKL-ctn--c3 radio-blc">
                 <label for="check-eventIdea" class="AKL-radio--cross"></label>
-                <input id="check-eventIdea" value="0" name="meventStatus" type="radio" form="administerForm" hidden checked>
+                <input id="check-eventIdea" value="0" name="meventStatus" type="radio" form="administerForm" hidden>
                 <label class="check-label">Boite à idée</label>
             </div>
         </div>
@@ -170,6 +141,5 @@ $display->closeCursor();
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/ideaBox.min.js"></script>
-<script src="js/ideaBoxValidation.js"></script>
 </body>
 </html>
