@@ -201,7 +201,7 @@ if (document.getElementById('fileImgModal')) {
             var id = this.classList[1].replace('event-admin', '');
             document.querySelector('.modal-infos-id').value = this.id;
             document.querySelector('.modal-infos-id-delete').value = this.id;
-            document.querySelector('.modal-img').style.backgroundImage = document.getElementById('event-img' + id).style.backgroundImage;
+            document.querySelector('.modal-img').style.backgroundImage = this.parentElement.querySelector('.event-img-' + id + '_1').style.backgroundImage;
             document.querySelector('.modal-infos-title').value = document.getElementById('event-infos-title' + id).innerHTML;
             document.querySelector('.modal-infos-place').value = document.getElementById('event-infos-place' + id).innerHTML;
 //            document.querySelector('.modal-infos-price').value = document.getElementById('event-infos-price' + id).innerHTML;
