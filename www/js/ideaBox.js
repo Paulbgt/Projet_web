@@ -21,23 +21,26 @@ function placeError() {
     }
 }
 
-
-btnRegisterValidate.addEventListener('click', function(e) {
-    placeError();
-});
+if (btnRegisterValidate != null) {
+    btnRegisterValidate.addEventListener('click', function(e) {
+        placeError();
+    });
+}
 
 // Event listener used to display the image selected on the designated area
-inputImg.addEventListener('change', function(e) {
-    var files = this.files[0];
-    var imgType = files.name.split('.');
-    imgType = imgType[imgType.length - 1].toLowerCase();
-    
-    if (allowedTypes.indexOf(imgType) != -1) {
-        var path = URL.createObjectURL(this.files[0]);
-        this.parentElement.style.backgroundImage = 'url(' + path + ')';
-        document.querySelector('[for=fileImg]').style.marginBottom = '-290px';
-    }
-});
+if (inputImg != null) {
+    inputImg.addEventListener('change', function(e) {
+        var files = this.files[0];
+        var imgType = files.name.split('.');
+        imgType = imgType[imgType.length - 1].toLowerCase();
+
+        if (allowedTypes.indexOf(imgType) != -1) {
+            var path = URL.createObjectURL(this.files[0]);
+            this.parentElement.style.backgroundImage = 'url(' + path + ')';
+            document.querySelector('[for=fileImg]').style.marginBottom = '-290px';
+        }
+    });
+}
 
 // Event listener used to swap the likes image and to update the display of number of likes
 for (var i = 0; i<btnLike.length; i++) {
@@ -58,22 +61,24 @@ for (var i = 0; i<btnLike.length; i++) {
 
 // Event listener used to display the suggestion form
 var ho, h;
-suggestionBtnOpen.addEventListener('click', function() {
-    suggestionBlc.style.height = "auto";
-    ho = suggestionBlc.offsetHeight;
-    suggestionBox.style.display = "block";
-    this.style.display = "none";
-    h = suggestionBlc.offsetHeight;    
-    suggestionBlc.style.height = ho + 'px';
-    setTimeout(function(){
-        suggestionBlc.style.height = h + "px";
-    }, 1);
-});
-suggestionBtnClose.addEventListener('click', function() {
-    suggestionBtnOpen.style.display = "flex";
-    suggestionBox.style.display = "none";
-    suggestionBlc.style.height = ho + 'px';
-});
+if (suggestionBtnOpen != null) {
+    suggestionBtnOpen.addEventListener('click', function() {
+        suggestionBlc.style.height = "auto";
+        ho = suggestionBlc.offsetHeight;
+        suggestionBox.style.display = "block";
+        this.style.display = "none";
+        h = suggestionBlc.offsetHeight;    
+        suggestionBlc.style.height = ho + 'px';
+        setTimeout(function(){
+            suggestionBlc.style.height = h + "px";
+        }, 1);
+    });
+    suggestionBtnClose.addEventListener('click', function() {
+        suggestionBtnOpen.style.display = "flex";
+        suggestionBox.style.display = "none";
+        suggestionBlc.style.height = ho + 'px';
+    });
+}
 
 
 if (document.getElementById('fileImgModal')) {

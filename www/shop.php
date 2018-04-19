@@ -114,6 +114,22 @@ $reponse->closeCursor();
                           <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description"></textarea>
                           <label for="file1" class="AKL-btnClassic-FlatBorder">Image</label>
                           <input hidden type="file" id="file1" class="AKL-btnFile">
+                          <select class='AKL-select-snow searchNav-select'>
+                              <option value="">Catégorie :</option>
+<?php
+try {
+    $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+$reponse = $bdd->query( 'SELECT id, name FROM category' ) or die(print_r($bdd->errorInfo()));;
+
+while ($donnees = $reponse->fetch()) {
+    echo '<option value="' . $donnees['name'] . '">' . $donnees['name'] . '</option>';
+}
+$reponse->closeCursor();
+?>
+                          </select>
                           <input type="submit" class="AKL-btnClassic-Flat addArticle-submit" value="Ajouter">
                       </div>
                   </div>

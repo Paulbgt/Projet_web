@@ -32,6 +32,39 @@ if ($_SESSION['statute'] != 3)) {
                     <th>Mail</th>
                     <th>Statut</th>
                 </tr>
+                
+<?php  
+//conexion à la base de données
+try{
+    $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
+} catch(PDOException $e){
+    die($e->getMessage());
+}
+
+//requête qui permet de récupérer les données dans la BDD
+$display = $bdd->prepare("SELECT account.id, account.last_name, account.first_name, account.mail, account.statute FROM account ORDER BY account.last_name");
+$display->execute();
+$i = 1;
+//afficher chaque entrée une à une
+while ($response = $display->fetch()) {
+
+    switch ($response['statute']) {
+        case '1' : $status = "Etudiant";
+        case '2' : $status = "BDE";
+        case '3' : $status = "Salarié";
+            default : $status = "Etudiant";
+    }
+?>
+                
+                <tr>
+                    <td><?= $response['first_name'] ?></td>
+                    <td><?= $response['last_name'] ?></td>
+                    <td><?= $response['mail'] ?></td>
+                    <td><?= $status ?><button class="btnChangeStatus"></button></td>
+                </tr>
+                
+<?php } ?>
+<!--
                 <tr>
                     <td>Aurélien</td>
                     <td>Klein</td>
@@ -50,6 +83,7 @@ if ($_SESSION['statute'] != 3)) {
                     <td>pierre.geraert@viacesi.fr</td>
                     <td>Etudiant<a class="btnChangeStatus"></a></td>
                 </tr>
+-->
             </table>
         </div>
 

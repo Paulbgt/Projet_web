@@ -94,17 +94,21 @@
         float: left;
     }
 
-.searchNav span {
-    float: left;
-    line-height: 40px;
-    margin: 0 10px;
-    clear: both;
-}
+    .searchNav span {
+        float: left;
+        line-height: 40px;
+        margin: 0 10px;
+        clear: both;
+    }
 
-.searchNav input[type=range] {
-    float: left;
-    margin: 5px 2px;
-}
+    .searchNav span:nth-of-type(1) {
+        margin-right: 45px;
+    }
+
+    .searchNav input[type=range] {
+        float: left;
+        margin: 5px 2px;
+    }
 
 .btnSearch {
     clear: both;
@@ -164,7 +168,7 @@
     }
 
     .addArticle-blc label {
-        width: calc(80% + 10px);
+        width: calc(40% + 10px);
         margin: 10px;
     }
 
