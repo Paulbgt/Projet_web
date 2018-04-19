@@ -1,6 +1,7 @@
+<!-- // *[English]* This function allows us to change the status of an event if a salarie cesi the signal, it will no longer display on the site as it changes status.-->
+<!-- // *[Français]* Cette fonction nous permet de changer le statut d'un événement si un salariè du cesi le signal, il ne sera plus afficher sur le site des que celui-ci change de statut. -->
+
 <?php
-
-
 try{
 //conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');

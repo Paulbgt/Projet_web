@@ -1,3 +1,7 @@
+<!-- // *[English]* -->
+<!-- //*[Français]* -->
+
+
 <?php
 Require_once 'config.php';
 Class BDD

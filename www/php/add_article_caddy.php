@@ -1,3 +1,7 @@
+<!-- // *[English]* This feature allows you to add an item to the user's cart-->
+
+<!-- //*[Français]* Cette fonction permet d'ajouter un article dans le panier de l'utilisateur-->
+
 <?php session_start();  ?>
 <?php
 try{

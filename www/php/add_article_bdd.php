@@ -1,3 +1,7 @@
+<!-- // *[English]* this query allows you to add a new article in the database and then display it in the site, it includes: name, price, description, image . -->
+
+<!-- //*[Français]* cette requête permet d'ajouter un nouvel article dans la base de données pour ensuite l'afficher dans le site, elle comprend : nom, prix, description, son image.-->
+
 <?php
 try
 {

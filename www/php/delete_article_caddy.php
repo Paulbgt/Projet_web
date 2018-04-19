@@ -1,3 +1,6 @@
+<!-- // *[English]* This feature allows us to remove an item from our cart.-->
+<!-- // *[Français]* Cette fonction nous permet de supprimer un article de notre panier. -->
+
 <?php session_start();  ?>
 <?php 
 try{

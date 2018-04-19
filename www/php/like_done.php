@@ -1,3 +1,6 @@
+<!-- // *[English]* this function allows us to add likes or remove them for the completed events page.-->
+<!-- // *[Français]* cette fonction nous permet d'ajouter des likes ou de les retirer pour la page événements terminés. -->
+
 <?php session_start(); ?>
 
 <?php

@@ -1,3 +1,6 @@
+<!-- // *[English]* This function makes it possible to add a comment for the completed events. -->
+<!-- //*[Français]* Cette fonction permet de rajouter un commentaire pour les événement terminés. -->
+
 <?php
  session_start();
 try{

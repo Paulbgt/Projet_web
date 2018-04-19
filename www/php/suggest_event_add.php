@@ -1,3 +1,6 @@
+<!-- // *[English]* this function allows us to suggest an event in the idea box, we can add: title, description, club, price and image. -->
+<!-- // *[Français]* cette fonction nous permet de suggérer un événement dans la boite à idée, nous pouvons ajouter : titre, description, club, prix et image. -->
+
 <?php session_start(); ?>
 
 <?php

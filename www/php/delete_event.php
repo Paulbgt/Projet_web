@@ -1,3 +1,6 @@
+<!-- // *[English]* This function allows you to delete an event.-->
+<!-- // *[Français]* Cette fonction permet de supprimer un événement. -->
+
 <?php
 
 //conexion à la base de données
