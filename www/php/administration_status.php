@@ -10,14 +10,9 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
 
 }
 
-$mid = ;
+$update = $bdd->prepare('UPDATE account SET statute=:status WHERE id=:account_id LIMIT 1');
 
-
-
-
-$v = $bdd->prepare('UPDATE account SET statute=:status WHERE id=:account_id LIMIT 1');
-
-$v->execute([
+$update->execute([
     ':account_id' => $_POST['account_id'],
     ':status' => $_POST['status']
 ]);
