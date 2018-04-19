@@ -5,11 +5,9 @@
 	<title>Session</title>
 </head>
 <body>
-<p>Votre Email : 
-<?php 
-	echo($_SESSION['mail']); 
+<p>Votre Email :
+<?php
+	echo($_SESSION['mail']);
 ?></p>
-
-
 </body>
 </html>

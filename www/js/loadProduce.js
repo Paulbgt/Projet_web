@@ -2,7 +2,6 @@ function clearArticle() {
     document.querySelector('.listArticle').innerHTML = "";
 }
 
-
 function generateArticle(id, name, price, category, description, url) {
     var listArticle = document.querySelector('.listArticle');
     var art_form, article, art_img, art_name, art_infos, art_price, art_category, art_description, hidden, submit;
@@ -85,26 +84,12 @@ function generateArticle(id, name, price, category, description, url) {
   });
 };
 
-
 function getUrl(url,category,min,max)
 {
-  if((category==null || category=="") && (min==null || min=="") && (max==null || max=="") )
-  {
-    return url;
-  }
-  else if((category==null || category=="") && (min!=null || min!="") && (max!=null || max!="") )
-  {
-    return url+"?min="+min+"&max="+max;
-  }
-  else if((category!=null || category!="") && (min!=null || min!="") && (max!=null || max!="") )
-  {
-    return url+"?category="+category+"&min="+min+"&max="+max;
-  }
-  else {
-    return url;
-  }
-}
-
+  if((category==null || category=="") && (min==null || min=="") && (max==null || max=="") ){return url;}
+  else if((category==null || category=="") && (min!=null || min!="") && (max!=null || max!="") ){return url+"?min="+min+"&max="+max;}
+  else if((category!=null || category!="") && (min!=null || min!="") && (max!=null || max!="") ){return url+"?category="+category+"&min="+min+"&max="+max;}
+  else {return url;}}
 
 var button=document.querySelector(".btnSearch");
 var minBtn=document.querySelector(".min-range");
@@ -117,11 +102,6 @@ var max=maxBtn.value;
 var cat=selectBtn.value;
 getJSON2(getUrl("php/produce",cat,min,max)).then(createData);
 });
-
-function reload_produce()
-{
-  //createData(getJSON2(url))
-}
 
 function createData(data){
   clearArticle();

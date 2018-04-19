@@ -22,14 +22,12 @@
       }
       return self::$PDOInstance;
     }
-
     public static function setConfig($dsn, $username, $password, array $options = array()){
       self::$dsn      = $dsn;
       self::$username = $username;
       self::$password = $password;
       self::$options += $options;
     }
-
     private static function configDone(){
       return self::$dsn !== null && self::$username !== null && self::$password !== null;
     }
