@@ -1,4 +1,8 @@
-<?php session_start();  ?>
+<?php session_start();
+if (isset($_SESSION['statute'])) {
+    header ('Location: eventDone');
+    exit();
+    }?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,12 +18,12 @@
 <body>
 
 	<?php include '_header.php' ?>
-     
+
 <!--    <a class="twitter-timeline" data-lang="fr" width="400" height="600" data-link-color="#dc0612" href="https://twitter.com/eXiaCesiArras?ref_src=twsrc%5Etfw">Tweets by eXiaCesiArras</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
 
     <div class="wrapper">
-      
-       
+
+
         <div class="authentification">
             <img class="exiaPart-grey1" src="site_picture/exia-logo-grey1.png" alt="Logo exia partie gris 1">
             <img class="exiaPart-grey2" src="site_picture/exia-logo-grey2.png" alt="Logo exia partie gris 2">
@@ -38,7 +42,7 @@
                         <label class="form-error" for="passwordRegister"></label>
                         <input class="AKL-inputUnderlined form-register-input" placeholder="E-mail" id="mailRegister" type="email" name="mail">
                         <label class="form-error" for="mailRegister"></label>
-                        
+
                         <input type="submit" value="S'inscrire" class="AKL-btnModern form-register-validate" id="submitRegister">
                     </form>
                 </div>
@@ -46,24 +50,24 @@
                 	<form action="php/connection.php" method="POST">
                         <input class="AKL-inputUnderlined form-connection-input" placeholder="E-mail" id="mailConnection" type="email" name="lmail">
                         <label class="form-error" for="mailConnection"></label>
-                    
+
                         <input class="AKL-inputUnderlined form-connection-input" placeholder="Mot de passe" id="passwordConnection" type="password" name="lpwd">
                         <label class="form-error" for="passwordConnection"></label>
-                        
+
                         <input type="submit" value="Se connecter" class="AKL-btnModern form-connection-validate" id="submitConnection">
                     </form>
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
 
 
 
 	<?php include '_footer.php' ?>
 
-    <?php 
+    <?php
         if(!empty($_GET['error'])){
             switch($_GET['error']){
                 case 'mail' : ?> <script> alert("le mail est déjà utilisé"); </script> <?php ;

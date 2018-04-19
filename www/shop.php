@@ -40,6 +40,7 @@
               while($data = $q->fetch())
               {
                 ?>
+                <form  action="php/add_article_caddy" method="POST">
                 <div class="article">
                     <div class="AKL-ctn--c1 article-img" style="background_image:url(produce_picture/<?=$data['name'] ?>)">
                         <h3 class="article-img-title"><?=$data['name'] ?></h3>
@@ -49,8 +50,10 @@
                         <span class="article-infos-category"><?=$data['category'] ?></span>
                         <p class="article-infos-description"><?=$data['description'] ?></p>
                         <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                        <input type="hidden" name="take_id_produce" value="<?=$data['id'] ?>" readonly>
                     </div>
                 </div>
+                </form>
                 <?php
               }
               ?>
@@ -92,7 +95,7 @@ $reponse->closeCursor();
                   <input type="range" class='AKL-range max-range' min="0" max="150" value="150" step="1">
                   <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
               </div>
-             
+
               <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
               <div class="searchNav-rightSide">
                   <div class="addCategory">
