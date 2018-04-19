@@ -1,5 +1,5 @@
 <?php session_start();
-if ($_SESSION['statute'] != 3)) {
+if ($_SESSION['statute'] != 3) {
     header ('Location: eventDone');
     exit();
     }
@@ -32,8 +32,8 @@ if ($_SESSION['statute'] != 3)) {
                     <th>Mail</th>
                     <th>Statut</th>
                 </tr>
-                
-<?php  
+
+<?php
 //conexion à la base de données
 try{
     $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
@@ -55,14 +55,14 @@ while ($response = $display->fetch()) {
             default : $status = "Etudiant";
     }
 ?>
-                
+
                 <tr>
                     <td><?= $response['first_name'] ?></td>
                     <td><?= $response['last_name'] ?></td>
                     <td><?= $response['mail'] ?></td>
                     <td><?= $status ?><button class="btnChangeStatus"></button></td>
                 </tr>
-                
+
 <?php } ?>
 <!--
                 <tr>

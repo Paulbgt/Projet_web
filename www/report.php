@@ -1,5 +1,5 @@
 <?php session_start();
-if ($_SESSION['statute'] != 2)) {
+if ($_SESSION['statute'] != 2) {
     header ('Location: eventDone');
     exit();
     }
