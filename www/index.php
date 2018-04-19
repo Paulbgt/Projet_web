@@ -19,8 +19,6 @@ if (isset($_SESSION['statute'])) {
 
 	<?php include '_header.php' ?>
 
-<!--    <a class="twitter-timeline" data-lang="fr" width="400" height="600" data-link-color="#dc0612" href="https://twitter.com/eXiaCesiArras?ref_src=twsrc%5Etfw">Tweets by eXiaCesiArras</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
-
     <div class="wrapper">
 
 
@@ -59,11 +57,7 @@ if (isset($_SESSION['statute'])) {
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
 
 	<?php include '_footer.php' ?>
 
@@ -75,7 +69,6 @@ if (isset($_SESSION['statute'])) {
             }
         }
     ?>
-
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/index.min.js"></script>

@@ -86,7 +86,8 @@ if (document.getElementById('fileImgModal')) {
     var suggestionAdmin = document.querySelectorAll('[class*=idea-admin]');
     var backgroundModal = document.querySelector('.backgroundModal');
 
-    // Display modal to administrate the suggestion
+    // *[English]* Display modal to administrate the suggestion/event
+    // *[Français]* Affiche le modal permettant d'administrer une idée
     for (var i = 0; i<suggestionAdmin.length; i++) {
         suggestionAdmin[i].addEventListener('click', function() {
             backgroundModal.style.display = "flex";
@@ -118,6 +119,8 @@ if (document.getElementById('fileImgModal')) {
 
 
 
+    // *[English]* Functions used to clase the modal
+    // *[Français]* Fonctions servant à fermer le modal
     function closeModal() {
         backgroundModal.style.display = "none";
         document.querySelector('.wrapper').style.filter = "none";

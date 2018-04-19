@@ -5,7 +5,8 @@ var navBlocPhone = document.querySelector('.navPhone-blc');
 var showMenu = false;
 var right = true;
 
-
+// *[English]* Event listeners used to display both normal menu and smartphone menu
+// *[Français]* Evénement gérant l'affichage des menu (normal et version smartphone)
 navButton.addEventListener('click', function() {
     if (!showMenu) {
         this.children[0].style.transform = "rotate(33deg)";

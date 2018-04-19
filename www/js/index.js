@@ -9,6 +9,8 @@ var btnRegisterValidate = document.querySelector('.form-register-validate');
 var btnConnectionValidate = document.querySelector('.form-connection-validate');
 
 
+// *[English]* Functions used animate the exia logo
+// *[Français]* Fonctions servant à animer le logo exia
 function switchForm(element) {
     wrapper.children[3].style.transition = "all 225ms, opacity 100ms";
     wrapper.children[3].style.opacity = "0";
@@ -29,6 +31,8 @@ function switchForm(element) {
     }, 800);
 }
 
+// *[English]* Function used to place the error message
+// *[Français]* Fonction servant à placer le message d'erreur
 function placeError() {
     for (var i = 0; i<formError.length; i++) {
         formError[i].style.width = '0px';
@@ -37,11 +41,12 @@ function placeError() {
         formError[i].style.left = parentInput.offsetLeft + 'px';
         formError[i].style.width = parentInput.offsetWidth - 1 + 'px';
         formError[i].style.height = parentInput.offsetHeight + 'px';
-//        formError[i].style.opacity = 1;
     }
 }
 
 
+// *[English]* Event listeners used to display the register/connection form
+// *[Français]* Evénements servant à afficher les formulaires d'inscription/connexion
 btnRegister.addEventListener('click', function() {
     if (!formOnRegister) {
         switchForm(formRegister);
