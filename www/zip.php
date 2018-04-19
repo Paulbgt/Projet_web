@@ -21,7 +21,7 @@
 		foreach ($rep as $file) {
 		chmod("event_picture", 0777);
 
-		$zip->addfile("event_picture");
+		$zip->addfile("event_picture/{$file}");
 		//on ajoute le nom du fichier que l'on veut avoir en Zip
 		//we add the name of the file we want to have in Zip
 		}

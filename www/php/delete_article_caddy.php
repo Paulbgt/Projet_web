@@ -19,12 +19,6 @@ $a->execute([
 ':idproduce' => $idproduce
 ]);
 
-header('Location: ../shop.php');
+header('Location: javascript://history.go(-1)'); 
 
 ?>
-
-
-
-
-
-

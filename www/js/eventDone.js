@@ -3,10 +3,10 @@ var btnPrevious = document.querySelectorAll('.event-swap-previous');
 var btnNext = document.querySelectorAll('.event-swap-next');
 var btnCloseModalComment = document.querySelector('.modalComment-close');
 var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
-//var inputImg = document.querySelectorAll('.modalPhoto-input');
 
 
-// Event listener to display the comment modal
+// *[English]* Event listener to display the comment modal
+// *[Français]* Evenément servant à afficher le modal de commentaires
 var btnComment = document.querySelectorAll('.event-infos-comment');
 for (var i=0; i<btnComment.length; i++) {
     btnComment[i].addEventListener('click', function() {
@@ -47,7 +47,8 @@ for (var i=0; i<btnComment.length; i++) {
     });
 }
 
-// Event listener to display the photo modal and to used to display the image selected on the designated area
+// *[English]* Event listener to display the photo modal and to used to display the image selected on the designated area
+// *[Français]* Evénement servant à afficher le formulaire d'ajout d'une photo et à afficher la photo choisi
 var btnPhoto = document.querySelectorAll('.event-infos-sendPhoto');
 var modalPhotoExist = document.querySelectorAll('.modalPhoto');
 if (modalPhotoExist.length > 0) {
@@ -83,7 +84,8 @@ if (modalPhotoExist.length > 0) {
 }
 
 
-// Event to delete a comment
+// *[English]* Event to delete a comment
+// *[Français]* Evénement servant à la suppresion d'un commentaire
 var btnDeleteComment = document.querySelectorAll('.modalComment-delete');
 for (var i=0; i<btnDeleteComment.length; i++) {
     btnDeleteComment[i].addEventListener('click', function() {
@@ -96,8 +98,8 @@ for (var i=0; i<btnDeleteComment.length; i++) {
 
 
 
-
-// buttons used for the caroussel
+// *[English]* Buttons used for the caroussel
+// *[Français]* Bouttons servant aux carroussels
 for (var i=0; i<btnNext.length; i++) {
     var img = btnNext[i].parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
     var position = parseInt(btnNext[i].parentElement.getAttribute('step'));
@@ -141,8 +143,8 @@ for (var i=0; i<btnNext.length; i++) {
 
 
 
-
-// Event listener used to swap the likes image and to update the display of number of likes
+// *[English]* Event listener used to swap the likes image and to update the display of number of likes
+// *[Français]* Evénement servant à  échanger les images "j'aime" et à mettre à jour e nombre de "j'aime"
 for (var i = 0; i<btnLike.length; i++) {
     btnLike[i].addEventListener('click', function() {
         var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
@@ -153,20 +155,19 @@ for (var i = 0; i<btnLike.length; i++) {
             this.style.animation = "like 225ms";
             img[position].setAttribute('liked', true);
             img[position].parentElement.querySelectorAll('[class*=likeForm]')[position].setAttribute('name', 'like_id');
-//            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'like_id');
         } else {
             this.style.backgroundImage = "url(site_picture/like_grey.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
             this.style.animation = "unlike 225ms";
             img[position].setAttribute('liked', false);
             img[position].parentElement.querySelectorAll('[class*=likeForm]')[position].setAttribute('name', 'unlike_id');
-//            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'unlike_id');
         }
     });
 }
 
 
-// Event listener used to delete the event who has been reported
+// *[English]* Event listener used to delete the event who has been reported
+// *[Français]* Evénement servant à supprimer un élément de la page quand il signalé
 var btnReport = document.querySelectorAll('[class*=event-report]');
 if (btnReport.length > 0) {
     for (var i=0; i<btnReport.length; i++) {
@@ -188,7 +189,8 @@ if (document.getElementById('fileImgModal')) {
     var btnDelete = document.querySelector('.modal-infos-delete');
 
 
-    // Display modal to administrate the suggestion
+    // *[English]* Display modal to administrate the suggestion/event
+    // *[Français]* Affiche le modal permettant d'administrer une idée
     for (var i = 0; i<eventAdmin.length; i++) {
         eventAdmin[i].addEventListener('click', function() {
             backgroundModal.style.display = "flex";
@@ -220,6 +222,8 @@ if (document.getElementById('fileImgModal')) {
 
 
 
+    // *[English]* Functions used to clase the modal
+    // *[Français]* Fonctions servant à fermer le modal
     function closeModal() {
         backgroundModal.style.display = "none";
         document.querySelector('.wrapper').style.filter = "none";

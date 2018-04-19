@@ -1,7 +1,8 @@
 var btnCart = document.querySelector('.banner-cart');
 
 
-// Delete the article from the cart
+// *[English]* Display the add article form and the add category form
+// *[Français]* Affiche les formulaires d'ajout de catégorie et de produit
 var btnDeleteCart = document.querySelectorAll('.line-delete');
 
 for (var i=0; i<btnDeleteCart.length; i++) {
@@ -13,9 +14,8 @@ for (var i=0; i<btnDeleteCart.length; i++) {
 
 
 
-
-
-// Display the add article form and the add category form
+// *[English]* Delete the article from the cart
+// *[Français]* Supprime l'article du panier
 var rightSide = document.querySelectorAll('.searchNav-rightSide');
 if (rightSide.length > 0) {
     document.querySelector('.addArticle-title').addEventListener('click', function() {
@@ -44,7 +44,8 @@ var backgroundModal = document.querySelector('.backgroundModal');
 var btnDelete = document.querySelector('.modal-infos-delete');
 
 
-// Display modal to administrate the suggestion
+// *[English]* Display modal to see the cart
+// *[Français]* Affiche le modal du panier
 btnCart.addEventListener('click', function() {
     backgroundModal.style.display = "flex";
 //        document.querySelector('.wrapper').style.filter = "grayscale(100%) blur(3px)";
@@ -52,7 +53,8 @@ btnCart.addEventListener('click', function() {
 });
 
 
-
+// *[English]* Functions used to clase the modal
+// *[Français]* Fonctions servant à fermer le modal
 function closeModal() {
     backgroundModal.style.display = "none";
     document.querySelector('.wrapper').style.filter = "none";

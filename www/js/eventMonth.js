@@ -2,7 +2,8 @@ var btnSubsCount = document.querySelectorAll('.event-infos-subsCount');
 var btnSubscribe= document.querySelectorAll('.event-infos-subscribe');
 var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
 
-// Event listener used to swap the subscribe image and to update the display of number of subscribers
+// *[English]* Event listener used to swap the subscribe image and to update the display of number of subscribers
+// *[Français]* Evénement servant à échanger l'icône d'inscription et à mettre à jout le nombre d'inscrits
 for (var i = 0; i<btnSubscribe.length; i++) {
     btnSubscribe[i].addEventListener('click', function() {
         var icone = document.getElementById("subsCount" + this.id.replace('subscribe', ''));
@@ -24,7 +25,8 @@ for (var u = 0; u< list.length; u++) {
 }
 
 
-// Event listener used to delete the event who has been reported
+// *[English]* Event listener used to delete the event who has been reported
+// *[Français]* Evénement servant à supprimer un événement signalé
 var btnReport = document.querySelectorAll('[class*=event-report]');
 if (btnReport.length > 0) {
     for (var i=0; i<btnReport.length; i++) {
@@ -46,7 +48,8 @@ if (document.getElementById('fileImgModal')) {
     var btnDelete = document.querySelector('.modal-infos-delete');
 
 
-    // Display modal to administrate the suggestion
+    // *[English]* Display modal to administrate the suggestion/event
+    // *[Français]* Affiche le modal permettant d'administrer une idée
     for (var i = 0; i<eventAdmin.length; i++) {
         eventAdmin[i].addEventListener('click', function() {
             backgroundModal.style.display = "flex";
@@ -77,7 +80,8 @@ if (document.getElementById('fileImgModal')) {
     });
 
 
-
+    // *[English]* Functions used to clase the modal
+    // *[Français]* Fonctions servant à fermer le modal
     function closeModal() {
         backgroundModal.style.display = "none";
         document.querySelector('.wrapper').style.filter = "none";
@@ -103,6 +107,9 @@ if (document.getElementById('fileImgModal')) {
 
 /* /////////////////// HTML to CSV /////////////////// */
 
+
+// *[English]* Functions used to download in CSV format
+// *[Français]* Fonctions sevrant à télécherger au format CSV
 var btnTables = document.querySelectorAll('[class*=dlToCsv]');
 for (var t = 0; t<btnTables.length; t++) {
     btnTables[t].addEventListener('click', function() {
@@ -111,8 +118,6 @@ for (var t = 0; t<btnTables.length; t++) {
         htmlToCsv(filename, this.parentElement);
     });
 }
-
-
 
 
 function htmlToCsv(filename, element) {
