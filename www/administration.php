@@ -25,6 +25,7 @@ if ($_SESSION['statute'] != 3) {
 
         <div class="panel">
             <h1 class="panel-title">Panneau d'administration</h1>
+            <form action=""></form>
             <table>
                 <tr>
                     <th>Prenom</th>
@@ -47,7 +48,6 @@ $display->execute();
 $i = 1;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
-print_r($response['statute']);
     switch ($response['statute']) {
         case 1 : $status = "Etudiant"; break;
         case 2 : $status = "BDE"; break;
@@ -60,7 +60,7 @@ print_r($response['statute']);
                     <td><?= $response['first_name'] ?></td>
                     <td><?= $response['last_name'] ?></td>
                     <td><?= $response['mail'] ?></td>
-                    <td><?= $status ?><button type="submit" class="btnChangeStatus" value="<?= $response['id'] ?>"></button></td>
+                    <td><?= $status ?><button type="submit" class="btnChangeStatus" value="<?= $response['id'] ?>" name="account_id"></button></td>
                 </tr>
 
 <?php } ?>

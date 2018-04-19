@@ -49,35 +49,41 @@ for (var i=0; i<btnComment.length; i++) {
 
 // Event listener to display the photo modal and to used to display the image selected on the designated area
 var btnPhoto = document.querySelectorAll('.event-infos-sendPhoto');
-for (var i=0; i<btnPhoto.length; i++) {
-    btnPhoto[i].addEventListener('click', function() {
-        if (this.innerHTML == 'Déposer une photo') {
-            this.innerHTML = 'Annuler';
-            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
+var modalPhotoExist = document.querySelectorAll('.modalPhoto');
+if (modalPhotoExist.length > 0) {
+    for (var i=0; i<btnPhoto.length; i++) {
+        btnPhoto[i].addEventListener('click', function() {
+            if (this.innerHTML == 'Déposer une photo') {
+                this.innerHTML = 'Annuler';
+                this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'flex';
 
-            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').children[1].addEventListener('change', function(e) {
-                var files = this.files[0];
-                var imgType = files.name.split('.');
-                imgType = imgType[imgType.length - 1].toLowerCase();
+                this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').children[1].addEventListener('change', function(e) {
+                    var files = this.files[0];
+                    var imgType = files.name.split('.');
+                    imgType = imgType[imgType.length - 1].toLowerCase();
 
-                if (allowedTypes.indexOf(imgType) != -1) {
-                    var path = URL.createObjectURL(this.files[0]);
-                    this.parentElement.style.backgroundImage = 'url(' + path + ')';
-                    this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
-                    this.parentElement.querySelector('.modalPhoto-inputLabel').style.boxShadow = '0 0 5px black';
-                    this.parentElement.querySelector('.modalPhoto-submit').style.display = 'block';
-                }
-            });
-        } else {
-            this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'none';
-            this.innerHTML = 'Déposer une photo';
-        }
-    });
+                    if (allowedTypes.indexOf(imgType) != -1) {
+                        var path = URL.createObjectURL(this.files[0]);
+                        this.parentElement.style.backgroundImage = 'url(' + path + ')';
+                        this.parentElement.querySelector('.modalPhoto-inputLabel').style.marginBottom = '-290px';
+                        this.parentElement.querySelector('.modalPhoto-inputLabel').style.boxShadow = '0 0 5px black';
+                        this.parentElement.querySelector('.modalPhoto-submit').style.display = 'block';
+                    }
+                });
+            } else {
+                this.parentElement.parentElement.parentElement.querySelector('.modalPhoto').style.display = 'none';
+                this.innerHTML = 'Déposer une photo';
+            }
+        });
+    }
+} else {
+    for (var i=0; i<btnPhoto.length; i++) {
+        btnPhoto[i].style.backgroundColor = 'var(--exia-grey1)';
+    }
 }
 
 
 // Event to delete a comment
-
 var btnDeleteComment = document.querySelectorAll('.modalComment-delete');
 for (var i=0; i<btnDeleteComment.length; i++) {
     btnDeleteComment[i].addEventListener('click', function() {
@@ -93,7 +99,14 @@ for (var i=0; i<btnDeleteComment.length; i++) {
 
 // buttons used for the caroussel
 for (var i=0; i<btnNext.length; i++) {
-    btnNext[i].parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]')[0].style.opacity = 1;
+    var img = btnNext[i].parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
+    var position = parseInt(btnNext[i].parentElement.getAttribute('step'));
+    btnNext[i].parentElement.querySelector('.event-swap-like').setAttribute('form', img[0].parentElement.querySelectorAll('[class*=likeForm]')[0].getAttribute('form'));
+    img[0].style.opacity = 1;
+    img[0].getAttribute('liked') == "true" ? btnNext[i].parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : btnNext[i].parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
+    btnNext[i].parentElement.querySelector('.event-swap-like').setAttribute('value', img[0].getAttribute('value'));
+    
+    
     btnNext[i].addEventListener('click', function() {
         var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
         var position = parseInt(this.parentElement.getAttribute('step'));
@@ -105,7 +118,7 @@ for (var i=0; i<btnNext.length; i++) {
         img[position].style.opacity = 1;
         this.parentElement.setAttribute('step', position);
         this.parentElement.querySelector('.event-swap-like').setAttribute('value', img[position].getAttribute('value'));
-        this.parentElement.querySelector('.event-swap-like').setAttribute('form', img[position].getAttribute('form'));
+        this.parentElement.querySelector('.event-swap-like').setAttribute('form', img[position].parentElement.querySelectorAll('[class*=likeForm]')[position].getAttribute('form'));
         img[position].getAttribute('liked') == "true" ? this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : this.parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
         this.parentElement.querySelector('.event-swap-like').style.animation = "none";
     });
@@ -138,12 +151,14 @@ for (var i = 0; i<btnLike.length; i++) {
             this.setAttribute('value', parseInt(this.getAttribute('value')) + 1);
             this.style.animation = "like 225ms";
             img[position].setAttribute('liked', true);
+            img[position].parentElement.querySelectorAll('[class*=likeForm]')[position].setAttribute('name', 'like_id');
 //            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'like_id');
         } else {
             this.style.backgroundImage = "url(site_picture/like_grey.svg)";
             this.setAttribute('value', parseInt(this.getAttribute('value')) - 1);
             this.style.animation = "unlike 225ms";
             img[position].setAttribute('liked', false);
+            img[position].parentElement.querySelectorAll('[class*=likeForm]')[position].setAttribute('name', 'unlike_id');
 //            document.querySelector('.' + this.getAttribute('form')).setAttribute('name', 'unlike_id');
         }
     });

@@ -50,26 +50,29 @@ $photos->execute(['id' => $response['id']]);
        
         <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
             <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
-                <?php while($photo = $photos->fetch()) { 
+                <?php $j = 1;
+                while($photo = $photos->fetch()) { 
 
                     $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture FROM like_event_picture where id_event_picture=:id GROUP BY id_event_picture");
                         $plike->execute(['id' => $photo['id']]);
-                        $liked = $plike-> fetch();
-    var_dump($liked);
+                        $nlike = $plike-> fetch();
+                    
+                    $pliked= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as liked FROM like_event_picture WHERE id_event_picture=:id AND id_account=:account_id GROUP BY id_event_picture");
+                        $pliked->execute(['id' => $photo['id'], 'account_id' => $_SESSION['id']]);
+                        $liked = $pliked-> fetch();
                     ?>
-                <form id="likeForm<?= $i ?>" action="php/like_done.php" method="POST"></form>
-                <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $liked['id_event_picture'] ? $liked['nb_like'] : '0' ?>" form="likeForm<?= $i ?>" readonly hidden>
-                <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
+                <form id="likeForm<?= $i.'_'.$j ?>" action="php/like_done.php" method="POST"></form>
+                <input class="likeForm<?= $i.'_'.$j ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $photo['id'] ?>" form="likeForm<?= $i.'_'.$j ?>" readonly hidden>
+                <div class="event-img-<?= $i.'_'.$j ?>" liked="<?= $liked ? 'true' : 'false' ?>" value="<?= $nlike['nb_like'] ? $nlike['nb_like'] : 0 ?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
                     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
 
                      <form action="zip.php" method="GET">
-                    <input type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>">
-                    
+                    <button type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>"></button>
                     <input type="number" id="download_id" name="download_id" value="<?= $response['id'] ?>" readonly hidden></form>
 
                     <?php } ?>
                 </div>
-                 <?php } ?>
+                 <?php $j++; } ?>
             </div>
             <div class="AKL-ctn--c2-s1 event-infos">
                 <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
@@ -86,7 +89,7 @@ $photos->execute(['id' => $response['id']]);
             </div>
             <div class="AKL-ctn--c2-s1 event-swap" step="0">
                 <a class="event-swap-previous"></a>
-                <button class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
+                <button class="event-swap-like" value="" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
                 <a class="event-swap-next"></a>
             </div>
             
