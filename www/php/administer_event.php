@@ -29,12 +29,13 @@ $v->execute([
 ':meventStatus' => $meventStatus
 			]);
 
-if(isset($_FILES['image'])) {
+if($_FILES['image']['name'] != '') {
 	$msg = "";
 	$ref = 1;
   if(!file_exists("../event_picture/".$mid)) {
     mkdir("../event_picture/".$mid);
   }
+    if (isset($_FILES['image'])) {
   $image = str_replace(" ","_",$_FILES['image']['name']);
   $image = str_replace("#","_",$image);
   $path = "../event_picture/".$mid."/".basename($image);
@@ -51,6 +52,7 @@ if(isset($_FILES['image'])) {
       $msg = "Failed to upload image";
       echo($msg);
     }
-	}
+    }
+}
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
