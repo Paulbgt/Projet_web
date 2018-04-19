@@ -221,6 +221,7 @@
             width: calc(100% - 40px);
             margin: -20px 20px 10px 20px;
             font-weight: bold;
+            height: 21.6px;
         }
 
         .idea-infos-date, .idea-infos-place, .idea-infos-price, .idea-infos-club {

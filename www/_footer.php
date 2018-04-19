@@ -6,6 +6,8 @@
     </div>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <?php
+		// *[English]* If the user is logged on we will display the different tabs
+		// *[Français]* Si l'utilisateur est connecté on va afficher les différents onglets
         if(isset($_SESSION['statute'])){
     ?>
     <ul class="footer-ul">

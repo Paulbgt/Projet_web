@@ -1,3 +1,5 @@
+// *[English]* Functions used to delete and generate articles
+// *[Français]* Fonctions permettant d'effacer et de générer des articles
 function clearArticle() {
     document.querySelector('.listArticle').innerHTML = "";
 }
@@ -65,6 +67,8 @@ function generateArticle(id, name, price, category, description, url) {
     listArticle.appendChild(art_form);
 }
 
+// *[English]* Get the JSON with the Http request
+// *[Français]* Récupère le JSON grâce à la requête Http
  function getJSON2(url)
  {
   return new Promise(function (data,err){
@@ -84,6 +88,8 @@ function generateArticle(id, name, price, category, description, url) {
   });
 };
 
+// *[English]* Build the URL for the XmlHttpRequest
+// *[Français]* Construit l'URL pour l'appel XmlHttpRequest
 function getUrl(url,category,min,max)
 {
   if((category==null || category=="") && (min==null || min=="") && (max==null || max=="") ){return url;}
@@ -103,6 +109,9 @@ var cat=selectBtn.value;
 getJSON2(getUrl("php/produce",cat,min,max)).then(createData);
 });
 
+
+// *[English]* Create articles with data earned
+// *[Français]* Génère les articles avec les données récupérés
 function createData(data){
   clearArticle();
   for (var i = 0; i < data.length; i++) {
