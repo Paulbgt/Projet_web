@@ -115,7 +115,7 @@ button.addEventListener("click",function(){
 var min=minBtn.value;
 var max=maxBtn.value;
 var cat=selectBtn.value;
-getJSON2(getUrl("produce",cat,min,max)).then(createData);
+getJSON2(getUrl("php/produce",cat,min,max)).then(createData);
 });
 
 function reload_produce()
@@ -130,4 +130,4 @@ function createData(data){
   }
 }
 clearArticle();
-getJSON2(getUrl("produce",null,null,null)).then(createData);
+getJSON2(getUrl("php/produce",null,null,null)).then(createData);
