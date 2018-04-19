@@ -76,7 +76,7 @@
     width: 100%;
     border: none;
     outline: none;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .6);
     padding: 0;
     margin: 0;
     font-size: 40px;
@@ -86,6 +86,38 @@
 
 .event-img:hover [class*=event-download] {
     opacity: 1;
+}
+
+[class*=event-download]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../site_picture/download_white_disk.svg);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+[class*=event-download]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../site_picture/download_white_arrow.svg);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    animation: download 1s infinite;
+}
+
+@keyframes download {
+    0%, 100% { top: 0 }
+    50% { top: -10px }
 }
 
     .event-infos {

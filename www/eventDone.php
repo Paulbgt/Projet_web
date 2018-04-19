@@ -47,31 +47,31 @@ $photos->execute(['id' => $response['id']]);
 
 
 ?>
-<div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
-    <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
-
-                <?php while($photo = $photos->fetch()) {
+        <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
+            <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
+                <?php $j = 1;
+                while($photo = $photos->fetch()) { 
 
                     $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture FROM like_event_picture where id_event_picture=:id GROUP BY id_event_picture");
                         $plike->execute(['id' => $photo['id']]);
-                        $liked = $plike-> fetch();
-    //var_dump($liked);
+                        $nlike = $plike-> fetch();
+                    
+                    $pliked= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as liked FROM like_event_picture WHERE id_event_picture=:id AND id_account=:account_id GROUP BY id_event_picture");
+                        $pliked->execute(['id' => $photo['id'], 'account_id' => $_SESSION['id']]);
+                        $liked = $pliked-> fetch();
                     ?>
-
-
-                <form id="likeForm<?= $i ?>" action="php/like_done.php" method="POST"></form>
-                <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $liked['id_event_picture'] ? $liked['nb_like'] : '0' ?>" form="likeForm<?= $i ?>" readonly hidden>
-                <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
+                <form id="likeForm<?= $i.'_'.$j ?>" action="php/like_done.php" method="POST"></form>
+                <input class="likeForm<?= $i.'_'.$j ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $photo['id'] ?>" form="likeForm<?= $i.'_'.$j ?>" readonly hidden>
+                <div class="event-img-<?= $i.'_'.$j ?>" liked="<?= $liked ? 'true' : 'false' ?>" value="<?= $nlike['nb_like'] ? $nlike['nb_like'] : 0 ?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
                     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
 
                      <form action="zip.php" method="GET">
-                    <input type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>">
-
+                    <button type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>"></button>
                     <input type="number" id="download_id" name="download_id" value="<?= $response['id'] ?>" readonly hidden></form>
 
                     <?php } ?>
                 </div>
-                 <?php } ?>
+                 <?php $j++; } ?>
             </div>
             <div class="AKL-ctn--c2-s1 event-infos">
                 <span id="event-infos-title<?= $i ?>" class="event-infos-title"><?= $response['title'] ?></span>
@@ -88,7 +88,7 @@ $photos->execute(['id' => $response['id']]);
             </div>
             <div class="AKL-ctn--c2-s1 event-swap" step="0">
                 <a class="event-swap-previous"></a>
-                <button class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
+                <button class="event-swap-like" value="" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
                 <a class="event-swap-next"></a>
             </div>
 
@@ -176,16 +176,14 @@ $display->closeCursor();
 
 
     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
-    <form id="administerForm" action="php/administer_event.php" method="POST"></form>
-    <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
-
+    <form id="administerForm" action="php/administer_event.php" method="POST" enctype="multipart/form-data"></form>        
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <span class="modal-title">Editer l'événement</span>
             <div class="modal-close">X</div>
             <div class="AKL-ctn--c2-s1 modal-img">
                 <label for="fileImgModal" class="AKL-btnClassic-Flat-ocean">Changer d'image</label>
-                <input type="file" id="fileImgModal" class="AKL-btnFile" hidden>
+                <input type="file" id="fileImgModal" name="image" class="AKL-btnFile" hidden>
             </div>
             <div class="AKL-ctn--c2-s1 modal-infos">
                 <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined modal-infos-title" id="mtitle" name="mtitle" form="administerForm">
@@ -197,6 +195,8 @@ $display->closeCursor();
                 <div class="modal-infos-btn">
                     <input type="number" class="modal-infos-id" id="numEvent" name="mid" form="administerForm" readonly hidden>
                     <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder" form="administerForm"/>
+                    
+                    <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
                     <input type="submit" class="AKL-btnClassic-Flat-hell modal-infos-delete" value="Supprimer" form="deleteForm"/>
                     <input type="number" class="modal-infos-id-delete" id="event_id" name="event_id" form="deleteForm" readonly hidden>
                 </div>
