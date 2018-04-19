@@ -2,7 +2,7 @@
 if ($_SESSION['statute'] != 2) {
     header ('Location: eventDone');
     exit();
-    }
+}
 ?>
 
 <!DOCTYPE html>

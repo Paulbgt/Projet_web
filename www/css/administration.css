@@ -12,6 +12,7 @@
 
 .panel {
     min-width: 320px;
+    margin: 40px 0;
 }
 
     .panel-title {
@@ -27,7 +28,6 @@ table {
     border-collapse: collapse;
     width: 100%;
     background-color: white;
-    max-height: 214px;
     display: block;
     float: left;
 }
@@ -61,6 +61,7 @@ tr button {
     top: 0;
     right: 0;
     border: none;
+    outline: none;
     cursor: pointer;
     opacity: 0;
     transition: all 225ms;
