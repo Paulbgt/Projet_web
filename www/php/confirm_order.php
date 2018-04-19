@@ -9,5 +9,10 @@ $eza->execute([
 	':idaccount' => $_SESSION['id']
 ]);
 
-//header('Location: ../shop');
+$aa = $db->prepare("INSERT INTO orders (statute, id_account) VALUES ('panier',:idaccount)");
+$aa->execute(['idaccount' => $_SESSION['id']]);
+$_SESSION['id_order'] = $db->lastInsertId();
+				
+
+header('Location: ../shop');
 ?>
