@@ -103,8 +103,10 @@ while ($response = $display->fetch()) {
         <div class="AKL-ctn--c1 idea-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
         <?php } ?>
         <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+        <form id="reportForm" action="php/report_event.php" method="POST">
         <input type="submit" value="Signaler" class="AKL-ctn--c2-s1 AKL-btnClassic-Flat-hell idea-report<?= $i ?>">
         <input type="number" id="report_idea_id" name="report_idea_id" value="<?= $response['id'] ?>" readonly hidden>
+        </form>
         <?php } ?>
     </div>
 

@@ -61,8 +61,12 @@ $photos->execute(['id' => $response['id']]);
                 <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $liked['id_event_picture'] ? $liked['nb_like'] : '0' ?>" form="likeForm<?= $i ?>" readonly hidden>
                 <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
                     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+
+                     <form action="zip.php" method="GET">
                     <input type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>">
-                    <input type="number" id="download_id" name="download_id" value="<?= $response['id'] ?>" readonly hidden>
+                    
+                    <input type="number" id="download_id" name="download_id" value="<?= $response['id'] ?>" readonly hidden></form>
+
                     <?php } ?>
                 </div>
                  <?php } ?>
@@ -90,8 +94,10 @@ $photos->execute(['id' => $response['id']]);
             <div class="AKL-ctn--c2-s1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
             <?php } ?>
             <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+            <form id="reportForm" action="php/report_event.php" method="POST">
             <input type="submit" value="Signaler" class="AKL-ctn--c2-s1 AKL-btnClassic-Flat-hell event-report<?= $i ?>">
             <input type="number" id="report_event_id" name="report_event_id" value="<?= $response['id'] ?>" readonly hidden>
+            </form>
             <?php } ?>
             
             <div class="AKL-ctn--c2-s1 modalComment">

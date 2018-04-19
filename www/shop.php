@@ -16,7 +16,6 @@
 
 	<?php include '_header.php' ?>
 
-
       <div class="wrapper">
           <h1 class="AKL-ctn--c1 banner">Boutique
               <a class="banner-cart"></a>
@@ -25,39 +24,36 @@
 <!--        .AKL-ctn--c1.promotion>h2.promotion-title+.AKL-ctn--c4-s1.article*3>(.AKL-ctn--c1.article-img>h3.article-img-title)+.AKL-ctn--c1.article-infos>span.AKL-ctn--c2.article-infos-price+span.AKL-ctn--c2.article-infos-category+p.AKL-ctn--c1.article-infos-description+input[type=submit].AKL-btnClassic-Flat-ocean.article-infos-btnAdd-->
           <div class="AKL-ctn--c1 promotion">
               <h2 class="promotion-title">Les plus populaires</h2>
-              <div class="article">
-                  <div class="AKL-ctn--c1 article-img">
-                      <h3 class="article-img-title">Tasse exiaCorp</h3>
-                  </div>
-                  <div class="AKL-ctn--c1 article-infos">
-                      <span class="article-infos-price">10€</span>
-                      <span class="article-infos-category">Tasse</span>
-                      <p class="article-infos-description">Tasse à l'éffigie de d'exiaCorp Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias placeat explicabo dolorem doloribus. aaaaaabbbbbbaaaa</p>
-                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
-                  </div>
-              </div>
-              <div class="article">
-                  <div class="AKL-ctn--c1 article-img">
-                      <h3 class="article-img-title">Pull année 2017-2018</h3>
-                  </div>
-                  <div class="AKL-ctn--c1 article-infos">
-                      <span class="article-infos-price">50€</span>
-                      <span class="article-infos-category">Pull</span>
-                      <p class="article-infos-description">Pull de l'exia cesi année 2017-2018</p>
-                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
-                  </div>
-              </div>
-              <div class="article">
-                  <div class="AKL-ctn--c1 article-img">
-                      <h3 class="article-img-title">Clé USB</h3>
-                  </div>
-                  <div class="AKL-ctn--c1 article-infos">
-                      <span class="article-infos-price">2€</span>
-                      <span class="article-infos-category">Accessoire</span>
-                      <p class="article-infos-description">Clé USB à l'éffigie de l'exia cesi</p>
-                      <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
-                  </div>
-              </div>
+              <?php
+
+              try{
+              $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
+
+              } catch(PDOException $e){
+
+                  die($e->getMessage());
+
+              }
+              $q = $bdd->prepare("SELECT count(order_composite.qantity) AS nb_sale, produce.id AS id , produce.name As name, produce.price As price, category.name As category, produce.description As description, produce_picture.url As url  from ((produce LEFT JOIN category ON produce.id_category=category.id) LEFT JOIN produce_picture ON produce.id=produce_picture.id_produce ) LEFT JOIN order_composite ON produce.id=order_composite.id_produce GROUP BY order_composite.id_produce ORDER BY nb_sale DESC LIMIT 3");
+              $q->execute();
+
+              while($data = $q->fetch())
+              {
+                ?>
+                <div class="article">
+                    <div class="AKL-ctn--c1 article-img" style="background_image:url(produce_picture/<?=$data['name'] ?>)">
+                        <h3 class="article-img-title"><?=$data['name'] ?></h3>
+                    </div>
+                    <div class="AKL-ctn--c1 article-infos">
+                        <span class="article-infos-price"><?=$data['price'] ?></span>
+                        <span class="article-infos-category"><?=$data['category'] ?></span>
+                        <p class="article-infos-description"><?=$data['description'] ?></p>
+                        <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                    </div>
+                </div>
+                <?php
+              }
+              ?>
 
           </div>
           <div class="AKL-ctn--c1 searchNav">
