@@ -2,7 +2,7 @@
 if ($_SESSION['statute'] != 3) {
     header ('Location: eventDone');
     exit();
-    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,12 +47,12 @@ $display->execute();
 $i = 1;
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
-
+print_r($response['statute']);
     switch ($response['statute']) {
-        case '1' : $status = "Etudiant";
-        case '2' : $status = "BDE";
-        case '3' : $status = "Salarié";
-            default : $status = "Etudiant";
+        case 1 : $status = "Etudiant"; break;
+        case 2 : $status = "BDE"; break;
+        case 3 : $status = "Salarié"; break;
+            default : $status = "Erreur"; break;
     }
 ?>
 
@@ -60,7 +60,7 @@ while ($response = $display->fetch()) {
                     <td><?= $response['first_name'] ?></td>
                     <td><?= $response['last_name'] ?></td>
                     <td><?= $response['mail'] ?></td>
-                    <td><?= $status ?><button class="btnChangeStatus"></button></td>
+                    <td><?= $status ?><button type="submit" class="btnChangeStatus" value="<?= $response['id'] ?>"></button></td>
                 </tr>
 
 <?php } ?>

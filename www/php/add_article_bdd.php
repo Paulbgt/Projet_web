@@ -26,11 +26,5 @@ $insert->execute([
 
 $insert->closeCursor();
 
-//header('Location: ');
-
-
-
-
-
-
+header('Location: ../shop');
 ?>

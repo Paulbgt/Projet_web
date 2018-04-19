@@ -93,6 +93,7 @@ for (var i=0; i<btnDeleteComment.length; i++) {
 
 // buttons used for the caroussel
 for (var i=0; i<btnNext.length; i++) {
+    btnNext[i].parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]')[0].style.opacity = 1;
     btnNext[i].addEventListener('click', function() {
         var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
         var position = parseInt(this.parentElement.getAttribute('step'));
