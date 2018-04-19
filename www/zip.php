@@ -1,7 +1,10 @@
-<?php  
+<?php session_start();
 
+if($_SESSION['statute'] != 3){
+    header('Location: index.php'); 
+}
 
-
+if($_SESSION['statute'] = 3) {
 $id = $_GET['download_id'];
 
 $pathdir = "event_picture/".$id."/";
@@ -30,6 +33,6 @@ else{
 	echo "ça ne fonctionne pas";
 }
 
-
+}
 
 ?>

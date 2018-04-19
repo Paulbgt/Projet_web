@@ -1,4 +1,10 @@
-<?php session_start();  ?>
+<?php session_start(); 
+
+if($_SESSION['statute'] == 0){
+    header('Location: index.php'); 
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
