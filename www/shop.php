@@ -97,24 +97,27 @@ $reponse->closeCursor();
               </div>
 
               <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+          <form action="php/add_category_bdd.php" method="POST">
               <div class="searchNav-rightSide">
                   <div class="addCategory">
                       <p class="addCategory-title">Ajouter une catégorie</p>
                       <div class="addCategory-blc">
-                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom">
+                          <input type="text" class="AKL-inputUnderlined" name="name_category" placeholder="Nom">
                           <input type="submit" class="AKL-btnClassic-Flat addArticle-submit" value="Ajouter">
                       </div>
                   </div>
+          </form>
 
+<form action="php/add_article_bdd.php" method="POST">
                   <div class="addArticle">
                       <p class="addArticle-title">Ajouter un article</p>
                       <div class="addArticle-blc">
-                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom">
-                          <input type="text" class="AKL-inputUnderlined" placeholder="Prix">
-                          <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description"></textarea>
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom" name="name_article">
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Prix" name="price_article">
+                          <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description" name="description_article"></textarea>
                           <label for="file1" class="AKL-btnClassic-FlatBorder">Image</label>
                           <input hidden type="file" id="file1" class="AKL-btnFile">
-                          <select class='AKL-select-snow searchNav-select'>
+                          <select class='AKL-select-snow searchNav-select' name="category_article">
                               <option value="">Catégorie :</option>
 <?php
 try {
@@ -125,7 +128,7 @@ try {
 $reponse = $bdd->query( 'SELECT id, name FROM category' ) or die(print_r($bdd->errorInfo()));;
 
 while ($donnees = $reponse->fetch()) {
-    echo '<option value="' . $donnees['name'] . '">' . $donnees['name'] . '</option>';
+    echo '<option value="' . $donnees['id'] . '">' . $donnees['name'] . '</option>';
 }
 $reponse->closeCursor();
 ?>
@@ -136,6 +139,8 @@ $reponse->closeCursor();
               </div>
               <?php } ?>
           </div>
+</form>
+
           <div class="listArticle">
  <?php
 try{
