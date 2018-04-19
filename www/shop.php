@@ -108,7 +108,7 @@ $reponse->closeCursor();
                   </div>
           </form>
 
-<form action="php/add_article_bdd.php" method="POST">
+<form action="php/add_article_bdd.php" method="POST" enctype="multipart/form-data">
                   <div class="addArticle">
                       <p class="addArticle-title">Ajouter un article</p>
                       <div class="addArticle-blc">
@@ -116,7 +116,7 @@ $reponse->closeCursor();
                           <input type="text" class="AKL-inputUnderlined" placeholder="Prix" name="price_article">
                           <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description" name="description_article"></textarea>
                           <label for="file1" class="AKL-btnClassic-FlatBorder">Image</label>
-                          <input hidden type="file" id="file1" class="AKL-btnFile">
+                          <input hidden type="file" id="file1" name="image" class="AKL-btnFile">
                           <select class='AKL-select-snow searchNav-select' name="category_article">
                               <option value="">Catégorie :</option>
 <?php
