@@ -25,7 +25,7 @@ if ($_SESSION['statute'] != 3) {
 
         <div class="panel">
             <h1 class="panel-title">Panneau d'administration</h1>
-            <form action=""></form>
+            <form id="updateForm" action="php/administration_status" method="POST"></form>
             <table>
                 <tr>
                     <th>Prenom</th>
@@ -60,30 +60,10 @@ while ($response = $display->fetch()) {
                     <td><?= $response['first_name'] ?></td>
                     <td><?= $response['last_name'] ?></td>
                     <td><?= $response['mail'] ?></td>
-                    <td><?= $status ?><button type="submit" class="btnChangeStatus" value="<?= $response['id'] ?>" name="account_id"></button></td>
+                    <td><?= $status ?><button type="submit" class="btnChangeStatus" value="<?= $response['id'] ?>" name="account_id" form="updateForm"></button></td>
                 </tr>
 
 <?php } ?>
-<!--
-                <tr>
-                    <td>Aurélien</td>
-                    <td>Klein</td>
-                    <td>aurelien.klein@viacesi.fr</td>
-                    <td>BDE<a class="btnChangeStatus"></a></td>
-                </tr>
-                <tr>
-                    <td>Romain</td>
-                    <td>Brunelot</td>
-                    <td>rbrunelot@cesi.fr</td>
-                    <td>Salarié</td>
-                </tr>
-                <tr>
-                    <td>Pierre</td>
-                    <td>Geraert</td>
-                    <td>pierre.geraert@viacesi.fr</td>
-                    <td>Etudiant<a class="btnChangeStatus"></a></td>
-                </tr>
--->
             </table>
         </div>
 
