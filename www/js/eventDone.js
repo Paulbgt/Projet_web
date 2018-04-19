@@ -103,10 +103,12 @@ for (var i=0; i<btnDeleteComment.length; i++) {
 for (var i=0; i<btnNext.length; i++) {
     var img = btnNext[i].parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
     var position = parseInt(btnNext[i].parentElement.getAttribute('step'));
-    btnNext[i].parentElement.querySelector('.event-swap-like').setAttribute('form', img[0].parentElement.querySelectorAll('[class*=likeForm]')[0].getAttribute('form'));
-    img[0].style.opacity = 1;
-    img[0].getAttribute('liked') == "true" ? btnNext[i].parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : btnNext[i].parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
-    btnNext[i].parentElement.querySelector('.event-swap-like').setAttribute('value', img[0].getAttribute('value'));
+    if (img[0]) {
+        btnNext[i].parentElement.querySelector('.event-swap-like').setAttribute('form', img[0].parentElement.querySelectorAll('[class*=likeForm]')[0].getAttribute('form'));
+        img[0].style.opacity = 1;
+        img[0].getAttribute('liked') == "true" ? btnNext[i].parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_blue.svg)" : btnNext[i].parentElement.querySelector('.event-swap-like').style.backgroundImage = "url(site_picture/like_grey.svg)";
+        btnNext[i].parentElement.querySelector('.event-swap-like').setAttribute('value', img[0].getAttribute('value'));
+    }
     
     
     btnNext[i].addEventListener('click', function() {
