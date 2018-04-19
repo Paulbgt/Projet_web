@@ -13,32 +13,32 @@ for (var i=0; i<btnComment.length; i++) {
         this.parentElement.parentElement.parentElement.querySelector('.modalComment').style.display = 'block';
         this.parentElement.parentElement.parentElement.querySelector('.modalComment-close').addEventListener('click', function() {
             this.parentElement.style.display = 'none';
-            
+
             this.parentElement.querySelector('.modalComment-post-input').style.display = 'none';
             this.parentElement.querySelector('.modalComment-post-btn').style.display = 'none';
             this.parentElement.querySelector('.modalComment-comment-plus').style.display = 'inline-block';
         });
-        
+
         this.parentElement.parentElement.parentElement.querySelector('.modalComment-comment-plus').addEventListener('click', function() {
             this.parentElement.querySelector('.modalComment-post-input').style.display = 'block';
             this.parentElement.querySelector('.modalComment-post-btn').style.display = 'block';
             this.style.display = 'none';
-            
+
             this.parentElement.querySelector('.modalComment-post-btn').addEventListener('click', function() {
                 var div = document.createElement('div');
                 div.className = 'modalComment-comment';
-                
+
                 var span = document.createElement('span');
                 span.className = 'modalComment-comment-span';
                 span.innerHTML = document.querySelector('.header-log-name').innerHTML;
                 div.appendChild(span);
-                
+
                 var p = document.createElement('p');
                 p.className = 'modamComment-comment-p';
                 p.innerHTML = this.parentElement.querySelector('.modalComment-post-input').value;
                 div.appendChild(p);
                 this.parentElement.parentElement.parentElement.insertBefore(div, this.parentElement.parentElement.parentElement.childNodes[4]);
-            
+
                 this.parentElement.parentElement.querySelector('.modalComment-post-input').style.display = 'none';
                 this.parentElement.parentElement.querySelector('.modalComment-post-btn').style.display = 'none';
                 this.parentElement.parentElement.querySelector('.modalComment-comment-plus').style.display = 'inline-block';
@@ -93,6 +93,7 @@ for (var i=0; i<btnDeleteComment.length; i++) {
 
 // buttons used for the caroussel
 for (var i=0; i<btnNext.length; i++) {
+    btnNext[i].parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]')[0].style.opacity = 1;
     btnNext[i].addEventListener('click', function() {
         var img = this.parentElement.parentElement.children[0].querySelectorAll('[class*=event-img-]');
         var position = parseInt(this.parentElement.getAttribute('step'));

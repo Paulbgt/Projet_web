@@ -11,6 +11,6 @@ $insert->execute([
     'add_category' => $add_category
 ]);
 
-header('Location: add_category.php')
+header('Location: ../shop')
 
 ?>

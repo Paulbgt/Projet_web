@@ -40,6 +40,7 @@
               while($data = $q->fetch())
               {
                 ?>
+                <form  action="php/add_article_caddy" method="POST">
                 <div class="article">
                     <div class="AKL-ctn--c1 article-img" style="background_image:url(produce_picture/<?=$data['name'] ?>)">
                         <h3 class="article-img-title"><?=$data['name'] ?></h3>
@@ -49,8 +50,10 @@
                         <span class="article-infos-category"><?=$data['category'] ?></span>
                         <p class="article-infos-description"><?=$data['description'] ?></p>
                         <input type="submit" class="AKL-btnModern-Shine-ocean article-infos-btnAdd" value="+">
+                        <input type="hidden" name="take_id_produce" value="<?=$data['id'] ?>" readonly>
                     </div>
                 </div>
+                </form>
                 <?php
               }
               ?>
@@ -92,31 +95,52 @@ $reponse->closeCursor();
                   <input type="range" class='AKL-range max-range' min="0" max="150" value="150" step="1">
                   <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
               </div>
-             
+
               <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
+          <form action="php/add_category_bdd.php" method="POST">
               <div class="searchNav-rightSide">
                   <div class="addCategory">
                       <p class="addCategory-title">Ajouter une catégorie</p>
                       <div class="addCategory-blc">
-                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom">
+                          <input type="text" class="AKL-inputUnderlined" name="name_category" placeholder="Nom">
                           <input type="submit" class="AKL-btnClassic-Flat addArticle-submit" value="Ajouter">
                       </div>
                   </div>
+          </form>
 
+<form action="php/add_article_bdd.php" method="POST">
                   <div class="addArticle">
                       <p class="addArticle-title">Ajouter un article</p>
                       <div class="addArticle-blc">
-                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom">
-                          <input type="text" class="AKL-inputUnderlined" placeholder="Prix">
-                          <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description"></textarea>
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom" name="name_article">
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Prix" name="price_article">
+                          <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description" name="description_article"></textarea>
                           <label for="file1" class="AKL-btnClassic-FlatBorder">Image</label>
                           <input hidden type="file" id="file1" class="AKL-btnFile">
+                          <select class='AKL-select-snow searchNav-select' name="category_article">
+                              <option value="">Catégorie :</option>
+<?php
+try {
+    $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+$reponse = $bdd->query( 'SELECT id, name FROM category' ) or die(print_r($bdd->errorInfo()));;
+
+while ($donnees = $reponse->fetch()) {
+    echo '<option value="' . $donnees['id'] . '">' . $donnees['name'] . '</option>';
+}
+$reponse->closeCursor();
+?>
+                          </select>
                           <input type="submit" class="AKL-btnClassic-Flat addArticle-submit" value="Ajouter">
                       </div>
                   </div>
               </div>
               <?php } ?>
           </div>
+</form>
+
           <div class="listArticle">
  <?php
 try{

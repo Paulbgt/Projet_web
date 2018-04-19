@@ -15,7 +15,7 @@ $id = $_GET['download_id'];
 
 		print_r($rep);
 
-		unset($rep[0], $rep[1], $rep[200]); //permet de prendre jusqu'a 200 photos dans le dossier
+		unset($rep[0], $rep[1], $rep[2000]); //permet de prendre jusqu'a 200 photos dans le dossier
 		//take up to 200 photos in the folder
 
 		foreach ($rep as $file) {
