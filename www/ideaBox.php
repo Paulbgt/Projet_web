@@ -229,17 +229,14 @@ Cdlmt.</textarea>
 </div>
 
     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
-    <form id="administerForm" action="php/administer_event.php" method="POST"></form>
-    <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
-
-
+    <form id="administerForm" action="php/administer_event.php" method="POST" enctype="multipart/form-data">
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <span class="modal-title">Editer l'événement</span>
             <div class="modal-close">X</div>
             <div class="AKL-ctn--c2-s1 modal-img">
                 <label for="fileImgModal" class="AKL-btnClassic-Flat-ocean">Changer d'image</label>
-                <input type="file" id="fileImgModal" class="AKL-btnFile" hidden>
+                <input type="file" id="fileImgModal" name="image" class="AKL-btnFile" hidden>
             </div>
             <div class="AKL-ctn--c2-s1 modal-infos">
                 <input type="text" placeholder="Titre de l'idée" class="AKL-inputUnderlined modal-infos-title" id="mtitle" name="mtitle" form="administerForm">
@@ -251,6 +248,8 @@ Cdlmt.</textarea>
                 <div class="modal-infos-btn">
                     <input type="number" class="modal-infos-id" id="numEvent" name="mid" form="administerForm" readonly hidden>
                     <input type="submit" class="AKL-btnClassic-Flat-ocean modal-infos-submit" value="Sauvegarder" form="administerForm"/>
+                    </form>
+                    <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
                     <input type="submit" class="AKL-btnClassic-Flat-hell modal-infos-delete" value="Supprimer" form="deleteForm"/>
                     <input type="number" class="modal-infos-id-delete" id="event_id" name="event_id" form="deleteForm" readonly hidden>
                 </div>

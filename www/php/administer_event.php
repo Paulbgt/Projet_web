@@ -36,7 +36,37 @@ $v->execute([
 ':mprice' => $mprice,
 ':meventStatus' => $meventStatus
 
-]);
+			]);
+
+if(isset($_FILES['image'])) {
+
+	$msg = "";
+	$ref = 1;
+
+  if(!file_exists("../event_picture/".$mid)) {
+    mkdir("../event_picture/".$mid);
+  }
+
+  $image = str_replace(" ","_",$_FILES['image']['name']);
+  $image = str_replace("#","_",$image);
+
+  $path = "../event_picture/".$mid."/".basename($image);
+
+  $request = $bdd->prepare("UPDATE event_picture SET url = :url WHERE id_event = :id_event AND ref = :ref LIMIT 1");
+  $request->execute([
+      'url' => $image,
+      'id_event' => $mid,
+      'ref' => $ref
+      ]);
+
+  if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
+      $msg = "Image uploaded successfully";
+      echo($msg);
+    }else{
+      $msg = "Failed to upload image";
+      echo($msg);
+    }
+  }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
