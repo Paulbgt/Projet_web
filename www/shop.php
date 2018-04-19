@@ -246,6 +246,20 @@ $display->closeCursor();
 
     <?php include '_footer.php' ?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="php/confirm_order.php" method="POST">
+
     <div class="backgroundModal">
         <div class="modal">
             <h2 class="modal-title">Panier</h2>
@@ -365,6 +379,11 @@ $saww->closeCursor();
             <input class="AKL-btnClassic-Flat-ocean modal-payment" type="submit" value="Valider la commande">
         </div>
     </div>
+</form>
+
+
+
+
 
 
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
