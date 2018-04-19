@@ -1,3 +1,7 @@
+<!-- // *[English]* This function allows you to add a new category of article in the database.-->
+
+<!-- //*[Français]* Cette fonction permet de rajouter une nouvelle catégorie d'article dans la base de données. -->
+
 <?php
 //conexion à la base de données
 $db = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');

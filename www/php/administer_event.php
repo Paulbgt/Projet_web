@@ -1,3 +1,6 @@
+<!-- // *[English]* This function allows us to administer an event if we modify it. -->
+<!-- // *[Français]* Cette fonction nous permet d'administrer un event si on venait à le modifier.-->
+
 <?php
 
 

@@ -1,3 +1,6 @@
+<!-- // *[English]* this function allows you to add or delete a like in the idea box page -->
+<!-- // *[Français]* cette fonction permet d'ajouter ou de supprimer un like dans la page de boite à idée -->
+
 <?php session_start(); ?>
 
 <?php

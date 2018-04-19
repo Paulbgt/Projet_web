@@ -1,3 +1,6 @@
+<!-- // *[English]* this feature allows you to add photos for events that are finish -->
+<!-- //*[Français]* cette fonction permet d'ajouter des photos pour les événements qui sont teminés -->
+
 <?php
  session_start();
 

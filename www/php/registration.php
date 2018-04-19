@@ -1,3 +1,6 @@
+<!-- // *[English]* This feature allows you to register for an event in the event page of the month -->
+<!-- // *[Français]* Cette focntion permet de s'inscrire pour un événement dans la page événement du mois -->
+
 <?php session_start(); ?>
 
 <?php

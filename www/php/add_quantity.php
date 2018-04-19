@@ -1,3 +1,7 @@
+<!-- // *[English]* This function allows to add the quantities for each product in our basket (this function is not used but improvement track) -->
+<!-- // *[Français]* Cette fonction permet d'ajouter les quantités pour chaque produit dans notre panier (cette fonctione n'est pas utilisé mais piste d'amélioration) -->
+
+
 <?php session_start();  ?>
 <?php
 try{

@@ -1,3 +1,6 @@
+<!-- // *[English]* -->
+<!-- // *[Français]* -->
+
 <?php
   final class singleton{
     private static $PDOInstance = null;

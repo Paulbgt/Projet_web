@@ -1,3 +1,6 @@
+<!-- // *[English]* This function allows you to delete a comment -->
+<!-- // *[Français]* Cette fonction permet de supprimer un commentaire  -->
+
 <?php
 //conexion à la base de données
 try{$bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');}

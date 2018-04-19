@@ -1,3 +1,6 @@
+<!-- // *[English]* -->
+<!-- // *[Français]* -->
+
 <?php session_start(); ?>
 <?php
 $category=null;

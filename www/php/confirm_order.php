@@ -1,3 +1,6 @@
+<!-- // *[English]* this function allows us to confirm our basket to validate our order, it passes our basket to "on hold", then a new basket will be created -->
+<!-- // *[Français]* cette fonction permet de confirmer notre panier pour valider notre commande, elle passe notre panier à "en attente", ensuite un nouveau panier sera créer -->
+
 <?php session_start();  ?>
 <?php
 

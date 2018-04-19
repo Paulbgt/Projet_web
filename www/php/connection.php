@@ -1,3 +1,6 @@
+<!-- // *[English]* This function allows to connect to the site with his account, it checks if the entered email corresponds to those registered in the database and if the password corresponds to the one entered by the user. -->
+<!-- // *[Français]* Cette fonction permet de se connecter au site avec son compte, elle vérifie si le mail entré correspond à ceux inscrit dans la base de données et si le mot de passe correspond à celui entré par l'utilisateur. -->
+
 <?php session_start();
 //conexion à la base de données
 $db = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
