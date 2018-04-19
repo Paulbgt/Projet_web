@@ -62,10 +62,11 @@
           </div>
           <div class="AKL-ctn--c1 searchNav">
               <h2 class="searchNav-title">Goodies</h2>
-              <p class="searchNav-titleFilter">Appliquer un filtre</p>
-              <span>Catégorie :</span>
-              <select class='AKL-select-snow searchNav-select'>
-              <option value=""></option>
+              <div class="searchNav-leftSide">
+                  <p class="searchNav-titleFilter">Appliquer un filtre</p>
+                  <span>Catégorie :</span>
+                  <select class='AKL-select-snow searchNav-select'>
+                  <option value=""></option>
 <?php
 try
 {
@@ -88,12 +89,35 @@ $reponse->closeCursor();
 
 
  ?>
-              </select>
-              <span>Prix minimum :</span>
-              <input type="range" class='AKL-range min-range' min="0" max="150" value="0" step="1">
-              <span>Prix maximum :</span>
-              <input type="range" class='AKL-range max-range' min="0" max="150" value="150" step="1">
-              <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
+                  </select>
+                  <span>Prix minimum :</span>
+                  <input type="range" class='AKL-range min-range' min="0" max="150" value="0" step="1">
+                  <span>Prix maximum :</span>
+                  <input type="range" class='AKL-range max-range' min="0" max="150" value="150" step="1">
+                  <a class="AKL-btnClassic-Flat-ocean btnSearch">Chercher</a>
+              </div>
+             
+              <div class="searchNav-rightSide">
+                  <div class="addCategory">
+                      <p class="addCategory-title">Ajouter une catégorie</p>
+                      <div class="addCategory-blc">
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom">
+                          <input type="submit" class="AKL-btnClassic-Flat addArticle-submit" value="Ajouter">
+                      </div>
+                  </div>
+
+                  <div class="addArticle">
+                      <p class="addArticle-title">Ajouter un article</p>
+                      <div class="addArticle-blc">
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Nom">
+                          <input type="text" class="AKL-inputUnderlined" placeholder="Prix">
+                          <textarea class="AKL-textareaUnderlined-locked" rows="4" cols="30" placeholder="Description"></textarea>
+                          <label for="file1" class="AKL-btnClassic-FlatBorder">Image</label>
+                          <input hidden type="file" id="file1" class="AKL-btnFile">
+                          <input type="submit" class="AKL-btnClassic-Flat addArticle-submit" value="Ajouter">
+                      </div>
+                  </div>
+              </div>
           </div>
           <div class="listArticle">
  <?php
@@ -244,26 +268,7 @@ while ($response = $see->fetch()) {
 }
 $see->closeCursor();
 ?>
-<!--
-            <div class="line">
-                <a class="line-delete">X</a>
-                <span class="line-name">Clé USB</span>
-                <span class="line-price">2€</span>
-                <span class="line-quantity">4</span>
-            </div>
-            <div class="line">
-                <a class="line-delete">X</a>
-                <span class="line-name">Tasse</span>
-                <span class="line-price">10€</span>
-                <span class="line-quantity">2</span>
-            </div>
-            <div class="line">
-                <a class="line-delete">X</a>
-                <span class="line-name">Pull A1</span>
-                <span class="line-price">50€</span>
-                <span class="line-quantity">1</span>
-            </div>
--->
+
 
 <?php
 try{

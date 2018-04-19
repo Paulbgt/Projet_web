@@ -52,13 +52,13 @@ $photos->execute(['id' => $response['id']]);
             <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
                 <?php while($photo = $photos->fetch()) { 
 
-                    $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture   FROM like_event_picture where id_event_picture =:id  GROUP BY id_event_picture");
+                    $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture FROM like_event_picture where id_event_picture=:id GROUP BY id_event_picture");
                         $plike->execute(['id' => $photo['id']]);
-                        $liked =$plike-> fetch();
-
+                        $liked = $plike-> fetch();
+    var_dump($liked);
                     ?>
                 <form id="likeForm<?= $i ?>" action="php/like_done.php" method="POST"></form>
-                <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $response['id'] ?>" form="likeForm<?= $i ?>" readonly hidden>
+                <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $liked['id_event_picture'] ? $liked['nb_like'] : '0' ?>" form="likeForm<?= $i ?>" readonly hidden>
                 <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
                     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
                     <input type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>">

@@ -15,6 +15,26 @@ for (var i=0; i<btnDeleteCart.length; i++) {
 
 
 
+// Display the add article form and the add category form
+
+document.querySelector('.addArticle-title').addEventListener('click', function() {
+    if (this.parentElement.querySelector('.addArticle-blc').style.display == 'flex') {
+        this.parentElement.querySelector('.addArticle-blc').style.display = 'none';
+    } else {
+        this.parentElement.querySelector('.addArticle-blc').style.display = 'flex';
+    }
+});
+document.querySelector('.addCategory-title').addEventListener('click', function() {
+    if (this.parentElement.querySelector('.addCategory-blc').style.display == 'flex') {
+        this.parentElement.querySelector('.addCategory-blc').style.display = 'none';
+    } else {
+        this.parentElement.querySelector('.addCategory-blc').style.display = 'flex';
+    }
+});
+
+
+
+
 
 /* ///////////// Modal //////////// */
 
