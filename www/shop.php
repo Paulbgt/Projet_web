@@ -138,17 +138,20 @@ $reponse->closeCursor();
           <div class="listArticle">
  <?php
 try{
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
 
     die($e->getMessage());
 }
-//requête qui permet de récupérer les données dans la BDD
+// *[English]* query that retrieves data from the database
+// *[Français]* requête qui récupère des données de la base de données
 $display = $bdd->prepare("SELECT produce.id AS id_produce, produce.name AS name_produce, produce.description AS description_produce, produce.price AS price_produce, produce.id_category, category.name AS name_category FROM produce LEFT JOIN category ON produce.id_category=category.id");
 $display->execute();
-//afficher chaque entrée une à une
+// *[English]* display each data one by one
+// *[Français]* afficher chaque donnée une par une
 while ($response = $display->fetch()) {
 ?>
 
@@ -205,7 +208,8 @@ $display->closeCursor();
 
 <?php
 try{
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
@@ -233,7 +237,8 @@ $see->closeCursor();
 
 <?php
 try{
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
@@ -260,7 +265,8 @@ $saw->closeCursor();
             </div>
 <?php
 try{
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){

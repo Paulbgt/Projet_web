@@ -23,7 +23,8 @@ if ($_SESSION['statute'] != 2) {
     <div></div> <!-- Useless div just for the checkerboard color -->
 <?php
 try{
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
@@ -31,14 +32,17 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
     die($e->getMessage());
 
 }
-//requête qui permet de récupérer les données dans la BDD
+// *[English]* query that retrieves data from the database
+// *[Français]* requête qui récupère des données de la base de données
 $display = $bdd->prepare("SELECT COUNT(like_event.id_account) as nb_like,event.id, event.title, event.description, event.event_date,event.place,event.club,event.price,event_picture.url  FROM (like_event right JOIN event ON like_event.id_event=event.id) LEFT join event_picture ON event.id=event_picture.id_event where event.eventStatus = 3 GROUP BY event.id");
 $display->execute();
 $i = 1;
 $liked = false;
-//afficher chaque entrée une à une
+// *[English]* display each data one by one
+// *[Français]* afficher chaque donnée une par une
 while ($response = $display->fetch()) {
-    //request to get list of likes
+    // *[English]* request to get the list of likes
+    // *[Français]* requête pour récupérer la liste des likes
     $subs = $bdd->prepare("SELECT id_account from like_event where id_event=:idevent AND id_account=:idaccount");
     $subs->execute([
         ':idevent' => $response['id'],

@@ -28,7 +28,8 @@ if($_SESSION['statute'] == 0){
 
 <?php
 try{
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 
 } catch(PDOException $e){
@@ -37,12 +38,14 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
 
 }
 
-//requête qui permet de récupérer les données dans la BDD
+// *[English]* query that retrieves data from the database
+// *[Français]* requête qui récupère des données de la base de données
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 2 ORDER BY id DESC");
 $display->execute();
 $i = 1;
 
-//afficher chaque entrée une à une
+// *[English]* display each data one by one
+// *[Français]* afficher chaque donnée une par une
 while ($response = $display->fetch()) {
 
 $photos = $bdd->prepare("SELECT * FROM event_picture WHERE id_event = :id ORDER BY ref DESC");

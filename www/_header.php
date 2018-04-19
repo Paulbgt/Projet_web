@@ -100,34 +100,38 @@
             <li class="nav-blc-ul-li"><a href="eventDone">Evénements passés</a></li>
             <li class="nav-blc-ul-li"><a href="shop">Boutique</a></li>
           <?php 
-
+            // *[English]* If the user is part of the BDE we will display the tab reports
+            // *[Français]* Si l'utilisateur fait partit du BDE on va afficher l'onglet signalements
           if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
             <hr>
             <li class="nav-blc-ul-li"><a href="report">Signalements</a></li>
           <?php } ?>
-          <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
+          <?php 
+            // *[English]* If the user is an employee we will display the administration tab
+            // *[Français]* Si l'utilisateur est un salarié on va afficher l'onglet administration
+          if(isset($_SESSION['statute']) && $_SESSION['statute'] == 3){ ?>
             <hr>
             <li class="nav-blc-ul-li"><a href="administration">Administration</a></li>
           <?php } ?>
         </ul>
         <hr>
         <span class="headerPhone-log-name">
-        <?php 
+        <?php
+            // *[English]* Display name and first name
+            // *[Français]* Affichage du nom et du prénom
             echo($_SESSION['first_name'] . " " . $_SESSION['last_name']);
         ?>
         </span>
         <span class="headerPhone-log-span">Statut : 
-        <?php 
-            if ($_SESSION['mail'] == "aurelien.klein@viacesi.fr") {
-                echo("Root");
-            } else {
+        <?php  
+                // *[English]* Switch case to display the status according to its status
+                // *[Français]* Switch case pour afficher le statut en fonction de son statut
                 switch($_SESSION['statute']) {
                     case '0' :  echo("Invité"); break;
                     case '1' :  echo("Étudiant"); break;
                     case '2' :  echo("BDE"); break;
                     case '3' :  echo("Salarié"); break;
-                }
-            }
+                } 
         ?>    
         </span>
         

@@ -26,19 +26,22 @@ if($_SESSION['statute'] == 0){
        <h1 class="AKL-ctn--c1 banner">Evénements du mois</h1>
 
 <?php
-//conexion à la base de données
+// *[English]* connection to the database
+// *[Français]* connexion à la base de données
 try{
     $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
 } catch(PDOException $e){
     die($e->getMessage());
 }
 
-//requête qui permet de récupérer les données dans la BDD
+// *[English]* query that retrieves data from the database
+// *[Français]* requête qui récupère des données de la base de données
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 1");
 $display->execute();
 $i = 1;
 $subscribed = false;
-//afficher chaque entrée une à une
+// *[English]* display each data one by one
+// *[Français]* afficher chaque donnée une par une
 while ($response = $display->fetch()) {
 
 
