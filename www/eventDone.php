@@ -15,12 +15,12 @@
 <body>
 
 	<?php include '_header.php' ?>
-   
+
     <div class="wrapper">
-        
+
         <h1 class="AKL-ctn--c1 banner">Evénements terminés</h1>
-    
-<?php  
+
+<?php
 try{
 //conexion à la base de données
 $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;charset=utf8', 'zeik_root', 'toor');
@@ -35,10 +35,10 @@ $bdd = new PDO('mysql:host=mysql-zeik.alwaysdata.net;dbname=zeik_web_project;cha
 $display = $bdd->prepare("SELECT * FROM event WHERE eventStatus = 2 ORDER BY id DESC");
 $display->execute();
 $i = 1;
-    
+
 //afficher chaque entrée une à une
 while ($response = $display->fetch()) {
-    
+
 $photos = $bdd->prepare("SELECT * FROM event_picture WHERE id_event = :id ORDER BY ref DESC");
 $photos->execute(['id' => $response['id']]);
 
@@ -47,16 +47,18 @@ $photos->execute(['id' => $response['id']]);
 
 
 ?>
-       
-        <div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
-            <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
-                <?php while($photo = $photos->fetch()) { 
+<div id="event<?= $response['id'] ?>" class="AKL-ctn--c1 event">
+    <div class="AKL-ctn--c2-s1 event-img" id="event-img<?= $i ?>">
+
+                <?php while($photo = $photos->fetch()) {
 
                     $plike= $bdd->prepare("SELECT COUNT(like_event_picture.id_account) as nb_like, id_event_picture FROM like_event_picture where id_event_picture=:id GROUP BY id_event_picture");
                         $plike->execute(['id' => $photo['id']]);
                         $liked = $plike-> fetch();
-    var_dump($liked);
+    //var_dump($liked);
                     ?>
+
+
                 <form id="likeForm<?= $i ?>" action="php/like_done.php" method="POST"></form>
                 <input class="likeForm<?= $i ?>" name="<?= $liked ? 'unlike' : 'like' ?>_id" value="<?= $liked['id_event_picture'] ? $liked['nb_like'] : '0' ?>" form="likeForm<?= $i ?>" readonly hidden>
                 <div class="event-img-<?= $i ?>" liked="false" value="<?=$liked['nb_like']?>" style="background-image: url(event_picture/<?= $response['id'] ?>/<?= $photo['url'] ?>)">
@@ -64,7 +66,7 @@ $photos->execute(['id' => $response['id']]);
 
                      <form action="zip.php" method="GET">
                     <input type="submit" value="Télécharger" class="AKL-btnClassic-Flat-hell event-download<?= $i ?>">
-                    
+
                     <input type="number" id="download_id" name="download_id" value="<?= $response['id'] ?>" readonly hidden></form>
 
                     <?php } ?>
@@ -78,7 +80,7 @@ $photos->execute(['id' => $response['id']]);
                 <span id="event-infos-date<?= $i ?>" class="event-infos-date"><?= $response['event_date'] ?></span>
 <!--                <span id="event-infos-price<?= $i ?>" class="event-infos-price"><?= $response['price'] ?></span>-->
                 <textarea id="event-infos-description<?= $i ?>" cols="32" rows="4" class="AKL-textareaUnderlined-locked event-infos-description" readonly><?= $response['description'] ?></textarea>
-                
+
                 <div class="event-infos-btn">
                     <a class="AKL-btnClassic-Flat-ocean event-infos-sendPhoto">Déposer une photo</a>
                     <a class="AKL-btnClassic-Flat-ocean event-infos-comment">Commentaires</a>
@@ -89,7 +91,7 @@ $photos->execute(['id' => $response['id']]);
                 <button class="event-swap-like" value="<?=$liked['nb_like']?>" style="background-image: url(site_picture/like_grey.svg)" type="submit" form="likeForm<?= $i ?>"></button>
                 <a class="event-swap-next"></a>
             </div>
-            
+
             <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
             <div class="AKL-ctn--c2-s1 event-admin<?= $i ?>" id="<?= $response['id'] ?>"><a class="AKL-btnClassic-Flat-dark">Administrer</a></div>
             <?php } ?>
@@ -99,7 +101,7 @@ $photos->execute(['id' => $response['id']]);
                 <input type="number" id="report_event_id" name="report_event_id" value="<?= $response['id'] ?>" readonly hidden>
             </form>
             <?php } ?>
-            
+
             <div class="AKL-ctn--c2-s1 modalComment">
                 <div class="modalComment-close">X</div>
                     Commentaires :
@@ -112,7 +114,7 @@ $photos->execute(['id' => $response['id']]);
                     <input type="number" id="comment_event_id" name="comment_event_id" value="<?= $response['id'] ?>" readonly hidden>
                     </form>
                 </div>
-    
+
                 <?php
                 $comments = $bdd->prepare("SELECT commentary.id as id, commentary.com, commentary.id_event as id_event, commentary.id_account as id_account, account.last_name, account.first_name FROM commentary INNER JOIN account ON commentary.id_account = account.id WHERE id_event = :id ORDER BY commentary.id DESC");
                 $comments->execute(['id' => $response['id']]);
@@ -142,7 +144,7 @@ $photos->execute(['id' => $response['id']]);
                     <p class="modamComment-comment-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores autem repellat nisi quaerat iusto aliquam dicta, libero soluta fugit ad atque excepturi, reiciendis cupiditate. Dignissimos, molestias! Repellendus, hic necessitatibus neque.</p>
                 </div> -->
             </div>
-            <?php 
+            <?php
 
             $rights = $bdd->prepare("SELECT * FROM register WHERE id_event = :id_event AND id_account = :id_account");
             $rights->execute([
@@ -163,20 +165,20 @@ $photos->execute(['id' => $response['id']]);
             </form>
             <?php } ?>
         </div>
-       
+
 <?php
 $i++; }
 $display->closeCursor();
 ?>
-               
+
     </div>
-      
-      
-      
+
+
+
     <?php if(isset($_SESSION['statute']) && $_SESSION['statute'] == 2){ ?>
     <form id="administerForm" action="php/administer_event.php" method="POST"></form>
     <form id="deleteForm" action="php/delete_event.php" method="POST"></form>
-            
+
     <div class="backgroundModal">
         <div class="AKL-ctn--c3_4-s1 modal -dark">
             <span class="modal-title">Editer l'événement</span>
@@ -219,9 +221,9 @@ $display->closeCursor();
         </div>
     </div>
     <?php } ?>
-       
+
     <?php include '_footer.php' ?>
-    
+
 <script src="AKLibrary/AURELIENKLEIN.library.min.js"></script>
 <script defer src="js/common.min.js"></script>
 <script src="js/eventDone.js"></script>
